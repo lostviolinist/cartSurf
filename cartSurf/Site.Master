@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="cartSurf.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %></title>
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style type="text/css">
+        .auto-style1 {
+            height: 450px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+<%--        <div style ="margin: -10px; height: 60px; display: flex; justify-content: flex-end; flex-flow: row;">
+            <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor= "#FE3939" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="1.2em" ForeColor="#FFFFFF" StaticSubMenuIndent="10px" Width="900px" OnMenuItemClick="Menu_MenuItemClick" >
+                <DynamicHoverStyle BackColor="#FE3939" ForeColor="#FFF" />
+                <DynamicMenuItemStyle HorizontalPadding="15px" VerticalPadding="12px" />
+                <DynamicMenuStyle BackColor="#E3EAEB" />
+                <DynamicSelectedStyle BackColor="#FFF" />
+                <Items>
+                    <asp:MenuItem Text="Sign Up" NavigateUrl="~/Sign Up.aspx" Value="Sign Up"></asp:MenuItem>
+                </Items>
+            </asp:Menu>
+        </div>--%>
+
+        <div style="padding-top:25px;" class="auto-style1">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+
+    </form>
+</body>
+</html>

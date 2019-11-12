@@ -1,0 +1,83 @@
+﻿        .body {
+        }
+
+        .login-signup-wrap
+        {
+            position: absolute;
+            width: 960px;
+            height: 385px;
+            background: #fff;
+            font: Montserrat;
+            overflow: hidden;
+            margin: 90px 180px 90px 180px;            
+            border: 1px solid black;
+            border-radius: 15px 15px 15px 15px;
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
+        .login-container
+        {
+            width: 400px;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-content: center;
+            background-color: #fe3939;
+            border-radius: 15px 0 0 15px;
+            font-size: 1.1em;
+            color: #fff;
+        }
+
+        .login-element 
+        {
+            padding: 0 0 30px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sign-up-container
+        {
+            width: 560px;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .sign-up-element 
+        {
+            padding: 0 0 15px 0;
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .fa-facebook-square
+        {
+            color: #3B5998; 
+            padding: 0 15px 0 15px;"
+        }
+
+        .fa-google-plus-square
+        {
+            color: #DD4B39;
+            padding: 0 15px 0 15px;
+        }
+
+        .fa-linkedin
+        {
+            color: #0E76A8;
+            padding: 0 15px 0 15px;
+        }
+                
+        .fa-envelope
+        {
+            margin: 0 10px 0 0;
+        }
+
+        .fa-lock
+        {
+            margin: 0 13px 0 0;
+        }
