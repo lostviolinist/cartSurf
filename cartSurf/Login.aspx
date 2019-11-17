@@ -6,7 +6,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="login-signup-wrap">
+        <div class="login-signup-wrap" style="margin-left: 90px;">
             
             <div class="login-container">
                 <div class ="login-element" style="font-size:1.6em;font-weight:bold;">
@@ -55,8 +55,6 @@
                 
             </div>
 
-
-
-        </div>
+       </div>
 </asp:Content>
 
