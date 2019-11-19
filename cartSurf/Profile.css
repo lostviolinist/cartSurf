@@ -1,0 +1,36 @@
+﻿body {
+}
+
+.container {
+    margin-top: 90px;
+}
+
+#profile ul {
+    margin-top: 20px;
+}
+
+#profile-category a,
+a:visited {
+    color: #000000;
+    font-size: 1.1em;
+    border-bottom: 1px black;
+}
+
+#name li {
+    margin-top: 20px;
+}
+
+#profile-category a:hover {
+    color: #0000EE;
+    text-decoration: underline;
+}
+
+#profile-category li {
+    margin: 30px 0 30px 0;
+    padding: 0 0 20px 10px;
+    transition: transform 600ms ease-in-out;
+}
+
+    #profile-category li:hover {
+        transform: scale(1.1);
+    }

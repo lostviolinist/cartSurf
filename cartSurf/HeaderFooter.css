@@ -1,0 +1,72 @@
+﻿body {
+}
+
+.navbar-inverse {
+    padding: 0 50px 0 50px;
+    margin-bottom: 90px;
+    background-color: #FE3939;
+    border: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 1.4em;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #9d9d9d;
+}
+
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+   color: #fff;
+   background-color: transparent;
+}
+
+.navbar-inverse .navbar-text {
+    color: #FFFFFF;
+}
+
+.navbar-inverse .navbar-nav > li > input
+{
+    margin: 20px 0 0 80px;
+    width: 630px;
+}
+
+.navbar-inverse .navbar-nav > li > button
+{
+    margin: 20px 90px 0 20px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFFFFF;
+    margin-top: 10px;
+    float: right;
+
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: #000000;
+    background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+input.form-control {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+}
+.navbar navbar-inverse navbar-fixed-top > container-fluid > ul
+{
+    width: 800px;
+}
+
+input, select, textarea {
+    max-width: 900px !important;
+}
