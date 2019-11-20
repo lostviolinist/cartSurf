@@ -40,17 +40,17 @@
 
                 <div class="sign-up-element">
                     <i class="far fa-envelope fa-2x"></i> 
-                    <asp:TextBox ID="tbMail" runat="server" Width="311px" Height="30px" ForeColor="DarkGray">  Email</asp:TextBox>
+                    <asp:TextBox ID="tbMail" autocomplete= "off" runat="server" Width="311px" Height="30px" ForeColor="DarkGray" Placeholder="Email"></asp:TextBox>
                 </div>
 
                 <div class="sign-up-element">
                     <i class="fas fa-lock fa-2x"></i>
-                    <asp:TextBox ID="TextBox1" runat="server" Width="311px" Height="30px" ForeColor="DarkGray">  Password</asp:TextBox>
+                    <asp:TextBox ID="TextBox1" autocomplete= "off" runat="server" Width="311px" Height="30px" ForeColor="DarkGray" Placeholder="Password"></asp:TextBox>
                 </div>
 
                 <div class="sign-up-element">
                     <i class="fas fa-lock fa-2x"></i> 
-                    <asp:TextBox ID="TextBox2" runat="server" Width="311px" Height="30px" ForeColor="DarkGray">  Confirm Password</asp:TextBox>
+                    <asp:TextBox ID="TextBox2" autocomplete= "off" runat="server" Width="311px" Height="30px" ForeColor="DarkGray" Placeholder="Confirm Password"></asp:TextBox>
                 </div>
                 
             </div>

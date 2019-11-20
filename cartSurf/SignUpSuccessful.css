@@ -1,0 +1,14 @@
+﻿body {
+    background-color: #FE3939;
+}
+
+#Successful .container .navbar-fixed-top {
+    color: #000000;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-bottom: 1px solid #000000;
+}
+
+#successful-content .container {
+    background-color: #FE3939;
+}

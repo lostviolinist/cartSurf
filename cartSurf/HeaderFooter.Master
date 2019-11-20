@@ -18,6 +18,10 @@
             width: 139px;
             height: 45px;
         }
+
+        body {
+            background-color: #F5F5F5;
+        }
     </style>
 </head>
 <body>

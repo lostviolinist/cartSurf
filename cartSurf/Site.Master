@@ -39,20 +39,22 @@
 <body style="height: 17px">
     <form id="form1" runat="server">
         <div class="navbar navbar-inverse navbar-fixed-top" style="padding-top: 20px; background-color: #FFFFFF; left: 3px; right: -3px; top: -19px; height: 106px; border-bottom-style: none; border-bottom-color: inherit; border-bottom-width: medium;">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <a class="auto-style2" runat="server" href="~/">
-                                <img src="Images/logo.png" class="auto-style1" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
+             <div id="nav" class="container">
+                  <div class="navbar-header">
+                      <a class="auto-style2" runat="server" href="~/">
+                          <img src="Images/logo.png" class="auto-style1" />
+                      </a>
+                  </div>
+             </div>
+        </div>
 
-    <div class="container body-content">
+    <div class="container body-content" style="height: 590px;">
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         </asp:ContentPlaceHolder>
     </div>
 
     </form>
+
+    <script src="SignIn.js"></script>
 </body>
 </html>

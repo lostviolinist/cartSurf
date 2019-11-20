@@ -2,12 +2,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="Profile.css" rel="stylesheet" type="text/css" />
-<div id="profile" class ="container text-center text-md-left">
+    <div id="profile" class ="container text-center text-md-left">
         <div class="row">
             <div class="col-md-4 mx-auto">
                 <div id="personal-details" class ="row">
                     <div class="col-md-4 mx-auto">
                         <a href="#" style="color: black"><i class="far fa-user-circle fa-8x"></i></a>
+                        <a href="#" style="color:  #0000EE;">Change Profile Picture</a>
                     </div>
                     <div id="name" class="col-md-8 mx-auto text-left">
                         <ul class="list-unstyled">
@@ -22,10 +23,10 @@
                        <a href="#">Profile</a>
                    </li>
                    <li>
-                       <a href="#">My Account</a>
+                       <a href="MyAccount.aspx">My Account</a>
                    </li>
                    <li>
-                       <a href="#">My Order</a>
+                       <a href="Order.aspx">My Order</a>
                    </li>
                    <li>
                        <a href="#">Membership</a>
@@ -33,7 +34,8 @@
                </ul>
                 
             </div>
-            <asp:ContentPlaceHolder ID="Content3" runat="server">
+
+            <asp:ContentPlaceHolder ID="ProfileContent" runat="server">
             </asp:ContentPlaceHolder>
 
         </div>

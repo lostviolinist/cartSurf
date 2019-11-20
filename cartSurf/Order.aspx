@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Profile.Master" AutoEventWireup="true" CodeBehind="Order.aspx.cs" Inherits="cartSurf.Order" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="Content3" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ProfileContent" runat="server">
     <link href="Order.css" rel="stylesheet" type="text/css" />
 <%--    <div id="profile" class ="container text-center text-md-left">
         <div class="row">
@@ -33,7 +33,8 @@
                </ul>
                 
             </div>--%>
-
+            
+                        
             <div class="col-md-8 mx-auto text-left">
                 <h1 style="font-weight: 800;">Order Status</h1>
                 <hr />
@@ -62,6 +63,7 @@
             <div class="col-md-8 mx-auto text-left">
                 <h2 style="font-weight: 800;">Recommendation</h2>
             </div>
+
 <%--        </div>
     </div>--%>
 </asp:Content>
