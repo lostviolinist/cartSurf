@@ -2,7 +2,7 @@
 }
 
 .container {
-    margin-top: 90px;
+    margin-top: 50px;
 }
 
 #profile ul {
@@ -21,16 +21,24 @@ a:visited {
 }
 
 #profile-category a:hover {
-    color: #0000EE;
     text-decoration: underline;
 }
 
 #profile-category li {
-    margin: 30px 0 30px 0;
-    padding: 0 0 20px 10px;
+    margin: 30px 0 0 0;
+    padding: 10px 0 20px 10px;
     transition: transform 600ms ease-in-out;
 }
 
-    #profile-category li:hover {
-        transform: scale(1.1);
-    }
+#profile-category li:hover {
+    transform: scale(1.1);
+    border: 2px solid #EEE;
+    background: #FFFFFF;
+}
+
+#profile-details {
+    background-color: #FFFFFF;
+    padding: 30px 30px;
+    margin-bottom: 50px;
+    border: 1px solid #DCDCDC;
+}

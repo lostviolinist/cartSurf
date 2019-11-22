@@ -2,10 +2,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="Profile.css" rel="stylesheet" type="text/css" />
-    <div id="profile" class ="container text-center text-md-left">
+
+    <div id="profile" class ="container text-center text-md-left"">
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <div id="personal-details" class ="row">
+                <div class ="row" style="margin-top: 20px;">
                     <div class="col-md-4 mx-auto">
                         <a href="#" style="color: black"><i class="far fa-user-circle fa-8x"></i></a>
                         <a href="#" style="color:  #0000EE;">Change Profile Picture</a>
@@ -18,28 +19,35 @@
                     </div>
                 </div>
           
-                <ul id="profile-category" class="list-unstyled text-left">
-                   <li style="margin-top: 40px; padding-top: 20px;">
-                       <a href="#">Profile</a>
-                   </li>
-                   <li>
-                       <a href="MyAccount.aspx">My Account</a>
-                   </li>
-                   <li>
-                       <a href="Order.aspx">My Order</a>
-                   </li>
-                   <li>
-                       <a href="#">Membership</a>
-                   </li>
-               </ul>
-                
+                <div class="row">
+                    <div class="col-md-12 mx-auto">
+                       <ul id="profile-category" class="list-unstyled text-left">
+                           <a href="#">
+                               <li style="margin-top: 20px;">Profile</li>
+                           </a>
+                           <a href="MyAccount.aspx">
+                               <li>My Account</li>
+                           </a>
+                           <a href="Order.aspx">
+                               <li>My Order</li>
+                           </a>
+                           <a href="#">
+                               <li>Membership</li>
+                           </a>
+                       </ul>
+                    </div>  
+                </div>  
             </div>
 
-            <asp:ContentPlaceHolder ID="ProfileContent" runat="server">
-            </asp:ContentPlaceHolder>
+            <div id="profile-details" class="col-md-8 mx-auto">
+                <asp:ContentPlaceHolder ID="ProfileContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            
 
         </div>
     </div>
 
-    <
+    
 </asp:Content>

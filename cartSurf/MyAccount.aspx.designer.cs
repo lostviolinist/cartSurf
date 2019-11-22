@@ -15,40 +15,40 @@ namespace cartSurf
     {
 
         /// <summary>
-        /// Name control.
+        /// TbName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Name;
+        protected global::System.Web.UI.WebControls.TextBox TbName;
 
         /// <summary>
-        /// Email control.
+        /// TbEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
+        protected global::System.Web.UI.WebControls.TextBox TbEmail;
 
         /// <summary>
-        /// Username control.
+        /// TbUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Username;
+        protected global::System.Web.UI.WebControls.TextBox TbUsername;
 
         /// <summary>
-        /// Password control.
+        /// TbPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Password;
+        protected global::System.Web.UI.WebControls.TextBox TbPassword;
 
         /// <summary>
         /// ButtonSave control.

@@ -12,47 +12,80 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
     <link href="HeaderFooter.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript"" src="js/BackToTopBtn.js"></script>
 
     <style type="text/css">
         .auto-style1 {
             width: 139px;
             height: 45px;
         }
-
-        body {
-            background-color: #F5F5F5;
-        }
     </style>
+
+<%--    <script>
+        $(document).ready(function(e){
+            $('.search-panel .dropdown-menu').find('a').click(function(e) {
+		        e.preventDefault();
+		        var param = $(this).attr("href").replace("#","");
+		        var concept = $(this).html();
+		        $('.search-panel span#search_concept').html(concept);
+		        $('.input-group #search_param').val(param);
+	        });
+        });
+    </script>--%>
 </head>
+
 <body>
-    <form id="form1" runat="server">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#"><img src="Images/logo2.png" class="auto-style1" /></a>                
-            </div>
+    
+    <form id="form1" runat="server">       
 
-            <ul class="nav navbar-nav" style="left: 0px; top: 0px; width: 72%">
-              <li><input type="text" class="form-control" placeholder="Search"></li>
-              <li><button type="submit" class="btn btn-default" style="width: 50px;"><i class="fas fa-search"></i></button></li>
-            </ul> 
+        <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-md">
+            <div class="row">
+                <div class="col-md-3 mx-auto">
+                    <a class="navbar-brand" href="#"><img src="Images/logo2.png" class="auto-style1" /></a> 
+                </div>
+                <div class="col-md-6 mx-auto" style="margin-top: 15px;">
+                     <div class="input-group">
+                        <div class="input-group-btn search-panel">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                              <span id="search_concept"><span class="glyphicon glyphicon-align-justify"></span> All</span>  
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="#"> <span class="glyphicon glyphicon-envelope text-danger"></span> Email</a></li>
+                              <li><a href="#"> <span class="glyphicon glyphicon-music text-warning"></span> Music</a></li>
+                              <li><a href="#"> <span class="glyphicon glyphicon-user text-success"></span> Users</a></li>
+                              <li><a href="#"><span class="glyphicon glyphicon-book text-primary"></span> Books </a></li>
+                              <li class="divider"></li>
+                              <li><a href="#"> <span class="glyphicon glyphicon-picture text-info"></span> Pictures</a></li>
+                            </ul>
+                        </div>
+                        <input type="hidden" name="search_param" value="all" id="search_param">         
+                        <input type="text" class="form-control" name="x" placeholder="Search item...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
+                </div>
 
-            <ul class="nav navbar-nav navbar-right">   
-               <li><a href="#"><i class="fas fa-heart"></i></a></li>
-              <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-              <li><a href="#">Logout</a></li>
-            </ul>
-          </div>
+                <div class="col-md-3 mx-auto">
+                    <ul class="nav navbar-nav navbar-right">   
+                       <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                      <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                      <li><a href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </div>                      
+
         </nav>
 
-        <div>
+        <div class="main-body">
             <br />
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
+
         </div>
         
-        <div>               
+        <div class="footer">               
             <!-- Footer -->
             <footer class="page-footer font-small stylish-color-dark pt-4">
 
@@ -202,6 +235,12 @@
             </footer>
             <!-- Footer -->
         </div>
+        <a id="back2Top" title="Back to top" href="#">&#10148;</a>
     </form>
+
 </body>
+
+<script src="js/DropDown.js"></script>
+<script src="js/BackToTopBtn.js"></script>
+
 </html>

@@ -5,20 +5,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="SignUpSuccessful.css" rel="stylesheet" type="text/css" />
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <nav id="Successful" class="container navbar-fixed-top">
-                <h3>Sign Up Successful</h3>
-            </nav>
-
-            <div id="successful-content" class="container">
-
-
+        <link href="SignUpSuccessful.css" rel="stylesheet" type="text/css" />
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <h4>Sign Up Successful!</h4>              
             </div>
+          </div>
+        </nav>
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-4">
+                <img class="logo" src="Images/logo.png" class="auto-style1" />
+                <h2>HELLO THERE!</h2>
+                <h5>Get Latest Promotion and Product by Email</h5>
+                <asp:Button class="myBtn" runat="server" Text="Yes, I'm in." />
+                <a href="#"><h4 style="margin-top: 20px;">No, continue to shop</h4></a>
+            </div>
+
         </div>
+
     </form>
 </body>
 </html>

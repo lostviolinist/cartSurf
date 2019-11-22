@@ -43,7 +43,7 @@ body {
     margin: 15px 0;
 }
 
-#signInUp .container {
+.container {
     background-color: #FE3939;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -54,8 +54,12 @@ body {
     min-height: 480px;
 }
 
+.justify-content-center {
+    display: flex;
+    justify-content: center;
+}
 
-#signInUp .form {
+.row {
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -66,11 +70,11 @@ body {
     text-align: center;
 }
 
-#signInUp .social-container {
+.social-container {
     margin: 20px 0;
 }
 
-#signInUp .social-container  a {
+.social-container  a {
     border: 1px solid #dddddd;
     border-radius: 50%;
     display: inline-flex;
@@ -81,7 +85,7 @@ body {
     width: 40px;
 }
 
-#signInUp input {
+.input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
@@ -89,7 +93,7 @@ body {
     width: 100%;
 }
 
-#signInUp .myButton {
+.myButton {
 
     border-radius: 20px;
     border: 1px solid #ff4b2b;
@@ -103,40 +107,40 @@ body {
     transition: transform 80ms ease-in;
 }
 
-#signInUp .myButton:active {
+.myButton:active {
     transform: scale(0.95);
 }
 
-#signInUp .myButton:focus {
+.myButton:focus {
     outline: none;
 }
 
-#signInUp ghost {
+.ghost {
     background-color: transparent;
     border-color: #ffffff;
 }
 
-#signInUp .form-container {
+#signup-container, #signin-container {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
 }
 
-#signInUp .sign-in-container {
+#signup-container {
     left: 0;
     width: 50%;
     z-index: 2;
 }
 
-#signInUp .sign-up-container {
+#signin-container {
     left: 0;
     width: 50%;
     opacity: 0;
     z-index: 1;
 }
 
-#signInUp .overlay-container {
+.overlay-container {
     position: absolute;
     top: 0;
     left: 50%;
@@ -147,7 +151,7 @@ body {
     z-index: 100;
 }
 
-#signInUp .overlay {
+.overlay {
     background: #ff416c;
     background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
     background: linear-gradient(to right, #ff4b2b, #ff416c);
