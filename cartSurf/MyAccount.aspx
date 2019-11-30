@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Profile.master" AutoEventWireup="true" CodeBehind="MyAccount.aspx.cs" Inherits="cartSurf.MyAccount" %>
+﻿<%@ Page Title="CartSurf - Online Shopping Platform" Language="C#" MasterPageFile="~/Profile.master" AutoEventWireup="true" CodeBehind="MyAccount.aspx.cs" Inherits="cartSurf.MyAccount" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="ProfileContent" runat="server">
 
@@ -55,7 +55,4 @@
             <asp:Button ID="ButtonSave" class="save-btn" runat="server" Text="Save" />
         </div>
     </div>
-
-
-
 </asp:Content>

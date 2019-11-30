@@ -1,0 +1,16 @@
+﻿body {
+}
+
+.payment-bar {
+    background-color: #000000;
+    color: #FFFFFF;
+    height: 40px;
+    padding: 10px 0;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#courier {
+    display: flex;
+    justify-content: center;
+}
