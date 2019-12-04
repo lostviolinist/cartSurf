@@ -104,7 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="BackToTopBtn.js" />
+    <Content Include="BackToTopBtn.min.js" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -125,12 +125,17 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\cart.png" />
+    <Content Include="Images\gdex.png" />
     <Content Include="Images\logo-white.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo2.png" />
     <Content Include="Images\logo_white.png" />
     <Content Include="Images\review.png" />
     <Content Include="MyAccount.css" />
+    <Content Include="ShippingAdd.aspx" />
+    <Content Include="ShippingAdd.css" />
+    <Content Include="ShoppingCart.aspx" />
+    <Content Include="ShoppingCart.css" />
     <Content Include="SignIn.js" />
     <Content Include="MyAccount.aspx" />
     <Content Include="SignUpSuccessful.aspx" />
@@ -176,6 +181,7 @@
     <Content Include="Site.Master" />
     <Content Include="Order.css" />
     <Content Include="Profile.css" />
+    <Content Include="Stepper.min.js" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -223,6 +229,20 @@
       <DependentUpon>Profile.master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShippingAdd.aspx.cs">
+      <DependentUpon>ShippingAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShippingAdd.aspx.designer.cs">
+      <DependentUpon>ShippingAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShoppingCart.aspx.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShoppingCart.aspx.designer.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SignUpSuccessful.aspx.cs">
       <DependentUpon>SignUpSuccessful.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
