@@ -15,40 +15,13 @@ namespace cartSurf
     {
 
         /// <summary>
-        /// TbSignUpEmail control.
+        /// TbName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbSignUpEmail;
-
-        /// <summary>
-        /// TbSignUpPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbSignUpPassword;
-
-        /// <summary>
-        /// TbConfirmPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbConfirmPassword;
-
-        /// <summary>
-        /// SignUpBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SignUpBtn;
+        protected global::System.Web.UI.WebControls.TextBox TbName;
 
         /// <summary>
         /// TbEmail control.
@@ -69,30 +42,57 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.TextBox TbPassword;
 
         /// <summary>
-        /// SignInBtn control.
+        /// BtnSignUp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SignInBtn;
+        protected global::System.Web.UI.WebControls.Button BtnSignUp;
 
         /// <summary>
-        /// signInOverlay control.
+        /// TbEmail2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button signInOverlay;
+        protected global::System.Web.UI.WebControls.TextBox TbEmail2;
 
         /// <summary>
-        /// signUpOverlay control.
+        /// TbPassword2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button signUpOverlay;
+        protected global::System.Web.UI.WebControls.TextBox TbPassword2;
+
+        /// <summary>
+        /// BtnSignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnSignIn;
+
+        /// <summary>
+        /// signIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button signIn;
+
+        /// <summary>
+        /// signUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button signUp;
     }
 }

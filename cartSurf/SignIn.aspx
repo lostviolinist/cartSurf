@@ -3,96 +3,66 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compativle" content="ie=edge" />
+    <meta http-equiv="X-UA-Compativle" content="ie=edge" />    
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
     <link href="SignIn.css" rel="stylesheet" type="text/css" />
-
-    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="SignIn.min.js" type="text/javascript"></script>
+        
     <title>Login/Sign Up Form</title>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="container" id="signInUp">
-        <div class="row justify-content-center">
-            <div class="col-md-3 mx-auto"  id="signup-container">
-                <h1>Create Account</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-square fa-3x"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-square fa-3x"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin fa-3x"></i></a>
-                </div>
-                <span>or use your email for registration</span>
-                <asp:TextBox ID="TbSignUpEmail" class="input" autocomplete= "off" runat="server" Text="Email"></asp:TextBox>
-                <asp:TextBox ID="TbSignUpPassword" class="input" autocomplete= "off" runat="server" Text="Password"></asp:TextBox>
-                <asp:TextBox ID="TbConfirmPassword" class="input" autocomplete= "off" runat="server" Text="Confirm Password"></asp:TextBox>
-                <asp:Button ID="SignUpBtn" class="myButton" runat="server" Text="Sign Up" />
-            </div>
+    <div class="sign-body">
+        <div class="container-sign" id="container-sign">
+	        <div class="form-container sign-up-container">
+		        <div class="form">
+			        <h1>Create Account</h1>
+			        <div class="social-container">
+				        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			        </div>
+			        <span>or use your email for registration</span>
+			        <asp:TextBox ID="TbName" class="input" runat="server" autocomplete="off" placeholder="Name" />
+			        <asp:TextBox ID="TbEmail"  class="input" runat="server" autocomplete="off" placeholder="Email" TextMode="Email" />
+			        <asp:TextBox ID="TbPassword" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
+			        <asp:Button ID="BtnSignUp" class="button" runat="server" Text="Sign Up" />
+		        </div>
+	        </div>
+	        <div class="form-container sign-in-container">
+		       <div class="form">
+			        <h1>Sign in</h1>
+			        <div class="social-container">
+				        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			        </div>
+			        <span>or use your account</span>
+			        <asp:TextBox ID="TbEmail2" class="input" runat="server" autocomplete="off" placeholder="Email" TextMode="Email" />
+			        <asp:TextBox ID="TbPassword2" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
+			        <a href="#">Forgot your password?</a>
+			        <asp:Button ID="BtnSignIn" class="button" runat="server" Text="Sign In" />
+		        </div>
+	        </div>
 
-            <div class="col-md-3 mx-auto" id="signin-container">
-                <h1>Sign In</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-square"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-square"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
-                </div>
-                <span>or use your account</span>
-                <asp:TextBox ID="TbEmail" class="input" autocomplete= "off" runat="server" Placeholder="Email"></asp:TextBox>
-                <asp:TextBox ID="TbPassword" class="input" autocomplete= "off" runat="server" Placeholder="Password"></asp:TextBox>
-                <a href="#">Forgot your password?</a>
-                <asp:Button ID="SignInBtn" class="myButton" autocomplete= "off" runat="server" Text="Sign In" />
-            </div>
+	        <div class="overlay-container">
+		        <div class="overlay">
+			        <div class="overlay-panel overlay-left">
+				        <h1>Welcome Back!</h1>
+				        <p>To keep connected with us please login with your personal info</p>
+                        <asp:Button class="ghost button" ID="signIn" runat="server" Text="Sign In" />
+			        </div>
+			        <div class="overlay-panel overlay-right">
+				        <h1>Hello, Friend!</h1>
+				        <p>Enter your personal details and start journey with us</p>
+                        <asp:Button class="ghost button" ID="signUp" runat="server" Text="Sign Up" />
+			        </div>
+		        </div>
+	        </div>
         </div>
-
-<%--    <div class="container" id="signInUp">
-        
-        <div class="form-container sign-up-container">
-            <div class="form">
-                <h1>Create Account</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-square fa-3x"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-square fa-3x"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin fa-3x"></i></a>
-                </div>
-                <span>or use your email for registration</span>
-                <asp:TextBox ID="TbSignUpEmail" class="input" autocomplete= "off" runat="server" Text="Email"></asp:TextBox>
-                <asp:TextBox ID="TbSignUpPassword" class="input" autocomplete= "off" runat="server" Text="Password"></asp:TextBox>
-                <asp:TextBox ID="TbConfirmPassword" class="input" autocomplete= "off" runat="server" Text="Confirm Password"></asp:TextBox>
-                <asp:Button ID="SignUpBtn" class="myButton" runat="server" Text="Sign Up" />
-            </div>
-        </div>
-
-        <div class="form-container sign-in-container">
-            <div class="form">
-                <h1>Sign In</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-square"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-square"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
-                </div>
-                <span>or use your account</span>
-                <asp:TextBox ID="TbEmail" class="input" autocomplete= "off" runat="server" Placeholder="Email"></asp:TextBox>
-                <asp:TextBox ID="TbPassword" class="input" autocomplete= "off" runat="server" Placeholder="Password"></asp:TextBox>
-                <a href="#">Forgot your password?</a>
-                <asp:Button ID="SignInBtn" class="myButton" autocomplete= "off" runat="server" Text="Sign In" />
-            </div>
-         </div>--%>
-
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>Please sign in to enjoy shopping</p>
-                    <asp:Button class="ghost myButton" ID="signInOverlay" runat="server" Text="Sign In" />
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>Hello!</h1>
-                    <p>Sign up and start your journey with us</p>
-                    <asp:Button class="ghost myButton" ID="signUpOverlay" runat="server" Text="Sign Up" />
-                </div>
-            </div>
-        </div>
-
     </div>
-    <script src="SignIn.js"></script>
+
+    
 </asp:Content>

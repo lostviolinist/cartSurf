@@ -136,7 +136,7 @@
     <Content Include="ShippingAdd.css" />
     <Content Include="ShoppingCart.aspx" />
     <Content Include="ShoppingCart.css" />
-    <Content Include="SignIn.js" />
+    <Content Include="SignIn.min.js" />
     <Content Include="MyAccount.aspx" />
     <Content Include="SignUpSuccessful.aspx" />
     <Content Include="SignUpSuccessful.css" />
