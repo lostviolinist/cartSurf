@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HeaderFooter.Master" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="cartSurf.WebForm2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HeaderFooter.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="cartSurf.WebForm2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
             <div class="container">
                 <div class="card mb-3 mt-5" style="max-width: 1000px;">
                     <div class="row no-gutters">
@@ -129,7 +129,7 @@
                 <img src="how-to-create-a-rich-media-banner.png" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Dress</h5>
-                  <p class="card-text">Dress with flower sleevs</p>
+                  <p class="card-text">Dress with flower sleeves</p>
                   <p class="card-text"><small class="text-muted">seller123</small></p>
                 </div>
               </div>
