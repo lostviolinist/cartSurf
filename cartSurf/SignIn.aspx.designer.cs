@@ -51,13 +51,13 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.Button BtnSignUp;
 
         /// <summary>
-        /// TbEmail2 control.
+        /// TbUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbEmail2;
+        protected global::System.Web.UI.WebControls.TextBox TbUsername;
 
         /// <summary>
         /// TbPassword2 control.

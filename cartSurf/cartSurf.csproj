@@ -132,11 +132,12 @@
     <Content Include="Images\logo_white.png" />
     <Content Include="Images\review.png" />
     <Content Include="MyAccount.css" />
+    <Content Include="shipAdd.js" />
     <Content Include="ShippingAdd.aspx" />
     <Content Include="ShippingAdd.css" />
     <Content Include="ShoppingCart.aspx" />
     <Content Include="ShoppingCart.css" />
-    <Content Include="SignIn.min.js" />
+    <Content Include="Sign.min.js" />
     <Content Include="MyAccount.aspx" />
     <Content Include="SignUpSuccessful.aspx" />
     <Content Include="SignUpSuccessful.css" />
@@ -204,6 +205,8 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Credentials\Database.cs" />
+    <Compile Include="Credentials\Credentials.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

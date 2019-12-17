@@ -1,6 +1,13 @@
 ﻿body {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-top: 0;
+
 }
+
+/*.auto-style1 {
+    width: 139px;
+    height: 45px;
+}*/
 
 .container {
     /*display: inline;*/
@@ -21,88 +28,78 @@
 
 
 
-/***************Bavigation Bar*******************/
-.navbar-inverse {
-    padding: 0 50px 0 50px;
-    margin-bottom: 90px;
+/***************Navigation Bar*******************/
+#collapsible {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -22px;
+}
+
+.navbar {
     background-color: #FE3939;
-    border: none;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 700;
-    font-size: 1.4em;
-}
-
-.navbar-inverse .navbar-brand {
-    color: #9d9d9d;
-}
-
-.navbar-inverse .navbar-brand:hover,
-.navbar-inverse .navbar-brand:focus {
-   color: #fff;
-   background-color: transparent;
-}
-
-.navbar-inverse .navbar-text {
-    color: #FFFFFF;
-}
-
-.navbar-inverse .navbar-nav > li > input
-{
-    margin: 20px 0 0 80px;
-    width: 630px;
-}
-
-.navbar-inverse .navbar-nav > li > button
-{
-    margin: 20px 90px 0 20px;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-    color: #FFFFFF;
-    margin-top: 10px;
-    float: right;
+    padding: 0 50px 30px 50px;
+    margin-bottom: 0;
 
 }
 
-.navbar-inverse .navbar-nav > li > a:hover,
-.navbar-inverse .navbar-nav > li > a:focus {
-    color: #000000;
-    background-color: transparent;
+#menu .navbar-right {
+    padding: 2px 60px 2px 60px;
 }
 
-.navbar-inverse .navbar-nav > .active > a,
-.navbar-inverse .navbar-nav > .active > a:hover,
-.navbar-inverse .navbar-nav > .active > a:focus {
-    color: #000000;
-    background-color: #FFFFFF;
-}
-
-.navbar navbar-inverse navbar-fixed-top > container-fluid > ul
-{
-    width: 800px;
-}
+/*#hamburger {
+    display: none;
+}*/
 
 @media only screen and (max-width: 930px) {
-    .navbar-right {
-        display: flex;
-        justify-content: center;
+        
+    #search-section {
+        display: none;
+    }
+
+    /*#hamburger {
+        display: block;
+    }*/
+
+    #collapsible {
+        display: none;
     }
 }
 
 input, select, textarea {
-    max-width: 900px !important;
+    max-width: 1800px !important;
 }
 
 /***************Input-group-Btn*******************/
-/*.input-group-btn {
-    padding-left: 0;
-}*/
-
-
-.md-form mt-0 {
-    width: 600px;
+#search input {
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-appearance: textfield;
 }
 
+.form-control-inline {
+    min-width: 0;
+    width: 100%;
+    display: inline;
+}
+
+/*******************cart********************/
+#cart-logo {
+    color: #FFFFFF;
+    padding-left: 2em;
+    margin-top: 2em;
+}
+
+#cart-logo:hover {
+    color: #000000;
+}
+
+/****************main Body and footer******************/
 .main-body {
     background-color: #F0F0F0;
     padding-bottom: 40px;

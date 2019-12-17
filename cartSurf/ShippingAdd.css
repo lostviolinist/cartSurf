@@ -1,6 +1,11 @@
 ﻿body {
 }
 
+row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .payment-bar {
     background-color: #000000;
     color: #FFFFFF;
@@ -10,7 +15,15 @@
     margin-bottom: 30px;
 }
 
+#delivCourier {
+    display:none;
+}
+
 #courier {
     display: flex;
     justify-content: center;
+}
+
+#cardDetails {
+    display: none;
 }

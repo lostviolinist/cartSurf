@@ -22,7 +22,8 @@
                 <%-- Step 1: Select Shipping Address --%>
                 <div id="cart-bar" class="row">
                     <div class="col-md-12 text-center">
-                        <p>Step 1: Select Shipping Address</p>                      
+                        <p>Step 1: Select Shipping Address</p>
+                        <p style="float:right"><asp:Label ID="LbEdit1" runat="server" Text="Edit" Visible="False" ForeColor="White"></asp:Label></p>
                     </div>
                 </div>
 
@@ -33,7 +34,7 @@
                     </div>
                     <div class="col-md-10 text-uppercase">
                         <asp:TextBox ID="TbReceiver" runat="server" Width="100%" Placeholder="Name"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="NameValidator" runat="server" ErrorMessage="Name is a required field." ControlToValidate="TbReceiver"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="NameValidator" runat="server" ErrorMessage="Name is a required field." ControlToValidate="TbReceiver" ForeColor="#FE3939"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -44,7 +45,7 @@
                     </div>
                     <div class="col-md-10 text-uppercase">
                         <asp:TextBox ID="AddLine1" runat="server" Width="100%" Placeholder="e.g No 13 1st floor Blok G"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="AddLine1Validator" runat="server" ErrorMessage="Add is a required field." ControlToValidate="AddLine1"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="AddLine1Validator" runat="server" ErrorMessage="Add is a required field." ControlToValidate="AddLine1" ForeColor="#FE3939"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -53,7 +54,7 @@
                     </div>
                     <div class="col-md-10 text-uppercase">
                         <asp:TextBox ID="AddLine2" runat="server" Width="100%" Placeholder="e.g Loco Apartment"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="AddLine2Validator" runat="server" ErrorMessage="Add is a required field." ControlToValidate="AddLine2"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="AddLine2Validator" runat="server" ErrorMessage="Add is a required field." ControlToValidate="AddLine2" ForeColor="#FE3939"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -62,7 +63,7 @@
                     </div>
                     <div class="col-md-10 text-uppercase">
                         <asp:TextBox ID="AddLine3" runat="server" Width="100%" Placeholder="e.g Taman Kinrara"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="AddLine3Validator" runat="server" ErrorMessage="Add is a required field." ControlToValidate="AddLine3"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="AddLine3Validator" runat="server" ErrorMessage="Add is a required field." ControlToValidate="AddLine3" ForeColor="#FE3939"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -73,7 +74,7 @@
                     </div>
                     <div class="col-md-10 text-uppercase">
                         <asp:TextBox ID="TbCity" runat="server" Width="100%"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="CityValidator" runat="server" ErrorMessage="City is a required field." ControlToValidate="TbCity"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="CityValidator" runat="server" ErrorMessage="City is a required field." ControlToValidate="TbCity" ForeColor="#FE3939"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -84,7 +85,7 @@
                     </div>
                     <div class="col-md-10 text-uppercase">
                         <asp:TextBox ID="TbPostcode" runat="server" Width="100%"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="PostcodeValidator" runat="server" ErrorMessage="Postcode is a required field." ControlToValidate="TbPostcode"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="PostcodeValidator" runat="server" ErrorMessage="Postcode is a required field." ControlToValidate="TbPostcode" ForeColor="#FE3939"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -95,7 +96,7 @@
                     </div>
                     <div class="col-md-10 text-uppercase">
                         <asp:TextBox ID="TbState" runat="server" Width="100%"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="StateValidator" runat="server" ErrorMessage="State is a required field." ControlToValidate="TbState"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="StateValidator" runat="server" ErrorMessage="State is a required field." ControlToValidate="TbState" ForeColor="#FE3939"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -106,71 +107,75 @@
                     </div>
                     <div class="col-md-10 text-uppercase">
                         <asp:TextBox ID="TbPhoneNo" runat="server" Width="100%"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="PhoneNoValidator" runat="server" ErrorMessage="Phone No is a required field." ControlToValidate="TbPhoneNo"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="PhoneNoValidator" runat="server" ErrorMessage="Phone No is a required field." ControlToValidate="TbPhoneNo" ForeColor="#FE3939"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
                 <%--7. Save Button--%>
-                <div class="row" style="margin-top: 20px">
+                <div class="row" style="margin-top: 20px" id="btnNext">
                     <div class="col-md-12 text-center">
-                        <asp:Button ID="BtnSave" class="waves-effect waves-dark next-step" runat="server" Text="Save" BackColor="#FE3939" ForeColor="White" Height="40px" Width="20%" />
+                        <asp:Button ID="BtnSave" class="waves-effect waves-dark next-step" runat="server" Text="Next" BackColor="#FE3939" ForeColor="White" Height="40px" Width="20%" OnClick="BtnSave_Click" onClientClick="toggleDeliv()"/>
                     </div>
                 </div>
 
                 <%-- Step 2: Select Delivery Courier --%>
-                <div class="row payment-bar">
-                    <div class="col-md-12 text-center">
-                        <p>Step 2: Select Delivery Courier</p>                        
+                <div id ="delivCourier">
+                    <div class="row payment-bar">
+                        <div class="col-md-12 text-center">
+                            <p>Step 2: Select Delivery Courier</p>                        
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div id="courier" class ="col-md-12">
-                        <asp:RadioButtonList ID="courierService" runat="server" CellSpacing="0" CellPadding="0" AppendDataBoundItems="true"
-                        RepeatDirection="Horizontal">
-                        <asp:ListItem  runat="server"  Text="<img src='Image/gdex.png' alt='GDEX' title='GDEX'>"  Value="GDEX" />
-                        <asp:ListItem runat="server"  Text="<img src='Image/poslaju.png' alt='PosLaju' title='PosLaju'>"  Value="PosLaju" />
-                        </asp:RadioButtonList>
+                    <div class="row">
+                        <div id="courier" class ="col-md-12">
+                            <asp:RadioButtonList ID="courierService" runat="server" CellSpacing="0" CellPadding="0" AppendDataBoundItems="true"
+                            RepeatDirection="Horizontal">
+                            <asp:ListItem  runat="server"  Text="<img src='Image/gdex.png' alt='GDEX' title='GDEX'>"  Value="GDEX" />
+                            <asp:ListItem runat="server"  Text="<img src='Image/poslaju.png' alt='PosLaju' title='PosLaju'>"  Value="PosLaju" />
+                            </asp:RadioButtonList>
+                        </div>
                     </div>
                 </div>
 
                 <%-- Step 3: Enter Payment Details --%>
-                <div class="row payment-bar">
-                    <div class="col-md-12 text-center">
-                        <p>Step 3: Enter Payment Details</p>                        
+                <div id="cardDetails">
+                    <div class="row payment-bar">
+                        <div class="col-md-12 text-center">
+                            <p>Step 3: Enter Payment Details</p>                        
+                        </div>
                     </div>
-                </div>
 
-                <%-- 1. Card No --%>
-                <div class="row">
-                    <div class="col-md-2 text-uppercase">
-                        <asp:Label ID="LbCardNo" CssClass="required" runat="server" Text="Card No"></asp:Label>
+                    <%-- 1. Card No --%>
+                    <div class="row">
+                        <div class="col-md-2 text-uppercase">
+                            <asp:Label ID="LbCardNo" CssClass="required" runat="server" Text="Card No"></asp:Label>
+                        </div>
+                        <div class="col-md-10 text-uppercase">
+                            <asp:TextBox ID="TbCardNo" runat="server" Width="100%" Placeholder="Card No"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="CardNoValidator" runat="server" ErrorMessage="Card No is a required field." ControlToValidate="TbCardNo"></asp:RequiredFieldValidator>
+                        </div>
                     </div>
-                    <div class="col-md-10 text-uppercase">
-                        <asp:TextBox ID="TbCardNo" runat="server" Width="100%" Placeholder="Card No"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="CardNoValidator" runat="server" ErrorMessage="Card No is a required field." ControlToValidate="TbCardNo"></asp:RequiredFieldValidator>
-                    </div>
-                </div>
 
-                <%-- 2. Expiry Date --%>
-                <div class="row">
-                    <div class="col-md-2 text-uppercase">
-                        <asp:Label ID="LbExpiry" CssClass="required" runat="server" Text="Valid Date"></asp:Label>
+                    <%-- 2. Expiry Date --%>
+                    <div class="row">
+                        <div class="col-md-2 text-uppercase">
+                            <asp:Label ID="LbExpiry" CssClass="required" runat="server" Text="Valid Date"></asp:Label>
+                        </div>
+                        <div class="col-md-10 text-uppercase">
+                            <asp:TextBox ID="TbExpiry" runat="server" Width="100%" Placeholder="Valid Date"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="ExpiryValidator" runat="server" ErrorMessage="Valid date is a required field." ControlToValidate="TbExpiry"></asp:RequiredFieldValidator>
+                        </div>
                     </div>
-                    <div class="col-md-10 text-uppercase">
-                        <asp:TextBox ID="TbExpiry" runat="server" Width="100%" Placeholder="Valid Date"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="ExpiryValidator" runat="server" ErrorMessage="Valid date is a required field." ControlToValidate="TbExpiry"></asp:RequiredFieldValidator>
-                    </div>
-                </div>
 
-                <%-- 3. INSERT CVV --%>
-                <div class="row">
-                    <div class="col-md-2 text-uppercase">
-                        <asp:Label ID="LbCVV" CssClass="required" runat="server" Text="CVV"></asp:Label>
-                    </div>
-                    <div class="col-md-10 text-uppercase">
-                        <asp:TextBox ID="TbCVV" runat="server" Width="100%" Placeholder="CVV"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="CVVValidator" runat="server" ErrorMessage="CVV is a required field." ControlToValidate="TbCVV"></asp:RequiredFieldValidator>
+                    <%-- 3. INSERT CVV --%>
+                    <div class="row">
+                        <div class="col-md-2 text-uppercase">
+                            <asp:Label ID="LbCVV" CssClass="required" runat="server" Text="CVV"></asp:Label>
+                        </div>
+                        <div class="col-md-10 text-uppercase">
+                            <asp:TextBox ID="TbCVV" runat="server" Width="100%" Placeholder="CVV"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="CVVValidator" runat="server" ErrorMessage="CVV is a required field." ControlToValidate="TbCVV"></asp:RequiredFieldValidator>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -207,5 +212,6 @@
 
     </div>
 
-     <script type="text/javascript" src="Stepper.min.js"></script>
+     <%--<script type="text/javascript" src="Stepper.min.js"></script>--%>
+     <script type="text/javascript" src="shipAdd.js"></script>
 </asp:Content>

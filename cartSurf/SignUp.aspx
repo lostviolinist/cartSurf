@@ -52,6 +52,9 @@
                     <i class="fas fa-lock fa-2x"></i> 
                     <asp:TextBox ID="TextBox2" autocomplete= "off" runat="server" Width="311px" Height="30px" ForeColor="DarkGray" Placeholder="Confirm Password"></asp:TextBox>
                 </div>
+                <div class ="sign-up-element">
+                    <asp:Button ID="BtnSignUpEmail" runat="server" Text="Button" OnClick="BtnSignUpEmail_Click" />
+                </div>
                 
             </div>
 

@@ -11,6 +11,16 @@ namespace cartSurf
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            foreach (MenuItem menuitem in MenuHeader.Items)
+            {
+
+                foreach (MenuItem submenuitem in menuitem.ChildItems)
+                {
+                        // coloring the sub menu item
+                        submenuitem.Text = "<div style='color: Black'>" + submenuitem.Text + "</div>";
+                }
+
+            }
 
         }
     }
