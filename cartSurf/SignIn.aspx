@@ -6,6 +6,15 @@
     <meta http-equiv="X-UA-Compativle" content="ie=edge" />    
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
     <link href="SignIn.css" rel="stylesheet" type="text/css" />
+
+<%--  <script type="text/javascript">
+      $(document).ready(function () {
+
+          $("#signUp").click(function () {
+              alert("Hello!");
+          });
+      });
+    </script>--%>
         
     <title>Login/Sign Up Form</title>
 </asp:Content>
@@ -61,12 +70,10 @@
 			        <div class="overlay-panel overlay-right">
 				        <h1>Hello, Friend!</h1>
 				        <p>Enter your personal details and start journey with us</p>
-                        <asp:Button class="ghost button" ID="signUp" runat="server" Text="Sign Up" />
+                        <asp:Button ID="signUp" class="ghost button" runat="server" Text="Sign Up" />
 			        </div>
 		        </div>
 	        </div>
         </div>
-    </div>
-       
-    <script type="text/javascript" src="Sign.min.js"></script>
+    </div>       
 </asp:Content>
