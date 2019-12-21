@@ -24,6 +24,15 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.TextBox TbName;
 
         /// <summary>
+        /// nameRegisterValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nameRegisterValidator;
+
+        /// <summary>
         /// TbEmail control.
         /// </summary>
         /// <remarks>
@@ -33,6 +42,15 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.TextBox TbEmail;
 
         /// <summary>
+        /// emailRegisterValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label emailRegisterValidator;
+
+        /// <summary>
         /// TbPassword control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace cartSurf
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbPassword;
+
+        /// <summary>
+        /// passwordRegisterValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label passwordRegisterValidator;
 
         /// <summary>
         /// BtnSignUp control.
@@ -60,6 +87,15 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.TextBox TbUsername;
 
         /// <summary>
+        /// nameSigninValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nameSigninValidator;
+
+        /// <summary>
         /// TbPassword2 control.
         /// </summary>
         /// <remarks>
@@ -69,6 +105,15 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.TextBox TbPassword2;
 
         /// <summary>
+        /// passwordSigninValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label passwordSigninValidator;
+
+        /// <summary>
         /// BtnSignIn control.
         /// </summary>
         /// <remarks>
@@ -76,6 +121,15 @@ namespace cartSurf
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnSignIn;
+
+        /// <summary>
+        /// LbSignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbSignIn;
 
         /// <summary>
         /// signIn control.
@@ -94,5 +148,68 @@ namespace cartSurf
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button signUp;
+
+        /// <summary>
+        /// TextBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+
+        /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// TextBox3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

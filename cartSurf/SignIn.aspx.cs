@@ -17,19 +17,40 @@ namespace cartSurf
 
         }
 
+        //SignIn Btn
         protected void BtnSignIn_Click(object sender, EventArgs e)
         {
             String username = TbUsername.Text;
             String password = TbPassword2.Text;
 
-            if (ds.Login(username, password))
+            if (username.Length == 0) nameSigninValidator.Text = "Name is a required field";
+            if (password.Length == 0) passwordSigninValidator.Text = "Password is a required field";
+
+            if (ds.Signin(username, password))
             {
-                Response.Redirect("");
+                Session["username"] = username;
+                Session["uid"] = ds.getUID(username, password);
+                Response.Redirect("MainPage.aspx");
             }
             else
             {
-
+                LbSignIn.Text = "Not Match.";
+                LbSignIn.Visible = true;
             }
+        }
+        
+        //ugly Sign Up Button
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            String email = TextBox2.Text;
+            String username = TextBox1.Text;
+            String password = TextBox3.Text;
+
+            //if ()
+            if (email.Length == 0) Label2.Text = "Email is a required field";
+            if (username.Length == 0) Label1.Text = "Name is a required field";
+            if (password.Length == 0) Label3.Text = "Password is a required field";
+
         }
     }
 }

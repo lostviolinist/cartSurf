@@ -28,7 +28,7 @@ namespace cartSurf
             String username = tbMail.Text;
             String password = TextBox1.Text;
 
-            if (ds.Login(username, password))
+            if (ds.Signin(username, password))
             {
                 Response.Redirect("ShippingAdd.aspx");
             }
