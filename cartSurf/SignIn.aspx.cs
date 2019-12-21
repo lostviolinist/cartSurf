@@ -26,7 +26,7 @@ namespace cartSurf
             if (username.Length == 0) nameSigninValidator.Text = "Name is a required field";
             if (password.Length == 0) passwordSigninValidator.Text = "Password is a required field";
 
-            if (ds.Signin(username, password))
+            if (ds.SignIn(username, password))
             {
                 Session["username"] = username;
                 Session["uid"] = ds.getUID(username, password);
@@ -34,7 +34,7 @@ namespace cartSurf
             }
             else
             {
-                LbSignIn.Text = "Not Match.";
+                LbSignIn.Text = "The username or password is incorrect";
                 LbSignIn.Visible = true;
             }
         }
@@ -46,10 +46,17 @@ namespace cartSurf
             String username = TextBox1.Text;
             String password = TextBox3.Text;
 
-            //if ()
-            if (email.Length == 0) Label2.Text = "Email is a required field";
-            if (username.Length == 0) Label1.Text = "Name is a required field";
-            if (password.Length == 0) Label3.Text = "Password is a required field";
+            if ((email.Length == 0) || (username.Length == 0) || (password.Length == 0))
+            {
+                if (email.Length == 0) Label2.Visible = true;
+                if (username.Length == 0) Label1.Visible = true;
+                if (password.Length == 0) Label3.Visible = true;
+            }
+            else
+            {
+                ds.SignUp(email, username, password);
+                Response.Redirect("SignUpSuccessful.aspx");
+            }
 
         }
     }

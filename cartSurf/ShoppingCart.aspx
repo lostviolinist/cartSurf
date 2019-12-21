@@ -23,7 +23,44 @@
                     </div>
                 </div>
 
-                <div class="row row-bordered">
+                <asp:SqlDataSource ID="SqlDataSourceCart" runat="server" ConnectionString="<%$ ConnectionStrings:cartsurfConnectionString %>" SelectCommand="SELECT Products.ProductName AS Product, Products.ProductUnitPrice AS UnitPrice, CartItems.Quantity AS Quantity FROM CartItems INNER JOIN Products ON CartItems.ProductID = Products.ProductID INNER JOIN ShoppingCarts ON CartItems.CartID = ShoppingCarts.CartID WHERE (ShoppingCarts.UserID = @UID)">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="UID" SessionField="uid" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+
+                <asp:GridView ID="GridViewCart" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceCart" Height="65px" OnRowDeleting="GridViewCart_RowDeleting" Width="575px">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Product" SortExpression="Product">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TbProduct" runat="server" Text='<%# Bind("Product") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="LbProduct" runat="server" Text='<%# Bind("Product") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="UnitPrice" SortExpression="UnitPrice">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("UnitPrice") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("UnitPrice") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        
+                        <asp:TemplateField HeaderText="Quantity" SortExpression="Quantity">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TbQuantity" runat="server" Text='<%# Bind("Quantity") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="LbQuantity" runat="server" Text='<%# Bind("Quantity") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+
+<%--                <div class="row row-bordered">
                     <div class="col-md-5 text-uppercase">Product</div>
                     <div class="col-md-2 text-uppercase">Unit Price</div>
                     <div class="col-md-2 text-uppercase">Quantity</div>
@@ -32,17 +69,27 @@
                 </div>
 
                 <div class="row" style="margin: 30px 0;">
-                    <div class="col-md-5"></div>
-                    <div class="col-md-2 text-uppercase">Unit Price</div>
-                    <div class="col-md-2 text-uppercase">Quantity</div>
-                    <div class="col-md-2 text-uppercase">Total</div>
+                    <div class="col-md-3">
+                        <asp:Label ID="LbPic" runat="server" Text="To be added"></asp:Label>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:Label ID="LbName" runat="server" Text=""></asp:Label>
+                    </div>
+                    <div class="col-md-2 text-uppercase">
+                        <asp:Label ID="LbUnitPrice" runat="server" Text=""></asp:Label>
+                    </div>
+                    <div class="col-md-2 text-uppercase">
+                        <asp:Label ID="LbQuantity" runat="server" Text=""></asp:Label>
+                    </div>
+                    <div class="col-md-2 text-uppercase">
+                        <asp:Label ID="LbTotal" runat="server" Text=""></asp:Label>
+                    </div>
                     <div class="col-md-1 text-uppercase"><i class="fas fa-trash"></i></div>
-                </div>
+                </div>--%>
             </div>
 
             <%-- Order Summary --%>
-            <h4 class="text-center text-uppercase" style="margin-left: -20px;">Order Summary</h4>
-            <div id="order-summary" class="col-md-4">
+            <h4 class="text-center text-uppercase" style="margin-left: -20px;">Order Summary <div id="order-summary" class="col-md-4">
                 
                 <div id="subtotal" class="row row-bordered text-uppercase">
                     <div class=col-md-12>Subtotal</div>

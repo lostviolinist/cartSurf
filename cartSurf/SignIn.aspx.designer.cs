@@ -15,24 +15,6 @@ namespace cartSurf
     {
 
         /// <summary>
-        /// TbName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbName;
-
-        /// <summary>
-        /// nameRegisterValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nameRegisterValidator;
-
-        /// <summary>
         /// TbEmail control.
         /// </summary>
         /// <remarks>
@@ -49,6 +31,24 @@ namespace cartSurf
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label emailRegisterValidator;
+
+        /// <summary>
+        /// TbName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbName;
+
+        /// <summary>
+        /// nameRegisterValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nameRegisterValidator;
 
         /// <summary>
         /// TbPassword control.

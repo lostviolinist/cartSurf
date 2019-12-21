@@ -32,13 +32,13 @@
 				        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 				        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			        </div>
-			        <span>or use your email for registration</span>
-			        <asp:TextBox ID="TbName" class="input" runat="server" autocomplete="off" placeholder="Name" />
-                    <asp:Label ID="nameRegisterValidator" runat="server" Text="" ForeColor="Red"></asp:Label>
+			        <span>or use your email for registration</span>			        
 			        <asp:TextBox ID="TbEmail"  class="input" runat="server" autocomplete="off" placeholder="Email" TextMode="Email" />
-                    <asp:Label ID="emailRegisterValidator" runat="server" Text="" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="emailRegisterValidator" runat="server" Text="Email is a required field" Visible="false" ForeColor="Red"></asp:Label>
+                    <asp:TextBox ID="TbName" class="input" runat="server" autocomplete="off" placeholder="Username" />
+                    <asp:Label ID="nameRegisterValidator" runat="server" Text="Username is a required field" Visible="false" ForeColor="Red"></asp:Label>
 			        <asp:TextBox ID="TbPassword" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
-                    <asp:Label ID="passwordRegisterValidator" runat="server" Text="" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="passwordRegisterValidator" runat="server" Text="Password is a required field" Visible="false" ForeColor="Red"></asp:Label>
 			        <asp:Button ID="BtnSignUp" class="button" runat="server" Text="Sign Up" />                     
 		        </div>
 	        </div>
@@ -95,7 +95,7 @@
 			        <span>or use your email for registration</span>
 			        <asp:TextBox ID="TextBox2"  class="input" runat="server" autocomplete="off" placeholder="Email" TextMode="Email" />
                     <asp:Label ID="Label2" runat="server" Text="" ForeColor="Red"></asp:Label>
-			        <asp:TextBox ID="TextBox1" class="input" runat="server" autocomplete="off" placeholder="Name" />
+			        <asp:TextBox ID="TextBox1" class="input" runat="server" autocomplete="off" placeholder="Username" />
                     <asp:Label ID="Label1" runat="server" Text="" ForeColor="Red"></asp:Label>
 			        <asp:TextBox ID="TextBox3" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
                     <asp:Label ID="Label3" runat="server" Text="" ForeColor="Red"></asp:Label>

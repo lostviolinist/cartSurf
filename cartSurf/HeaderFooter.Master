@@ -27,8 +27,8 @@
 
              <%--First Line--%>
              <div ID="collapsible">
-                 <div class="navbar">
-                     <a href="#" style="color: #FFFFFF; font-size:1.3em;">Seller Centre</a>
+                 <div class="navbar" style="margin-top: 5px;">
+                     <asp:Label ID="LbUserShow" runat="server" Text="" ForeColor="#FFFFFF" Font-Size="1.1em"></asp:Label>
                  </div>
                  <div class="navbar-right" id="menu">
                     <%-- Menu --%>
@@ -39,8 +39,8 @@
                             <DynamicMenuStyle BackColor="#FFFFFF" />
                             <DynamicSelectedStyle BackColor="" />
                             <Items>
-                                <asp:MenuItem Text="Main Page" Value="Main Page"></asp:MenuItem>
-                                <asp:MenuItem Text="Name" Value="Name">
+                                <asp:MenuItem Text="Main Page" Value="Main Page" NavigateUrl="MainPage.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="More" Value="More">
                                     <asp:MenuItem Text="My Account" Value="My Account" Enabled="False"></asp:MenuItem>
                                     <asp:MenuItem Text="My Order" Value="My Order" Enabled="False"></asp:MenuItem>
                                     <asp:MenuItem Text="Logout" Value="Logout"></asp:MenuItem>

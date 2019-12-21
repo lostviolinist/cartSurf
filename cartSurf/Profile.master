@@ -7,15 +7,14 @@
         <div class="row">
             <div class="col-md-4 mx-auto">
                 <div class ="row" style="margin-top: 20px;">
-                    <div class="col-md-4 mx-auto">
+                    <div class="col-md-12 mx-auto">
                         <a href="#" style="color: black"><i class="far fa-user-circle fa-8x"></i></a>
-                        <a href="#" style="color:  #0000EE;">Change Profile Picture</a>
                     </div>
-                    <div id="name" class="col-md-8 mx-auto text-left">
-                        <ul class="list-unstyled">
-                            <li>Name: </li>
-                            <li>Membership Status: </li>
-                        </ul>                        
+                </div>
+
+                <div class ="row" style="margin-top: 20px;">
+                    <div class="col-md-12 mx-auto">
+                        <a href="#" style="color:  #0000EE;">Change Profile Picture</a>
                     </div>
                 </div>
           
@@ -31,8 +30,8 @@
                            <a href="Order.aspx">
                                <li>My Order</li>
                            </a>
-                           <a href="#">
-                               <li>Membership</li>
+                           <a href="EditPassword.aspx">
+                               <li>Reset Password</li>
                            </a>
                        </ul>
                     </div>  

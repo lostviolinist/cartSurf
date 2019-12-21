@@ -22,6 +22,10 @@ namespace cartSurf
 
             }
 
+            String username = Convert.ToString(Session["username"]);
+            LbUserShow.Text = "Hello, " + username;
+
+
         }
     }
 }

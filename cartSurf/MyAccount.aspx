@@ -16,10 +16,21 @@
 
     <div class="row">
         <div class="col-md-2 text-left">
-            <h4 class="details-style">Name</h4>
+            <h4 class="details-style">First Name</h4>
         </div>
         <div class="col-md-10 text-left">
-            <asp:TextBox ID="TbName" class="textbox-style" runat="server" placeholder=""></asp:TextBox>        
+            <asp:TextBox ID="TbFirstName" class="textbox-style" runat="server" placeholder="First Name"></asp:TextBox>   
+            <asp:RequiredFieldValidator ID="FNameValidator" runat="server" ErrorMessage="First Name is a required field" ControlToValidate="TbFirstName" ForeColor="Red"></asp:RequiredFieldValidator>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 text-left">
+            <h4 class="details-style">Last Name</h4>
+        </div>
+        <div class="col-md-10 text-left">
+            <asp:TextBox ID="TbLastName" class="textbox-style" runat="server" placeholder="Last Name"></asp:TextBox> 
+            <asp:RequiredFieldValidator ID="LNameValidator" runat="server" ErrorMessage="Last Name is a required field" ControlToValidate="TbLastName" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
     </div>
 
@@ -28,7 +39,8 @@
             <h4 class="details-style">Email</h4>
         </div>
         <div class="col-md-10 text-left">
-            <asp:TextBox ID="TbEmail" class="textbox-style" runat="server" placeholder=""></asp:TextBox>        
+            <asp:TextBox ID="TbEmail" class="textbox-style" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="EmailValidator" runat="server" ErrorMessage="Email is a required field" ControlToValidate="TbEmail" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
     </div>
 
@@ -37,22 +49,15 @@
             <h4 class="details-style">Username</h4>
         </div>
         <div class="col-md-10 text-left">
-            <asp:TextBox ID="TbUsername" class="textbox-style" runat="server" placeholder=""></asp:TextBox>        
+            <asp:TextBox ID="TbUsername" class="textbox-style" runat="server" placeholder="Username"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="UsernameValidator" runat="server" ErrorMessage="Username is a required field" ControlToValidate="TbUsername" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-2 text-left">
-            <h4 class="details-style">Password</h4>
-        </div>
-        <div class="col-md-10 text-left">
-            <asp:TextBox ID="TbPassword" class="textbox-style" runat="server" placeholder=""></asp:TextBox>        
-        </div>
+        
     </div>
 
     <div class="row">
         <div class="col-md-12 text-left" style="margin-top: 20px;">
-            <asp:Button ID="ButtonSave" class="save-btn" runat="server" Text="Save" />
+            <asp:Button ID="ButtonSave" class="save-btn" runat="server" Text="Save" OnClick="ButtonSave_Click" />
         </div>
     </div>
 </asp:Content>

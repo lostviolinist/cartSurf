@@ -22,11 +22,11 @@
         <div class="row justify-content-center">
 
             <div class="col-md-4">
-                <img class="logo" src="Images/logo.png" class="auto-style1" />
+                <img class="logo auto-style1" src="Images/logo.png" />
                 <h2>HELLO THERE!</h2>
                 <h5>Get Latest Promotion and Product by Email</h5>
                 <asp:Button class="myBtn" runat="server" Text="Yes, I'm in." />
-                <a href="#"><h4 style="margin-top: 20px;">No, continue to shop</h4></a>
+                <a href="MainPage.aspx"><h4 style="margin-top: 20px;">No, continue to shop</h4></a>
             </div>
 
         </div>

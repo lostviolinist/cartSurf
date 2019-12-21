@@ -11,80 +11,80 @@ namespace cartSurf
 {
 
 
-    public partial class MyAccount
+    public partial class EditPassword
     {
 
         /// <summary>
-        /// TbFirstName control.
+        /// TbCurrentPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbFirstName;
+        protected global::System.Web.UI.WebControls.TextBox TbCurrentPassword;
 
         /// <summary>
-        /// FNameValidator control.
+        /// CurrentValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator FNameValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator CurrentValidator;
 
         /// <summary>
-        /// TbLastName control.
+        /// LbCurrent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbLastName;
+        protected global::System.Web.UI.WebControls.Label LbCurrent;
 
         /// <summary>
-        /// LNameValidator control.
+        /// TbNewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator LNameValidator;
+        protected global::System.Web.UI.WebControls.TextBox TbNewPassword;
 
         /// <summary>
-        /// TbEmail control.
+        /// NewPassValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbEmail;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NewPassValidator;
 
         /// <summary>
-        /// EmailValidator control.
+        /// TbConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailValidator;
+        protected global::System.Web.UI.WebControls.TextBox TbConfirm;
 
         /// <summary>
-        /// TbUsername control.
+        /// ConfirmValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbUsername;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmValidator;
 
         /// <summary>
-        /// UsernameValidator control.
+        /// LbConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator UsernameValidator;
+        protected global::System.Web.UI.WebControls.Label LbConfirm;
 
         /// <summary>
         /// ButtonSave control.
@@ -94,5 +94,14 @@ namespace cartSurf
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonSave;
+
+        /// <summary>
+        /// LbSuccessful control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbSuccessful;
     }
 }

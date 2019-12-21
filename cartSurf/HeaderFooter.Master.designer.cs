@@ -33,6 +33,15 @@ namespace cartSurf
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// LbUserShow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbUserShow;
+
+        /// <summary>
         /// MenuHeader control.
         /// </summary>
         /// <remarks>
