@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <link href="ItemPage.css" rel="stylesheet" type="text/css" />
+    <link href="ItemPage.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <div class="container item-details">
@@ -110,7 +110,7 @@
             <div class="flex-container">
                 <div>
                     <img src="Images/profile%20icon.png">
-                    January.my <br><br>
+                    January.myo0o <br><br>
                     <button class="w3-button w3-white w3-border">Chat Now</button>
                 </div>
                 <div style="margin-left:800px; margin-top:20px;">
@@ -118,6 +118,13 @@
                     Items sold: 1000
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container product">
+        <h4>Product Details</h4>
+        <div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
         </div>
     </div>
     <div class="container comment-box">
