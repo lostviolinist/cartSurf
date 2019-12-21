@@ -128,12 +128,15 @@
     <Content Include="Images\animations-e-commerce.png" />
     <Content Include="Images\cart.png" />
     <Content Include="Images\gdex.png" />
+    <Content Include="Images\Image 2.png" />
     <Content Include="Images\logo-white.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo2.png" />
     <Content Include="Images\logo_white.png" />
+    <Content Include="Images\profile icon.png" />
     <Content Include="Images\review.png" />
     <Content Include="Images\sheep.png" />
+    <Content Include="ItemPage.css" />
     <Content Include="MyAccount.css" />
     <Content Include="shipAdd.js" />
     <Content Include="ShippingAdd.aspx" />
@@ -153,6 +156,7 @@
     <Content Include="SignIn.aspx" />
     <Content Include="libman.json" />
     <Content Include="MainPage.aspx" />
+    <Content Include="ItemPage.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -312,6 +316,13 @@
     </Compile>
     <Compile Include="MainPage.aspx.designer.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPage.aspx.cs">
+      <DependentUpon>ItemPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ItemPage.aspx.designer.cs">
+      <DependentUpon>ItemPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

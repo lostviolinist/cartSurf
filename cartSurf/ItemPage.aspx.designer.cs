@@ -11,7 +11,7 @@ namespace cartSurf
 {
 
 
-    public partial class MainPage
+    public partial class ItemPage
     {
     }
 }
