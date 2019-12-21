@@ -34,9 +34,12 @@
 			        </div>
 			        <span>or use your email for registration</span>
 			        <asp:TextBox ID="TbName" class="input" runat="server" autocomplete="off" placeholder="Name" />
+                    <asp:Label ID="nameRegisterValidator" runat="server" Text="" ForeColor="Red"></asp:Label>
 			        <asp:TextBox ID="TbEmail"  class="input" runat="server" autocomplete="off" placeholder="Email" TextMode="Email" />
+                    <asp:Label ID="emailRegisterValidator" runat="server" Text="" ForeColor="Red"></asp:Label>
 			        <asp:TextBox ID="TbPassword" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
-			        <asp:Button ID="BtnSignUp" class="button" runat="server" Text="Sign Up" />
+                    <asp:Label ID="passwordRegisterValidator" runat="server" Text="" ForeColor="Red"></asp:Label>
+			        <asp:Button ID="BtnSignUp" class="button" runat="server" Text="Sign Up" />                     
 		        </div>
 	        </div>
 
@@ -50,10 +53,14 @@
 				        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			        </div>
 			        <span>or use your account</span>
-			        <asp:TextBox ID="TbUsername" class="input" runat="server" autocomplete="off" placeholder="Email" TextMode="Email" />
+			        <asp:TextBox ID="TbUsername" class="input" runat="server" autocomplete="off" placeholder="Username" />
+                    <asp:Label ID="nameSigninValidator" runat="server" Text="" ForeColor="Red"></asp:Label>
 			        <asp:TextBox ID="TbPassword2" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
+                    <asp:Label ID="passwordSigninValidator" runat="server" Text="" ForeColor="Red"></asp:Label>
 			        <a href="#">Forgot your password?</a>
 			        <asp:Button ID="BtnSignIn" class="button" runat="server" Text="Sign In" OnClick="BtnSignIn_Click" />
+                    <br />
+                    <asp:Label ID="LbSignIn" runat="server" Text="" ForeColor="Red" Visible="False"></asp:Label>  
 		        </div>
 	        </div>
                         
@@ -75,5 +82,23 @@
 		        </div>
 	        </div>
         </div>
-    </div>       
+    </div>   
+    
+    <%--try--%>
+		        <div class="form">
+			        <h1>Create Account</h1>
+			        <div class="social-container">
+				        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			        </div>
+			        <span>or use your email for registration</span>
+			        <asp:TextBox ID="TextBox2"  class="input" runat="server" autocomplete="off" placeholder="Email" TextMode="Email" />
+                    <asp:Label ID="Label2" runat="server" Text="" ForeColor="Red"></asp:Label>
+			        <asp:TextBox ID="TextBox1" class="input" runat="server" autocomplete="off" placeholder="Name" />
+                    <asp:Label ID="Label1" runat="server" Text="" ForeColor="Red"></asp:Label>
+			        <asp:TextBox ID="TextBox3" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
+                    <asp:Label ID="Label3" runat="server" Text="" ForeColor="Red"></asp:Label>
+			        <asp:Button ID="Button1" class="button" runat="server" Text="Sign Up" OnClick="Button1_Click" />
+		        </div>
 </asp:Content>
