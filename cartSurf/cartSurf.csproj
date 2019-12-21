@@ -124,6 +124,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\animations-e-commerce.png" />
     <Content Include="Images\cart.png" />
     <Content Include="Images\gdex.png" />
     <Content Include="Images\logo-white.png" />
@@ -131,6 +132,7 @@
     <Content Include="Images\logo2.png" />
     <Content Include="Images\logo_white.png" />
     <Content Include="Images\review.png" />
+    <Content Include="Images\sheep.png" />
     <Content Include="MyAccount.css" />
     <Content Include="shipAdd.js" />
     <Content Include="ShippingAdd.aspx" />
@@ -183,6 +185,7 @@
     <Content Include="Order.css" />
     <Content Include="Profile.css" />
     <Content Include="Stepper.min.js" />
+    <Content Include="MainPage.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />

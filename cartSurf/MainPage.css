@@ -1,0 +1,40 @@
+﻿body {
+
+
+}
+
+#banner {
+    height:350px;
+    width: 800px;
+    
+}
+
+.menu_items {
+   
+    border: 1px solid #000000;
+    padding: 13px;
+}
+
+.menu {
+    padding: 0px;
+}
+
+.flex-container {
+    display: flex;
+    margin: 18px;
+    
+}
+
+    .flex-container > div {
+        background-color: #f1f1f1;
+        margin: 10px;
+        border:1px solid black;
+        padding:10px;
+        
+        
+    }
+.flex-container img {
+    width: 120px;
+    height: 120px;
+}
+
