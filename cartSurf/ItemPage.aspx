@@ -45,9 +45,7 @@
                 <div>
                     <h4>floral korean women ladies chiffon long sleeve summer maxi dress ready stock new</h4>
                 </div>
-                <div>
-                    <h5>4 stars</h5>
-                </div>
+                
                 <div>
                 </div>
                 <div>
@@ -56,7 +54,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Size
+                        Variation
                     </div>
                     <div class="col-md-8">
                         <div class="flex-container">
@@ -89,6 +87,15 @@
                         <input type="number" name="quantity" value="1">
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        Stock:
+                    </div>
+                    <div class="col-md-8">
+                        30
+                    </div>
+                </div>
+               
                 <br><br><br><br>
                 <div style="margin-top:15px;">
                     <div class="row">
@@ -123,8 +130,9 @@
     <div class="container product">
         <h4>Product Details</h4>
         <div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-
+            <p>Product details:</p>
+            <p>Brand: </p>
+            <p><img src=""></p>
         </div>
     </div>
     <div class="container comment-box">

@@ -1,2 +1,53 @@
 ﻿body {
 }
+
+.menu_items {
+    border: 0.1px solid #808080;
+    //padding: 5px;
+}
+
+.menu {
+    padding: 0px;
+}
+
+.chat {
+    border: 1px solid #808080;
+    height: 600px;
+}
+
+#rcorners2 {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px;
+    margin-top:10px;
+    max-width:500px;
+    float:right;
+   
+}
+#rcorners{
+    border-radius: 25px;
+    border: 2px solid #FE3909;
+    padding: 20px;
+    margin-top: 15px;
+    max-width: 500px;
+    float: left;
+    
+}
+
+.message {
+    position:absolute;
+    bottom:0;
+}
+
+.send-message 
+{
+    border: 0;
+    background: #FE3909;
+    box-shadow: none;
+    border-radius: 0px;
+    color:white;
+    padding:5px;
+    float:right;
+    margin-top:15px;
+}
+
