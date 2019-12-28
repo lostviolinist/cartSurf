@@ -23,7 +23,7 @@
                 <div id="cart-bar" class="row">
                     <div class="col-md-12 text-center">
                         <p>Step 1: Select Shipping Address</p>
-                        <p style="float:right"><asp:Label ID="LbEdit1" runat="server" Text="Edit" Visible="False" ForeColor="White"></asp:Label></p>
+                        <p style="float:right"><asp:Label ID="LbEdit1" runat="server" Text="Edit" Visible="False" ForeColor="#FFFFFF"></asp:Label></p>
                     </div>
                 </div>
 
@@ -84,8 +84,11 @@
                         <asp:Label ID="LbPostCode" CssClass="required" runat="server" Text="Postcode"></asp:Label>
                     </div>
                     <div class="col-md-10 text-uppercase">
-                        <asp:TextBox ID="TbPostcode" runat="server" Width="100%"></asp:TextBox>
+                        <asp:TextBox ID="TbPostcode" runat="server" Width="100%" TextMode="Number"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="PostcodeValidator" runat="server" ErrorMessage="Postcode is a required field." ControlToValidate="TbPostcode" ForeColor="#FE3939"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="PostValidator" runat="server" ErrorMessage="Enter 5-digit Postcode" 
+                            ControlToValidate="TbPostcode" ForeColor="Red" 
+                            ValidationExpression="\d{5}" />
                     </div>
                 </div>
 
@@ -100,26 +103,41 @@
                     </div>
                 </div>
 
-                <%--6. Phone number--%>
+                <%--6. Country--%>
+                <div class="row">
+                    <div class="col-md-2 text-uppercase">
+                        <asp:Label ID="LbCountry" CssClass="required" runat="server" Text="Country"></asp:Label>
+                    </div>
+                    <div class="col-md-10 text-uppercase">
+                        <asp:TextBox ID="TbCountry" runat="server" Width="100%"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="CountryValidator" runat="server" ErrorMessage="Country is a required field." ControlToValidate="TbCountry" ForeColor="#FE3939"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+
+                <%--7. Phone number--%>
                 <div class="row">
                     <div class="col-md-2 text-uppercase">
                         <asp:Label ID="LbPhoneNo" CssClass="required" runat="server" Text="Phone No"></asp:Label>
                     </div>
                     <div class="col-md-10 text-uppercase">
-                        <asp:TextBox ID="TbPhoneNo" runat="server" Width="100%"></asp:TextBox>
+                        <asp:TextBox ID="TbPhoneNo" runat="server" Width="100%" TextMode="Phone"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="PhoneNoValidator" runat="server" ErrorMessage="Phone No is a required field." ControlToValidate="TbPhoneNo" ForeColor="#FE3939"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="PhoneValidator2" runat="server" ErrorMessage="Enter valid Phone number" 
+                            ControlToValidate="TbPhoneNo" ForeColor="Red" 
+                            ValidationExpression="\d{11}" />
                     </div>
                 </div>
 
-                <%--7. Save Button--%>
+                <%--8. Save Button--%>
                 <div class="row" style="margin-top: 20px" id="btnNext">
                     <div class="col-md-12 text-center">
-                        <asp:Button ID="BtnSave" class="waves-effect waves-dark next-step" runat="server" Text="Next" BackColor="#FE3939" ForeColor="White" Height="40px" Width="20%" OnClick="BtnSave_Click" onClientClick="toggleDeliv()"/>
+                        <asp:Button ID="BtnSave" class="waves-effect waves-dark next-step" runat="server" Text="Next" BackColor="#FE3939" ForeColor="White" Height="40px" Width="20%" OnClick="BtnSave_Click" />
+                        <asp:Label ID="LbSave" runat="server" Text="" ForeColor="Red"></asp:Label>
                     </div>
                 </div>
 
                 <%-- Step 2: Select Delivery Courier --%>
-                <div id ="delivCourier">
+                <div id ="delivCourier" runat="server">
                     <div class="row payment-bar">
                         <div class="col-md-12 text-center">
                             <p>Step 2: Select Delivery Courier</p>                        
@@ -138,7 +156,7 @@
                 </div>
 
                 <%-- Step 3: Enter Payment Details --%>
-                <div id="cardDetails">
+                <div id="cardDetails" runat="server">
                     <div class="row payment-bar">
                         <div class="col-md-12 text-center">
                             <p>Step 3: Enter Payment Details</p>                        
@@ -207,7 +225,7 @@
                     <div id="total" class="col-md-7 text-uppercase">Total</div>
                     <div class="col-md-1 text-uppercase text-red" style="font-weight: 600">RM</div>
                     <div class="col-md-3 text-uppercase text-red" style="font-weight: 600">                        
-                        <asp:Label ID="Lbtotal" runat="server" Text="0.00"></asp:Label>
+                        <asp:Label ID="LbTotal" runat="server" Text="0.00"></asp:Label>
                     </div>
                 </div>
 

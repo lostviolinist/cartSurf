@@ -13,7 +13,7 @@
     </div>
     
     <div class="container">
-        <div class="row">
+        <div class="row"  style="padding-right: -30px;">
 
             <%-- Item and Unit Price --%>
             <div  id="cart" class="col-md-7">
@@ -32,7 +32,7 @@
 
             <%-- Order Summary --%>
             <h4 class="text-center text-uppercase" style="margin-left: -30px; font-weight: 800;">Order Summary</h4>
-            <div id="order-summary" class="col-md-4">            
+            <div id="order-summary" class="col-md-4"">            
                 
                 <div id="subtotal" class="row row-bordered text-uppercase">
                     <div class=col-md-12>Subtotal</div>
