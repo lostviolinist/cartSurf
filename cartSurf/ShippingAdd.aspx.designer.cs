@@ -321,6 +321,33 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.RequiredFieldValidator CVVValidator;
 
         /// <summary>
+        /// LbProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbProduct;
+
+        /// <summary>
+        /// LbShipping control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbShipping;
+
+        /// <summary>
+        /// Lbtotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbtotal;
+
+        /// <summary>
         /// BtnCheckOut control.
         /// </summary>
         /// <remarks>

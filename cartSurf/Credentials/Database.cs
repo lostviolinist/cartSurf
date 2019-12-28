@@ -230,10 +230,100 @@ namespace cartSurf.Credentials
             }
         }
 
-        public void GetProduct()
+        //Show Shopping Cart of the User
+        public DataSet CartInventory(int UID)
         {
             SqlCommand cmd = new SqlCommand(
-                "select * from Products", Conn);
+                "SELECT CartItems.CartItemID AS ID, Products.ProductName AS Product, Products.Variations AS Variations, Products.ProductUnitPrice AS UnitPrice, CartItems.Quantity AS Quantity " +
+                "FROM CartItems INNER JOIN Products ON CartItems.ProductID = Products.ProductID " +
+                "INNER JOIN ShoppingCarts ON CartItems.CartID = ShoppingCarts.CartID WHERE ShoppingCarts.UserID = @UID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = UID;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet data = new DataSet();
+            ada.Fill(data);
+
+            Conn.Close();
+
+            return data;
+        }
+
+        public void deleteItems(int cid)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                    "DELETE FROM CartItems WHERE CartItemID = @CID", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+            }
+            catch (Exception e)
+            {
+                String error = e.Message;
+            }
+        }
+
+
+        /***********************Product Table***********************/
+        //Get Product Name
+
+        public String GetProductName(int pid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT ProductName from Products WHERE ProductID = @PID", Conn);
+
+            Conn.Open();
+            cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+
+            String productName = "";
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                productName = (String)ds.Tables[0].Rows[0][0];
+            }
+
+            return productName;
+        }
+
+        public String GetProductPrice(int pid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT ProductUnitPrice from Products WHERE ProductID = @PID", Conn);
+
+            Conn.Open();
+            cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+
+           String productPrice = "0.00";
+
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                productPrice = (String)ds.Tables[0].Rows[0][0];
+            }
+            String prodPrice = productPrice.ToString();
+            return prodPrice;
         }
 
     }

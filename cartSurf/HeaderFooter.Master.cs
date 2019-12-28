@@ -27,5 +27,19 @@ namespace cartSurf
 
 
         }
+
+        protected void MenuHeader_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            //Not working
+            if (e.Item.Text == "Sign Out")
+            {
+                Session["username"] = null;
+                Session["uid"] = null;
+
+                Session.Clear();
+                Response.Redirect("SignIn.aspx");
+            }
+
+        }
     }
 }

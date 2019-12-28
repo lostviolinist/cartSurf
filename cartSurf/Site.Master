@@ -18,29 +18,12 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
-
-    <style type="text/css">
-        .auto-style1 {
-            height: 64px;
-            width: 178px;
-        }
-        .auto-style2 {
-            float: left;
-            height: 63px;
-            padding: 15px 15px;
-            font-size: 18px;
-            line-height: 20px;
-            width: 187px;
-        }
-        .auto-style3 {
-            height: 148px;
-        }
-    </style>
+    <link href="SiteMaster.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
     <form id="form1" runat="server">
-        <div class="navbar navbar-inverse navbar-fixed-top" style="padding-top: 20px; margin-bottom: 20px; background-color: #FFFFFF; left: 3px; right: -3px; top: -19px; height: 106px; border-bottom-style: none; border-bottom-color: inherit; border-bottom-width: medium;">
+        <div class="navbar navbar-inverse navbar-fixed-top nav-style">
              <div id="nav" class="container">
                   <div class="navbar-header">
                       <a class="auto-style2" runat="server" href="~/">

@@ -194,6 +194,7 @@
     <Content Include="Site.Master" />
     <Content Include="Order.css" />
     <Content Include="Profile.css" />
+    <Content Include="SiteMaster.css" />
     <Content Include="Stepper.min.js" />
     <Content Include="MainPage.css" />
     <Content Include="ViewSwitcher.ascx" />

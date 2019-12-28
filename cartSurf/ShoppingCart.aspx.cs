@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace cartSurf
 {
@@ -21,39 +23,71 @@ namespace cartSurf
 
             if (!IsPostBack)
             {
-                load_cart_details(UID);
+                Load_Cart_Details(UID);
             }
+
+            //Load the shopping cart table
+            GridView_Data_Bind();
+
+            //Calculate Subtotal and total
+            calculateTotal();
+            
         }
 
-        protected void load_cart_details(int uid)
+        protected void Load_Cart_Details(int uid)
         {
 
         }
 
-        protected void GridViewDataBind()
+        //Shopping Cart Table
+        protected void GridView_Data_Bind()
         {
-            //SqlConnection conn = new SqlConnection("Server = LAPTOP-N0HICHP1\\SQLEXPRESS; database=campusone; uid=lero; password=xmuy;");
-            //SqlCommand cmd = new SqlCommand("select * from CourseList", conn);
-            //SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            //DataSet ds = new DataSet();
+            //Clear tables before inserting
+            cart_dataGridView.DataSource = null;
 
-            //adapter.Fill(ds);
+            int uid = Convert.ToInt32(Session["uid"]);
 
-            //GridViewCart.DataSource = ds.Tables[0].DefaultView;
-            GridViewCart.DataBind();
+            cart_dataGridView.AutoGenerateColumns =  true;
+            cart_dataGridView.DataSource = ds.CartInventory(uid).Tables[0].DefaultView;
+                       
+            cart_dataGridView.DataBind();
+
+            //cart_dataGridView.HeaderRow.Cells[0].Attributes["Width"] = "100px";
+
+        }
+        
+        protected void cart_dataGridView_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            //Hide id row
+            e.Row.Cells[1].Visible = false;
+        }
+
+        //Deleting item from cart
+        protected void cart_dataGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int cid = Convert.ToInt32(cart_dataGridView.DataKeys[e.RowIndex].Value);
+
+            ds.deleteItems(cid);
+
+            //Refresh after updating            
+            GridView_Data_Bind();
+        }
+        
+        protected void calculateTotal()
+        {
 
         }
 
+        //Check Out button
         protected void BtnCheckOut_Click(object sender, EventArgs e)
         {
             Response.Redirect("ShippingAdd.aspx");
         }
 
-        protected void GridViewCart_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        //Continue Shopping button
+        protected void BtnShopping_Click(object sender, EventArgs e)
         {
-
-            //Refresh after deleting
-            GridViewDataBind();
+            Response.Redirect("MainPage.aspx");
         }
     }
 }
