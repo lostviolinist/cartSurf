@@ -15,15 +15,15 @@ row {
     margin-bottom: 30px;
 }
 
-#delivCourier {
+/*#delivCourier {
     display:none;
-}
+}*/
 
 #courier {
     display: flex;
     justify-content: center;
 }
 
-#cardDetails {
+/*#cardDetails {
     display: none;
-}
+}*/

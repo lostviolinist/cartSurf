@@ -10,7 +10,7 @@ namespace cartSurf
 {
     public partial class MyAccount : System.Web.UI.Page
     {
-        Database ds = new Database();
+        Database db = new Database();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +25,7 @@ namespace cartSurf
 
         protected void load_user_details(int UID)
         {            
-            String[] users = ds.getUsersDetails(UID);
+            String[] users = db.getUsersDetails(UID);
 
             TbUsername.Text = Convert.ToString(Session["username"]);
             TbEmail.Text = users[1];
@@ -42,7 +42,7 @@ namespace cartSurf
             String email = TbEmail.Text;
             String username = TbUsername.Text;
 
-            ds.MyAccount(UID, Fname, Lname, email, username);
+            db.MyAccount(UID, Fname, Lname, email, username);
         }
     }
 }

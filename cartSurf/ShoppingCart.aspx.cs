@@ -12,7 +12,7 @@ namespace cartSurf
 {
     public partial class ShoppingCart : System.Web.UI.Page
     {
-        Database ds = new Database();
+        Database db = new Database();
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (Session["username"] == null)
@@ -30,7 +30,7 @@ namespace cartSurf
             GridView_Data_Bind();
 
             //Calculate Subtotal and total
-            calculateTotal();
+            showSubtotal(UID);
             
         }
 
@@ -48,7 +48,7 @@ namespace cartSurf
             int uid = Convert.ToInt32(Session["uid"]);
 
             cart_dataGridView.AutoGenerateColumns =  true;
-            cart_dataGridView.DataSource = ds.CartInventory(uid).Tables[0].DefaultView;
+            cart_dataGridView.DataSource = db.CartInventory(uid).Tables[0].DefaultView;
                        
             cart_dataGridView.DataBind();
 
@@ -67,15 +67,52 @@ namespace cartSurf
         {
             int cid = Convert.ToInt32(cart_dataGridView.DataKeys[e.RowIndex].Value);
 
-            ds.deleteItems(cid);
+            db.DeleteItems(cid);
 
             //Refresh after updating            
             GridView_Data_Bind();
         }
         
-        protected void calculateTotal()
+        protected void showSubtotal(int uid)
         {
+            //If there is a cart
+            if(db.getCartID(uid) > 0)
+            {
+                //Get CartID using UID
+                int cartID = db.getCartID(uid);
 
+               List<List<int>> productQuantity = db.getCartItemDetails(cartID);
+
+                int noOfItem = db.getRowNum(cartID);
+
+                Decimal price;
+                List<Decimal> ProductPrice = new List<Decimal>();
+
+                //UnitPrice * Quantity
+                for (int i = 0; i < noOfItem; i++)
+                {
+                    int pid = productQuantity[i][0];
+                    int Quantity = productQuantity[i][1];
+
+                    price = db.getProductPrice(pid);
+                    ProductPrice.Add(price * (Convert.ToDecimal(Quantity)));
+                }                          
+
+                Decimal subtotal = ProductPrice.Sum();
+                Decimal shippingFee = 10.00m;
+
+                //Calculate total 
+                Decimal total = subtotal + shippingFee;
+
+                //Display Result
+                LbProduct.Text = Convert.ToString(subtotal);
+                LbShipping.Text = Convert.ToString(shippingFee);                
+                Lbtotal.Text = Convert.ToString(total);
+            }
+            else
+            {
+                LbProduct.Text = "0.00";
+            }
         }
 
         //Check Out button

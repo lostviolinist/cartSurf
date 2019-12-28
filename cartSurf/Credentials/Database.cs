@@ -22,17 +22,11 @@ namespace cartSurf.Credentials
             Conn = conn;
         }
 
-        //User Table 
+        /*******************************User Table**************************************/
         public int getUID(String username, String password)
         {
             SqlCommand cmd = new SqlCommand(
                 "select UserID, Username, UserPassword from Users where Username = @username AND UserPassword = @userpassword", Conn);
-
-
-            if (cmd.Connection.State == ConnectionState.Open)
-            {
-                cmd.Connection.Close();
-            }
 
             Conn.Open();
 
@@ -59,11 +53,6 @@ namespace cartSurf.Credentials
             SqlCommand cmd = new SqlCommand(
                 "select UserPassword, UserEmail, UserFirstName, UserLastName from Users " +
                 "where UserID = @UID", Conn);
-
-            if (cmd.Connection.State == ConnectionState.Open)
-            {
-                cmd.Connection.Close();
-            }
 
             Conn.Open();
 
@@ -230,6 +219,7 @@ namespace cartSurf.Credentials
             }
         }
 
+        /*******************************Shopping Cart Table**************************************/
         //Show Shopping Cart of the User
         public DataSet CartInventory(int UID)
         {
@@ -251,7 +241,8 @@ namespace cartSurf.Credentials
             return data;
         }
 
-        public void deleteItems(int cid)
+        //Delete items from shopping cart
+        public void DeleteItems(int cid)
         {
             try
             {
@@ -273,6 +264,240 @@ namespace cartSurf.Credentials
             }
         }
 
+        //getCartID of a user
+        public int getCartID(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT CartID FROM ShoppingCarts WHERE UserID = @UID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = uid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            int cid = -1;
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                cid = (int)ds.Tables[0].Rows[0][0];
+            }
+            return cid;
+        }
+
+        //Get num of items in the cart
+        public int getRowNum(int CID)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT Count(*) FROM CartItems " +
+                "where CartID = @CID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@CID", SqlDbType.Int, 100).Value = CID;
+
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            int count = 0;
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                count = (int)ds.Tables[0].Rows[0][0];
+            }
+
+            return count;
+        }
+
+        //getCartItemDetails (ProductID && Quantity)
+        public List<List<int>> getCartItemDetails(int cid)
+        {
+            int noOfItem = getRowNum(cid);
+
+            SqlCommand cmd = new SqlCommand(
+                "SELECT ProductID, Quantity FROM CartItems " +
+                "WHERE CartID = @CID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@CID", SqlDbType.Int, 100).Value = cid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            List<List<int>> productQuantity = new List<List<int>>();
+            List<int> row = new List<int>();
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                for (int i = 0; i < noOfItem; i++)
+                {
+                    row = new List<int>();
+                    row.Add((int)ds.Tables[0].Rows[i][0]);
+                    row.Add((int)ds.Tables[0].Rows[i][1]);
+                    productQuantity.Add(row);
+                }
+
+            }           
+
+            return productQuantity;
+        }
+
+        /*******************************Product Table**************************************/
+        public Decimal getProductPrice(int pid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT ProductUnitPrice FROM Products " +
+                "WHERE ProductID = @PID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            Decimal UnitPrice = 0.00m;
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                UnitPrice = (Decimal)ds.Tables[0].Rows[0][0];
+            }
+
+            return UnitPrice;
+        }
+
+        /*******************************Address Table**************************************/
+
+        public Boolean gotAddress(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "select Name from DeliveryAddresses where UserID = @UID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public String[] getAddDetails(int UID)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "select Name, AddLine1, AddLine2, AddLine3, City, PostCode, State, Country, Phone from DeliveryAddresses " +
+                "where UserID = @UID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = UID;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            String[] addDetails = { "Name", "AddLine1", "AddLine2", "AddLine3", "City", "Postcode", "State", "Country", "Phone" };
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                for(int i = 0; i < 9; i++)
+                {
+                    addDetails[i] = (String)ds.Tables[0].Rows[0][i];
+                }                
+            }
+
+            return addDetails;
+        }
+
+        public void insertAdd(String name, String add1, String add2, String add3, String city, int code, string state, 
+            String country, string phone, int uid)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                   "insert into DeliveryAddresses(Name, AddLine1, AddLine2, AddLine3, City, PostCode, State, Country, Phone, UserID)" +
+                   "Values(@USR, @ADD1, @ADD2, @ADD3, @City, @Code, @State, @Country, @Phone, @UID); ", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@USR", SqlDbType.VarChar, 100).Value = name;
+                cmd.Parameters.Add("@ADD1", SqlDbType.VarChar, 100).Value = add1;
+                cmd.Parameters.Add("@ADD2", SqlDbType.VarChar, 100).Value = add2;
+                cmd.Parameters.Add("@ADD3", SqlDbType.VarChar, 100).Value = add3;
+                cmd.Parameters.Add("@City", SqlDbType.VarChar, 100).Value = city;
+                cmd.Parameters.Add("@Code", SqlDbType.Int, 100).Value = code;
+                cmd.Parameters.Add("@State", SqlDbType.VarChar, 100).Value = state;
+                cmd.Parameters.Add("@Country", SqlDbType.VarChar, 100).Value = country;
+                cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 100).Value = phone;
+                cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+            }
+        }
+
+        public void updateAdd(String name, String add1, String add2, String add3, String city, int code, String state, String country, string phone, int uid)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                    "update DeliveryAddresses set Name = @USR, AddLine1 = @ADD1, AddLine2 = @ADD2, AddLine3 = @ADD3, City = @City, " +
+                    "PostCode = @Code, Country = @Country, Phone = @Phone where UserID = @UID", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@USR", SqlDbType.VarChar, 100).Value = name;
+                cmd.Parameters.Add("@ADD1", SqlDbType.VarChar, 100).Value = add1;
+                cmd.Parameters.Add("@ADD2", SqlDbType.VarChar, 100).Value = add2;
+                cmd.Parameters.Add("@ADD3", SqlDbType.VarChar, 100).Value = add3;
+                cmd.Parameters.Add("@City", SqlDbType.VarChar, 100).Value = city;
+                cmd.Parameters.Add("@Code", SqlDbType.Int, 100).Value = code;
+                cmd.Parameters.Add("@State", SqlDbType.VarChar, 100).Value = state;
+                cmd.Parameters.Add("@Country", SqlDbType.VarChar, 100).Value = country;
+                cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 100).Value = phone;
+                cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+            }
+            catch (Exception e)
+            {
+                String error = e.Message;
+            }
+
+        }
     }
- 
+
 }

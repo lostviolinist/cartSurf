@@ -168,6 +168,15 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.RequiredFieldValidator PostcodeValidator;
 
         /// <summary>
+        /// PostValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PostValidator;
+
+        /// <summary>
         /// LbState control.
         /// </summary>
         /// <remarks>
@@ -193,6 +202,33 @@ namespace cartSurf
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator StateValidator;
+
+        /// <summary>
+        /// LbCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbCountry;
+
+        /// <summary>
+        /// TbCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbCountry;
+
+        /// <summary>
+        /// CountryValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator CountryValidator;
 
         /// <summary>
         /// LbPhoneNo control.
@@ -222,6 +258,15 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.RequiredFieldValidator PhoneNoValidator;
 
         /// <summary>
+        /// PhoneValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PhoneValidator2;
+
+        /// <summary>
         /// BtnSave control.
         /// </summary>
         /// <remarks>
@@ -231,6 +276,24 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.Button BtnSave;
 
         /// <summary>
+        /// LbSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbSave;
+
+        /// <summary>
+        /// delivCourier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl delivCourier;
+
+        /// <summary>
         /// courierService control.
         /// </summary>
         /// <remarks>
@@ -238,6 +301,15 @@ namespace cartSurf
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList courierService;
+
+        /// <summary>
+        /// cardDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cardDetails;
 
         /// <summary>
         /// LbCardNo control.
@@ -339,13 +411,13 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.Label LbShipping;
 
         /// <summary>
-        /// Lbtotal control.
+        /// LbTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbtotal;
+        protected global::System.Web.UI.WebControls.Label LbTotal;
 
         /// <summary>
         /// BtnCheckOut control.
