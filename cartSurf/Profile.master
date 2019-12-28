@@ -21,9 +21,6 @@
                 <div class="row">
                     <div class="col-md-12 mx-auto">
                        <ul id="profile-category" class="list-unstyled text-left">
-                           <a href="#">
-                               <li style="margin-top: 20px;">Profile</li>
-                           </a>
                            <a href="MyAccount.aspx">
                                <li>My Account</li>
                            </a>

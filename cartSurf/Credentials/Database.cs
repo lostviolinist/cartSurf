@@ -404,6 +404,7 @@ namespace cartSurf.Credentials
             }
         }
 
+        //Address Details
         public String[] getAddDetails(int UID)
         {
             SqlCommand cmd = new SqlCommand(
@@ -425,14 +426,19 @@ namespace cartSurf.Credentials
             {
                 for(int i = 0; i < 9; i++)
                 {
-                    addDetails[i] = (String)ds.Tables[0].Rows[0][i];
-                }                
+                    if (i != 5)
+                    {
+                        addDetails[i] = (String)ds.Tables[0].Rows[0][i];
+                    }
+                }
+
+                addDetails[5] = Convert.ToString((int)ds.Tables[0].Rows[0][5]);
             }
 
             return addDetails;
         }
 
-        public void insertAdd(String name, String add1, String add2, String add3, String city, int code, string state, 
+        public Boolean insertAdd(String name, String add1, String add2, String add3, String city, int code, string state, 
             String country, string phone, int uid)
         {
             try
@@ -459,14 +465,18 @@ namespace cartSurf.Credentials
 
                 Conn.Close();
 
+                return true;
             }
             catch (Exception e)
             {
                 string error = e.Message;
             }
+
+            return false;
         }
 
-        public void updateAdd(String name, String add1, String add2, String add3, String city, int code, String state, String country, string phone, int uid)
+        public Boolean updateAdd(String name, String add1, String add2, String add3, String city, int code, String state, String country,
+            string phone, int uid)
         {
             try
             {
@@ -491,11 +501,15 @@ namespace cartSurf.Credentials
                 cmd.Dispose();
 
                 Conn.Close();
+
+                return true;
             }
             catch (Exception e)
             {
                 String error = e.Message;
             }
+
+            return false;
 
         }
     }

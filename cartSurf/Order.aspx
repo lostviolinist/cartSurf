@@ -13,12 +13,12 @@
 
     <div id="status" class="row">
         <div class="col-md-3 mx-auto">
-            <a href="#"><i class="fas fa-wallet fa-5x"></i></a>
-            <p>To Pay</p>
-        </div>
-        <div class="col-md-3 mx-auto">
             <a href="#"><i class="fas fa-shipping-fast fa-5x"></i></a>
             <p>To Ship</p>
+        </div>
+        <div class="col-md-3 mx-auto">
+            <a href="#"><i class="fas fa-people-carry fa-5x"></i></a>
+            <p>To Receive</p>
         </div>
         <div class="col-md-3 mx-auto">
             <a href="#"><i class="far fa-comment-dots fa-5x"></i></a>

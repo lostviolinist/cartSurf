@@ -122,16 +122,13 @@
                     <div class="col-md-10 text-uppercase">
                         <asp:TextBox ID="TbPhoneNo" runat="server" Width="100%" TextMode="Phone"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="PhoneNoValidator" runat="server" ErrorMessage="Phone No is a required field." ControlToValidate="TbPhoneNo" ForeColor="#FE3939"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="PhoneValidator2" runat="server" ErrorMessage="Enter valid Phone number" 
-                            ControlToValidate="TbPhoneNo" ForeColor="Red" 
-                            ValidationExpression="\d{11}" />
                     </div>
                 </div>
 
                 <%--8. Save Button--%>
                 <div class="row" style="margin-top: 20px" id="btnNext">
                     <div class="col-md-12 text-center">
-                        <asp:Button ID="BtnSave" class="waves-effect waves-dark next-step" runat="server" Text="Next" BackColor="#FE3939" ForeColor="White" Height="40px" Width="20%" OnClick="BtnSave_Click" />
+                        <asp:Button ID="BtnSave" class="waves-effect waves-dark next-step" runat="server" Text="SAVE" BackColor="#FE3939" ForeColor="White" Height="40px" Width="20%" OnClick="BtnSave_Click" />
                         <asp:Label ID="LbSave" runat="server" Text="" ForeColor="Red"></asp:Label>
                     </div>
                 </div>
@@ -150,7 +147,17 @@
                             RepeatDirection="Horizontal">
                             <asp:ListItem  runat="server"  Text="<img src='Image/gdex.png' alt='GDEX' title='GDEX'>"  Value="GDEX" />
                             <asp:ListItem runat="server"  Text="<img src='Image/poslaju.png' alt='PosLaju' title='PosLaju'>"  Value="PosLaju" />
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>                            
+                        </div>
+                    </div>
+
+                    <%--Confirm Button--%>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-md-12 text-center">
+                            <asp:Button ID="BtnCourier" class="waves-effect waves-dark next-step" runat="server" Text="CONFIRM" BackColor="#FE3939" ForeColor="White" Height="40px" Width="20%" OnClick="BtnCourier_Click"  />
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <asp:RequiredFieldValidator ID="CourierValidator" runat="server" ErrorMessage="Please select a courier." ForeColor="Red" ControlToValidate="courierService" />
                         </div>
                     </div>
                 </div>
@@ -169,8 +176,8 @@
                             <asp:Label ID="LbCardNo" CssClass="required" runat="server" Text="Card No"></asp:Label>
                         </div>
                         <div class="col-md-10 text-uppercase">
-                            <asp:TextBox ID="TbCardNo" runat="server" Width="100%" Placeholder="Card No"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="CardNoValidator" runat="server" ErrorMessage="Card No is a required field." ControlToValidate="TbCardNo"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TbCardNo" runat="server" Width="100%" Placeholder="Card No" TextMode="Number"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="CardNoValidator" runat="server" ErrorMessage="Card No is a required field." ForeColor="Red" ControlToValidate="TbCardNo"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
@@ -180,8 +187,8 @@
                             <asp:Label ID="LbExpiry" CssClass="required" runat="server" Text="Valid Date"></asp:Label>
                         </div>
                         <div class="col-md-10 text-uppercase">
-                            <asp:TextBox ID="TbExpiry" runat="server" Width="100%" Placeholder="Valid Date"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="ExpiryValidator" runat="server" ErrorMessage="Valid date is a required field." ControlToValidate="TbExpiry"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TbExpiry" runat="server" Width="100%" Placeholder="Valid Date" TextMode="Number"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="ExpiryValidator" runat="server" ErrorMessage="Valid date is a required field." ForeColor="Red" ControlToValidate="TbExpiry"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
@@ -191,15 +198,21 @@
                             <asp:Label ID="LbCVV" CssClass="required" runat="server" Text="CVV"></asp:Label>
                         </div>
                         <div class="col-md-10 text-uppercase">
-                            <asp:TextBox ID="TbCVV" runat="server" Width="100%" Placeholder="CVV"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="CVVValidator" runat="server" ErrorMessage="CVV is a required field." ControlToValidate="TbCVV"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TbCVV" runat="server" Width="100%" Placeholder="CVV" TextMode="Number"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="CVVValidator" runat="server" ErrorMessage="CVV is a required field." ForeColor="Red" ControlToValidate="TbCVV"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-md-12 text-center">
+                            <asp:Button ID="BtnPayment" class="waves-effect waves-dark next-step" runat="server" Text="SECURE CHECKOUT" BackColor="#FE3939" ForeColor="White" Height="40px" Width="20%" OnClick="BtnPayment_Click" />
                         </div>
                     </div>
                 </div>
             </div>
 
             <%-- Order Summary --%>
-            <h4 class="text-center text-uppercase" style="margin-left: -20px;">Order Summary</h4>
+            <h4 class="text-center text-uppercase" style="margin-left: -20px; font-weight: 800;">Order Summary</h4>
             <div id="order-summary" class="col-md-4">
                 
                 <div id="subtotal" class="row row-bordered text-uppercase">
@@ -226,12 +239,6 @@
                     <div class="col-md-1 text-uppercase text-red" style="font-weight: 600">RM</div>
                     <div class="col-md-3 text-uppercase text-red" style="font-weight: 600">                        
                         <asp:Label ID="LbTotal" runat="server" Text="0.00"></asp:Label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 text-center" style="margin-top: 20px;">
-                        <asp:Button ID="BtnCheckOut" runat="server" Text="SECURE CHECKOUT" BackColor="#FE3939" ForeColor="White" Height="40px" Width="80%" />
                     </div>
                 </div>
             </div>

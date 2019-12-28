@@ -258,15 +258,6 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.RequiredFieldValidator PhoneNoValidator;
 
         /// <summary>
-        /// PhoneValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator PhoneValidator2;
-
-        /// <summary>
         /// BtnSave control.
         /// </summary>
         /// <remarks>
@@ -301,6 +292,24 @@ namespace cartSurf
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList courierService;
+
+        /// <summary>
+        /// BtnCourier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCourier;
+
+        /// <summary>
+        /// CourierValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator CourierValidator;
 
         /// <summary>
         /// cardDetails control.
@@ -393,6 +402,15 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.RequiredFieldValidator CVVValidator;
 
         /// <summary>
+        /// BtnPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnPayment;
+
+        /// <summary>
         /// LbProduct control.
         /// </summary>
         /// <remarks>
@@ -418,14 +436,5 @@ namespace cartSurf
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LbTotal;
-
-        /// <summary>
-        /// BtnCheckOut control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCheckOut;
     }
 }
