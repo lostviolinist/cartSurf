@@ -230,6 +230,49 @@ namespace cartSurf.Credentials
             }
         }
 
+        //Show Shopping Cart of the User
+        public DataSet CartInventory(int UID)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT CartItems.CartItemID AS ID, Products.ProductName AS Product, Products.Variations AS Variations, Products.ProductUnitPrice AS UnitPrice, CartItems.Quantity AS Quantity " +
+                "FROM CartItems INNER JOIN Products ON CartItems.ProductID = Products.ProductID " +
+                "INNER JOIN ShoppingCarts ON CartItems.CartID = ShoppingCarts.CartID WHERE ShoppingCarts.UserID = @UID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = UID;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet data = new DataSet();
+            ada.Fill(data);
+
+            Conn.Close();
+
+            return data;
+        }
+
+        public void deleteItems(int cid)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                    "DELETE FROM CartItems WHERE CartItemID = @CID", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+            }
+            catch (Exception e)
+            {
+                String error = e.Message;
+            }
+        }
+
     }
  
 }

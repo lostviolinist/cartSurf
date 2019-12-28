@@ -15,22 +15,40 @@ namespace cartSurf
     {
 
         /// <summary>
-        /// SqlDataSourceCart control.
+        /// cart_dataGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCart;
+        protected global::System.Web.UI.WebControls.GridView cart_dataGridView;
 
         /// <summary>
-        /// GridViewCart control.
+        /// LbProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewCart;
+        protected global::System.Web.UI.WebControls.Label LbProduct;
+
+        /// <summary>
+        /// LbShipping control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbShipping;
+
+        /// <summary>
+        /// Lbtotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbtotal;
 
         /// <summary>
         /// BtnCheckOut control.

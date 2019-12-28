@@ -1,0 +1,33 @@
+﻿body {
+}
+
+.nav-style {
+    padding-top: 20px; 
+    margin-bottom: 20px; 
+    background-color: #FFFFFF; 
+    left: 3px; 
+    right: -3px; 
+    top: -19px; 
+    height: 106px; 
+    border-bottom-style: none; 
+    border-bottom-color: inherit; 
+    border-bottom-width: medium;
+}
+
+.auto-style1 {
+    height: 64px;
+    width: 178px;
+}
+
+.auto-style2 {
+    float: left;
+    height: 63px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    width: 187px;
+}
+
+.auto-style3 {
+    height: 148px;
+}

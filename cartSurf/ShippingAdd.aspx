@@ -189,17 +189,26 @@
                 </div>
                 <div class="row">
                     <div class="col-md-7 text-uppercase">From CartSurf</div>
-                    <div class="col-md-4 text-uppercase">RM </div>
+                    <div class="col-md-1 text-uppercase">RM</div>
+                    <div class="col-md-3 text-uppercase">                        
+                        <asp:Label ID="LbProduct" runat="server" Text="0.00"></asp:Label>
+                    </div>                    
                 </div>
 
                 <div class="row row-bordered">
                     <div class="col-md-7 text-uppercase">Shipping Fees</div>
-                    <div class="col-md-4 text-uppercase">RM </div>
+                    <div class="col-md-1 text-uppercase">RM</div>
+                    <div class="col-md-3 text-uppercase">                        
+                        <asp:Label ID="LbShipping" runat="server" Text="0.00"></asp:Label>
+                    </div>
                 </div>
 
                 <div class="row row-bordered">
                     <div id="total" class="col-md-7 text-uppercase">Total</div>
-                    <div class="col-md-4 text-uppercase text-red" style="font-weight: 600">RM </div>
+                    <div class="col-md-1 text-uppercase text-red" style="font-weight: 600">RM</div>
+                    <div class="col-md-3 text-uppercase text-red" style="font-weight: 600">                        
+                        <asp:Label ID="Lbtotal" runat="server" Text="0.00"></asp:Label>
+                    </div>
                 </div>
 
                 <div class="row">
