@@ -11,37 +11,37 @@
             <div class="col-md-3 menu">
                 <div class="row menu">
                     <div class="col-md-12 menu_items">
-                        <p>Fashion</p>
+                        <a href="CategoryPage.aspx"><p>Fashion</p></a>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 menu_items">
-                        <p>Electronic</p>
+                        <a href="CategoryPage.aspx"><p>Electronic</p></a>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 menu_items">
-                        <p>Furniture</p>
+                        <a href="CategoryPage.aspx"><p>Furniture</p></a>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 menu_items">
-                        <p>Baby</p>
+                        <a href="CategoryPage.aspx"><p>Baby</p></a>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 menu_items">
-                        <p>Car Appliances</p>
+                        <a href="CategoryPage.aspx"><p>Car Appliances</p></a>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 menu_items">
-                        <p>Health and Beauty</p>
+                        <a href="CategoryPage.aspx"><p>Health and Beauty</p></a>
                     </div>
                 </div>
 
@@ -60,61 +60,64 @@
     </div>
 
     <div class=" flex-container">
-
+       
         <div>
-            <img src="Images/sheep.png" />
+            <a href="ItemPage.aspx"><img src=""/></a>
             <br>
-            RM 26.00
+            <asp:Label ID="LbProductName" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+      <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName2" Text="" runat="server" ForeColor="Black"></asp:Label> 
+          
+          
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName3" Text="" runat="server" ForeColor="Black"></asp:Label>
+          
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName4" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName5" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName6" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName7" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName8" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName9" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
         </div>
 
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
+         
 
         
     </div>
@@ -124,64 +127,71 @@
     </div>
 
     <div class=" flex-container">
-
+       
         <div>
-            <img src="Images/sheep.png" />
+            <a href="ItemPage.aspx"><img src=""/></a>
             <br>
-            RM 26.00
+            <asp:Label ID="LbProductName10" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+      <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName11" Text="" runat="server" ForeColor="Black"></asp:Label> 
+          
+          
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName12" Text="" runat="server" ForeColor="Black"></asp:Label>
+          
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName13" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName14" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName15" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName16" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName17" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
+        </div>
+        <div>
+            <a href="ItemPage.aspx"><img src=""/></a>
+            <br>
+            <asp:Label ID="LbProductName18" Text="" runat="server" ForeColor="Black"></asp:Label>
+           
         </div>
 
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
+         
 
         
     </div>
+
+
+        
+    
 
 
 

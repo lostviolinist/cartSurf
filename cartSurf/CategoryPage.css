@@ -1,0 +1,29 @@
+﻿body {
+}
+
+#banner {
+    height: 350px;
+    width: 800px;
+    margin-left:200px;
+}
+
+.flex-container {
+    display: flex;
+    margin: 18px;
+}
+
+    .flex-container > div {
+        background-color: #f1f1f1;
+        margin: 10px;
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    .flex-container img {
+        width: 120px;
+        height: 120px;
+    }
+
+.container{
+    margin-top:15px;
+}
