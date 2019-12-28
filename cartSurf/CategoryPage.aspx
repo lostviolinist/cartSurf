@@ -1,127 +1,23 @@
-﻿<%@ Page Title="Main Page" Language="C#" MasterPageFile="~/HeaderFooter.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="cartSurf.MainPage" %>
+﻿<%@ Page Title="Category" Language="C#" AutoEventWireup="true" MasterPageFile="~/HeaderFooter.Master" CodeBehind="CategoryPage.aspx.cs" Inherits="cartSurf.CategoryPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <link href="MainPage.css" rel="stylesheet" type="text/css" />
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link href="CategoryPage.css" rel="stylesheet" type="text/css">
+
+    <div style="margin-left:40px; margin-top:10px; color:#000000">
+        <h2>Fashion</h2>
+    </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-3 menu">
-                <div class="row menu">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Fashion</p></a>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Electronic</p></a>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Furniture</p></a>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Baby</p></a>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Car Appliances</p></a>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Health and Beauty</p></a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-9">
-                <img src="Images/animations-e-commerce.png" id="banner" />
-            </div>
-
-        </div>
-
+        
+            <img src="Images/animations-e-commerce.png" id="banner" />
+        
 
     </div>
     <div style="margin-left:25px; color:#FE3939">
-        <h3>New picks</h3>
-    </div>
-
-    <div class=" flex-container">
-        for (int 
-        <div>
-            <a href="ItemPage.aspx"><img src="Images/sheep.png" /></a>
-            <br>
-            long dress <br />
-            RM26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-
-        
-    </div>
-
-    <div style="margin-left:25px;color:#FE3939">
-        <h3>Recently viewed</h3>
+        <h3>Check these out</h3>
     </div>
 
     <div class=" flex-container">
@@ -184,8 +80,69 @@
         
     </div>
 
+    <div style="margin-left:25px; color:#FE3939">
+        <h3>You may like these</h3>
+    </div>
+
+    <div class=" flex-container">
+
+        <div>
+            <img src="Images/sheep.png" />
+            <br>
+            RM 26.00
+        </div>
+
+         <div>
+            <img src="Images/sheep.png" />
+            <br>
+            RM 26.00
+        </div>
+
+         <div>
+            <img src="Images/sheep.png" />
+            <br>
+            RM 26.00
+        </div>
+
+         <div>
+            <img src="Images/sheep.png" />
+            <br>
+            RM 26.00
+        </div>
+
+         <div>
+            <img src="Images/sheep.png" />
+            <br>
+            RM 26.00
+        </div>
+
+         <div>
+            <img src="Images/sheep.png" />
+            <br>
+            RM 26.00
+        </div>
+
+         <div>
+            <img src="Images/sheep.png" />
+            <br>
+            RM 26.00
+        </div>
+
+         <div>
+            <img src="Images/sheep.png" />
+            <br>
+            RM 26.00
+        </div>
+
+         <div>
+            <img src="Images/sheep.png" />
+            <br>
+            RM 26.00
+        </div>
 
 
+        
+    </div>
 
 
 </asp:Content>

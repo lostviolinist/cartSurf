@@ -230,6 +230,12 @@ namespace cartSurf.Credentials
             }
         }
 
+        public void GetProduct()
+        {
+            SqlCommand cmd = new SqlCommand(
+                "select * from Products", Conn);
+        }
+
     }
  
 }

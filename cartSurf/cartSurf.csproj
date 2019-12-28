@@ -106,6 +106,8 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="BackToTopBtn.min.js" />
+    <Content Include="CategoryPage.aspx" />
+    <Content Include="CategoryPage.css" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -209,6 +211,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CategoryPage.aspx.cs">
+      <DependentUpon>CategoryPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoryPage.aspx.designer.cs">
+      <DependentUpon>CategoryPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
