@@ -38,6 +38,11 @@ namespace cartSurf
                 LbSignIn.Visible = true;
             }
         }
-        
+
+        protected void signUp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SignUp.aspx");
+        }
+
     }
 }

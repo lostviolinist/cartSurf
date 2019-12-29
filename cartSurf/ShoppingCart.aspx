@@ -23,6 +23,12 @@
                     </div>
                 </div>
 
+                <div class="text-center">
+                    <asp:Label ID="LbNoItem" runat="server" Text="Your cart is empty." Visible="false"></asp:Label><br />
+                    <asp:Button ID="BtnGoShopping" runat="server" Text="Go Shopping" Visible="false" OnClick="BtnGoShopping_Click"/>
+                </div>
+                
+
                 <asp:GridView ID="cart_dataGridView" runat="server" DataKeyNames="ID" OnRowDeleting="cart_dataGridView_RowDeleting" OnRowCreated="cart_dataGridView_RowCreated">
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" />

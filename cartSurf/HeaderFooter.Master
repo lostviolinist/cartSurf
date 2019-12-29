@@ -80,12 +80,12 @@
                             </button>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#"> <span class="glyphicon glyphicon-envelope text-danger"></span> Email</a></li>
-                                <li><a href="#"> <span class="glyphicon glyphicon-music text-warning"></span> Music</a></li>
-                                <li><a href="#"> <span class="glyphicon glyphicon-user text-success"></span> Users</a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-book text-primary"></span> Books </a></li>
-                                <li class="divider"></li>
-                                <li><a href="#"> <span class="glyphicon glyphicon-picture text-info"></span> Pictures</a></li>
+                                <li><a href="#"> <i class="fas fa-tshirt"></i> Fashion</a></li>
+                                <li><a href="#"> <i class="fas fa-laptop-medical"></i> Electronic</a></li>
+                                <li><a href="#"> <i class="fas fa-chair"></i> Furniture</a></li>
+                                <li><a href="#"> <i class="fas fa-baby"></i> Baby </a></li>
+                                <li><a href="#"> <i class="fas fa-car"></i> Car Appliances</a></li>
+                                <li><a href="#"> <i class="fas fa-mask"></i> Health and Beauty</a></li>
                             </ul>
                         </div>
 
@@ -120,74 +120,27 @@
 
               <div class="container text-center text-md-left">
                 <div class="row">
-                  <div class="col-md-4 mx-auto">
+                  <div class="col-md-6 mx-auto">
                     <!-- Content -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">About us - CartSurf</h5>
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="font-weight:800;">About us - CartSurf</h5>
                     <p>We are newly established in November 2019. We provide your needs with the best price. 
                         Please follow up for more updates.</p>
                   </div>
 
-                  <div class="col-md-3 mx-auto">
+                  <div class="col-md-6 mx-auto">
 
                     <!-- Links -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">About CartSurf</h5>
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="font-weight:800;">About CartSurf</h5>
 
                     <ul class="list-unstyled">
                       <li>
-                        <a href="#!">Home</a>
+                        <a href="MainPage.aspx">Home</a>
                       </li>
                       <li>
-                        <a href="#!">About Us</a>
+                        <a href="MyAccount.aspx">Your Acccount</a>
                       </li>
                       <li>
-                        <a href="#!">Best Deals</a>
-                      </li>
-                      <li>
-                        <a href="#!">Link 4</a>
-                      </li>
-                    </ul>
-
-                  </div>
-
-                  <div class="col-md-2 mx-auto">
-
-                    <!-- Links -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                    <ul class="list-unstyled">
-                      <li>
-                        <a href="#!">Link 1</a>
-                      </li>
-                      <li>
-                        <a href="#!">Link 2</a>
-                      </li>
-                      <li>
-                        <a href="#!">Link 3</a>
-                      </li>
-                      <li>
-                        <a href="#!">Link 4</a>
-                      </li>
-                    </ul>
-
-                  </div>
-
-                  <div class="col-md-2 mx-auto">
-
-                    <!-- Links -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                    <ul class="list-unstyled">
-                      <li>
-                        <a href="#!">Link 1</a>
-                      </li>
-                      <li>
-                        <a href="#!">Link 2</a>
-                      </li>
-                      <li>
-                        <a href="#!">Link 3</a>
-                      </li>
-                      <li>
-                        <a href="#!">Link 4</a>
+                        <a href="MainPage.aspx">Best Deals</a>
                       </li>
                     </ul>
 
@@ -206,7 +159,7 @@
                   <h5 class="mb-1">Register for free</h5>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#!" class="btn btn-danger btn-rounded">Sign up!</a>
+                    <asp:Button ID="btnSignUp" class="btn btn-danger btn-rounded" runat="server" Text="Sign up!" OnClick="btnSignUp_Click" />
                 </li>
               </ul>
               <!-- Call to action -->
@@ -216,22 +169,22 @@
               <!-- Social buttons -->
               <ul class="list-unstyled list-inline text-center">
                 <li class="list-inline-item">
-                  <a class="btn-floating btn-fb mx-1">
+                  <a href="facebook.com" class="btn-floating btn-fb mx-1">
                     <i class="fab fa-facebook-f"> </i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="btn-floating btn-tw mx-1">
+                  <a href="twitter.com" class="btn-floating btn-tw mx-1">
                     <i class="fab fa-twitter"> </i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="btn-floating btn-gplus mx-1">
+                  <a href="google.com" class="btn-floating btn-gplus mx-1">
                     <i class="fab fa-google-plus-g"> </i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="btn-floating btn-li mx-1">
+                  <a href="linkedin.com" class="btn-floating btn-li mx-1">
                     <i class="fab fa-linkedin-in"> </i>
                   </a>
                 </li>
@@ -245,7 +198,7 @@
 
               <!-- Copyright -->
               <div class="footer-copyright text-center py-3">© 2019 Copyright:
-                <a href="/">www.nothing.com</a>
+                <a href="/">www.cartsurf.com</a>
               </div>
 
               <!-- Copyright -->

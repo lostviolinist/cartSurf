@@ -24,13 +24,13 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.TextBox TbEmail;
 
         /// <summary>
-        /// Label1 control.
+        /// LbEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label LbEmail;
 
         /// <summary>
         /// TbUsername control.
@@ -42,6 +42,15 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.TextBox TbUsername;
 
         /// <summary>
+        /// LbUsername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbUsername;
+
+        /// <summary>
         /// TbPassword control.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,15 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.TextBox TbPassword;
 
         /// <summary>
+        /// LbPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbPassword;
+
+        /// <summary>
         /// ConfirmPassword control.
         /// </summary>
         /// <remarks>
@@ -58,6 +76,15 @@ namespace cartSurf
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
+
+        /// <summary>
+        /// LbconfirmPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbconfirmPassword;
 
         /// <summary>
         /// BtnSignUp control.
