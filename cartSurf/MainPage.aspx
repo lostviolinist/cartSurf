@@ -61,12 +61,30 @@
 
     <div class=" flex-container">
        
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
+        <div class=" flex-container" style="overflow-x:scroll; width:inherit">
+       
+
+        <asp:DataList ID="DataList1" RepeatDirection="Horizontal" runat="server">
+            <ItemTemplate>
+                <table>
+                    <tr>
+                        <td>
+                           <asp:ImageButton ID="Image1" ImageUrl=<%#Eval("ImageUrl")%>  runat="server" />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%#Eval("ProductName") %>
+                        </td>
+                    </tr>
+
+                </table>
+
+
+            </ItemTemplate>
+
+        </asp:DataList>
       <div>
             <a href="ItemPage.aspx"><img src=""/></a>
             <br>

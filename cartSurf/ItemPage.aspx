@@ -7,6 +7,7 @@
     <link href="ItemPage.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+     <asp:DataList ID="DataList1" RepeatDirection="Horizontal" runat="server">
     <div class="container item-details">
         <div class="row">
             <div class="col-md-5">
@@ -112,6 +113,7 @@
             </div>
         </div>
     </div>
+         </asp:DataList>
     <div class="container shop-details">
         <div class="row">
             <div class="flex-container">
