@@ -98,30 +98,59 @@ namespace cartSurf
             String state = TbState.Text;
             String country = TbCountry.Text;
             String phone = TbPhoneNo.Text;
+            
             int uid = Convert.ToInt32(Session["uid"]);
+                        
+            Boolean addUpdate = false;
 
             Page.Validate();
 
             if(Page.IsValid)
             {
-                LbSave.Text = "Address Added Successfully";                          
+                //if no previous record
+                if (db.gotAddress(uid) == false)
+                {
 
-                //Show next section
-                delivCourier.Visible = true;
+                    addUpdate = db.insertAdd(name, add1, add2, add3, city, code, state, country, phone, uid);
+                    LbSave.Text = "Insert error";
+                }
+                else
+                {
+                    LbSave.Text = "Update error";
+                    addUpdate = db.updateAdd(name, add1, add2, add3, city, code, state, country, phone, uid);
+                }
 
-                //Hide Save button
-                BtnSave.Visible = false;
-                LbEdit1.Visible = true;
+                if (addUpdate)
+                {
+                    LbSave.Text = "Address Added Successfully";
 
-                //if(db.gotAddress(uid) == false)
-                //{
-                //    db.insertAdd(name, add1, add2, add3, city, code, state, country, phone, uid);
-                //}
-                //else
-                //{
-                //    db.updateAdd(name, add1, add2, add3, city, code, state, country, phone, uid);
-                //}                
+                    //Show next section
+                    delivCourier.Visible = true;
+
+                    //Hide Save button
+                    BtnSave.Visible = false;
+                    LbEdit1.Visible = true;
+                }
+                else
+                {
+                    LbSave.Text = "Input error";
+                }
             }
+        }
+
+        protected void BtnCourier_Click(object sender, EventArgs e)
+        {
+            cardDetails.Visible = true;
+        }
+
+        protected void BtnPayment_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Order.aspx");
+        }
+
+        protected void BtnCheckOut_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Order.aspx");
         }
     }
 }

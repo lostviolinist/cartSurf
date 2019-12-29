@@ -219,76 +219,6 @@ namespace cartSurf.Credentials
             }
         }
 
-        /*******************************MainPage**************************************/
-        public String GetProductName(int pid)
-        {
-            SqlCommand cmd = new SqlCommand(
-                "SELECT ProductName from Products WHERE ProductID = @PID", Conn);
-
-            Conn.Open();
-            cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            ada.Fill(ds);
-
-            Conn.Close();
-
-
-            String productName = "";
-
-            if (ds.Tables[0].Rows.Count != 0)
-            {
-                productName = (String)ds.Tables[0].Rows[0][0];
-            }
-
-            return productName;
-        }
-        public DataSet GetProducts()
-        {
-            SqlCommand cmd = new SqlCommand(
-               "SELECT * from Products", Conn);
-
-            Conn.Open();
-
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            ada.Fill(ds);
-
-            Conn.Close();
-
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                byte[] bytes = (byte[])ds.Tables[0].Rows[i][6];
-                string strBase64 = Convert.ToBase64String(bytes);
-                ds.Tables[0].Rows[i][10] = "data:ProductPic;base64," + strBase64;
-               
-            }
-            return ds;
-        }
-        /*******************************Item Page**************************************/
-        public DataSet GetItem(int param)
-        {
-            SqlCommand cmd = new SqlCommand(
-               "SELECT * from Products WHERE ProductID = @param", Conn);
-
-            Conn.Open();
-
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-            DataSet db = new DataSet();
-            ada.Fill(db);
-
-            Conn.Close();
-
-            for (int i = 0; i < db.Tables[0].Rows.Count; i++)
-            {
-                byte[] bytes = (byte[])db.Tables[0].Rows[i][6];
-                string strBase64 = Convert.ToBase64String(bytes);
-                db.Tables[0].Rows[i][10] = "data:ProductPic;base64," + strBase64;
-
-            }
-            return db;
-        }
-
         /*******************************Shopping Cart Table**************************************/
         //Show Shopping Cart of the User
         public DataSet CartInventory(int UID)
@@ -417,7 +347,7 @@ namespace cartSurf.Credentials
                     productQuantity.Add(row);
                 }
 
-            }
+            }           
 
             return productQuantity;
         }
@@ -448,8 +378,6 @@ namespace cartSurf.Credentials
             return UnitPrice;
         }
 
-       
-
         /*******************************Address Table**************************************/
 
         public Boolean gotAddress(int uid)
@@ -476,6 +404,7 @@ namespace cartSurf.Credentials
             }
         }
 
+        //Address Details
         public String[] getAddDetails(int UID)
         {
             SqlCommand cmd = new SqlCommand(
@@ -495,16 +424,21 @@ namespace cartSurf.Credentials
 
             if (ds.Tables[0].Rows.Count != 0)
             {
-                for (int i = 0; i < 9; i++)
+                for(int i = 0; i < 9; i++)
                 {
-                    addDetails[i] = (String)ds.Tables[0].Rows[0][i];
+                    if (i != 5)
+                    {
+                        addDetails[i] = (String)ds.Tables[0].Rows[0][i];
+                    }
                 }
+
+                addDetails[5] = Convert.ToString((int)ds.Tables[0].Rows[0][5]);
             }
 
             return addDetails;
         }
 
-        public void insertAdd(String name, String add1, String add2, String add3, String city, int code, string state,
+        public Boolean insertAdd(String name, String add1, String add2, String add3, String city, int code, string state, 
             String country, string phone, int uid)
         {
             try
@@ -531,14 +465,18 @@ namespace cartSurf.Credentials
 
                 Conn.Close();
 
+                return true;
             }
             catch (Exception e)
             {
                 string error = e.Message;
             }
+
+            return false;
         }
 
-        public void updateAdd(String name, String add1, String add2, String add3, String city, int code, String state, String country, string phone, int uid)
+        public Boolean updateAdd(String name, String add1, String add2, String add3, String city, int code, String state, String country,
+            string phone, int uid)
         {
             try
             {
@@ -563,11 +501,15 @@ namespace cartSurf.Credentials
                 cmd.Dispose();
 
                 Conn.Close();
+
+                return true;
             }
             catch (Exception e)
             {
                 String error = e.Message;
             }
+
+            return false;
 
         }
     }
