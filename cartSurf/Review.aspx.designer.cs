@@ -11,52 +11,61 @@ namespace cartSurf
 {
 
 
-    public partial class Profile
+    public partial class Review
     {
 
         /// <summary>
-        /// Image control.
+        /// DataReview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image;
+        protected global::System.Web.UI.WebControls.DataList DataReview;
 
         /// <summary>
-        /// FileUploadControl control.
+        /// DropDownRating control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUploadControl;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownRating;
 
         /// <summary>
-        /// BtnChgPic control.
+        /// Validator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnChgPic;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator1;
 
         /// <summary>
-        /// StatusLabel control.
+        /// TbReview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label StatusLabel;
+        protected global::System.Web.UI.WebControls.TextBox TbReview;
 
         /// <summary>
-        /// ProfileContent control.
+        /// Validator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ProfileContent;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator2;
+
+        /// <summary>
+        /// BtnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnSave;
     }
 }

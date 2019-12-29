@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HeaderFooter.Master" AutoEventWireup="true" CodeBehind="ToShip.aspx.cs" Inherits="cartSurf.ToShip" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HeaderFooter.Master" AutoEventWireup="true" CodeBehind="ToReceive.aspx.cs" Inherits="cartSurf.ToReceive" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -53,7 +53,7 @@
                 </div>
 
 
-                <asp:DataList ID="ToShipData" runat="server" BackColor="White" BorderColor="Black" BorderWidth="1px" CellPadding="10" CellSpacing="20" Font-Bold="False" Font-Italic="False" Font-Names="Trebuchet MS" Font-Overline="False" Font-Size="Larger" Font-Strikeout="False" Font-Underline="False" ForeColor="Black" GridLines="Both" Height="71px" Width="1006px" HorizontalAlign="Center">
+                <asp:DataList ID="ToReceiveData" runat="server" BackColor="White" BorderColor="Black" BorderWidth="1px" CellPadding="10" CellSpacing="20" Font-Bold="False" Font-Italic="False" Font-Names="Trebuchet MS" Font-Overline="False" Font-Size="Larger" Font-Strikeout="False" Font-Underline="False" ForeColor="Black" GridLines="Both" Height="71px" Width="1006px" HorizontalAlign="Center">
                     <HeaderStyle Font-Bold="True" Font-Italic="False" Font-Names="Trebuchet MS" Font-Overline="False" Font-Size="Larger" Font-Strikeout="False" Font-Underline="False" ForeColor="Black" HorizontalAlign="Center" VerticalAlign="Top" />
                     <ItemStyle Font-Bold="False" Font-Italic="False" Font-Names="Trebuchet MS" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" />
                     <ItemTemplate>

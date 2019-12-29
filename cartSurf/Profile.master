@@ -8,13 +8,19 @@
             <div class="col-md-4 mx-auto">
                 <div class ="row" style="margin-top: 20px;">
                     <div class="col-md-12 mx-auto">
-                        <a href="#" style="color: black"><i class="far fa-user-circle fa-8x"></i></a>
+                        <asp:Image ID="Image" runat="server" Height="300px" Width="300px" />
                     </div>
+                    
                 </div>
 
                 <div class ="row" style="margin-top: 20px;">
                     <div class="col-md-12 mx-auto">
-                        <a href="#" style="color:  #0000EE;">Change Profile Picture</a>
+                        <asp:FileUpload ID="FileUploadControl" runat="server" accept=".png, .jpeg, .bmp, .jpg" />
+                        <br />
+                        <a><asp:Button ID="BtnChgPic" runat="server" Text="Upload" OnClick="BtnChgPic_Click" /></a>
+                        <br />
+                        <asp:Label ID="StatusLabel" runat="server" Text="" ForeColor="Red"></asp:Label>
+
                     </div>
                 </div>
           

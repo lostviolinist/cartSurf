@@ -1,4 +1,4 @@
-﻿<%@ Page Title="CartSurf - Online Shopping Platform" Language="C#" MasterPageFile="~/HeaderFooter.Master" AutoEventWireup="true" CodeBehind="ShoppingCart.aspx.cs" Inherits="cartSurf.ShoppingCart" %>
+﻿<%@ Page Title="CartSurf - Online Shopping Platform" Language="C#" MasterPageFile="~/HeaderFooter.Master" enableEventValidation="false" AutoEventWireup="true" CodeBehind="ShoppingCart.aspx.cs" Inherits="cartSurf.ShoppingCart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -28,12 +28,57 @@
                     <asp:Button ID="BtnGoShopping" runat="server" Text="Go Shopping" Visible="false" OnClick="BtnGoShopping_Click"/>
                 </div>
                 
+                <table id="gotItem" runat="server" class="text-center">
+                    <tr class="padding-class">
+                        <td style="width:20%">
+                            <h4 style="color: #FFFFFF;">Picture</h4>
+                        </td>
+                        <td style="width:20%">
+                            <h4>Product</h4>
+                        </td>
+                        <td style="width:20%">
+                            <h4>Variations</h4>
+                        </td>
+                        <td style="width:20%">
+                            <h4>Unit Price</h4>
+                        </td>
+                        <td style="width:20%">
+                            <h4>Quantity</h4>
+                        </td>
+                        <td style="width:20%; padding-right: 0;">
+                            <h4 style="color: #FFFFFF;">Delete</h4>
+                        </td>
+                    </tr>
+                </table>
+                <asp:DataList ID="DataListCart" runat="server" Height="28px" OnSelectedIndexChanged="DataListCart_SelectedIndexChanged" Width="645px" BorderColor="Black" GridLines="Both">
+                    <ItemTemplate>
+                        <table class="text-center">
 
-                <asp:GridView ID="cart_dataGridView" runat="server" DataKeyNames="ID" OnRowDeleting="cart_dataGridView_RowDeleting" OnRowCreated="cart_dataGridView_RowCreated">
-                    <Columns>
-                        <asp:CommandField ShowDeleteButton="True" />
-                    </Columns>
-                </asp:GridView>
+                            <tr class="padding-class">
+                                <td style="width:20%">
+                                    <asp:Image ID="Image2" ImageUrl=<%#Eval("ImageUrl") %> runat="server" />
+                                </td>
+                                <td style="width:20%">
+                                    <%#Eval("Product") %>
+                                </td>
+                                <td style="width:20%">
+                                    <%#Eval("Variations") %>
+                                </td>
+                                <td style="width:20%">
+                                    <%#Eval("UnitPrice") %>
+                                </td>
+                                <td style="width:20%">
+                                    <%#Eval("Quantity") %>
+                                </td>
+                                <td style="width:20%">
+                                    <asp:Button ID="BtnDelete" runat="server" Text="Delete" OnClick="deleteItem" CommandArgument= <%#Eval("ID") %>/>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </ItemTemplate>
+
+                </asp:DataList>
             </div>
 
             <%-- Order Summary --%>

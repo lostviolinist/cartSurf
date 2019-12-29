@@ -136,13 +136,14 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo2.png" />
     <Content Include="Images\logo_white.png" />
-    <Content Include="Images\profile icon.png" />
+    <Content Include="Images\profile_icon.png" />
     <Content Include="Images\review.png" />
     <Content Include="Images\sheep.png" />
     <Content Include="ItemPage.css" />
     <Content Include="MessagePage.aspx" />
     <Content Include="MessagePage.css" />
     <Content Include="MyAccount.css" />
+    <Content Include="Review.aspx" />
     <Content Include="shipAdd.js" />
     <Content Include="ShippingAdd.aspx" />
     <Content Include="ShippingAdd.css" />
@@ -152,7 +153,6 @@
     <Content Include="MyAccount.aspx" />
     <Content Include="SignUpSuccessful.aspx" />
     <Content Include="SignUpSuccessful.css" />
-    <Content Include="SignUp.css" />
     <Content Include="SignUp.aspx" />
     <Content Include="HeaderFooter.css" />
     <Content Include="Order.aspx" />
@@ -197,6 +197,8 @@
     <Content Include="SiteMaster.css" />
     <Content Include="Stepper.min.js" />
     <Content Include="MainPage.css" />
+    <Content Include="ToReceive.aspx" />
+    <Content Include="ToReview.aspx" />
     <Content Include="ToShip.aspx" />
     <Content Include="ToShip.css" />
     <Content Include="ViewSwitcher.ascx" />
@@ -269,6 +271,13 @@
       <DependentUpon>Profile.master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Review.aspx.cs">
+      <DependentUpon>Review.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Review.aspx.designer.cs">
+      <DependentUpon>Review.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ShippingAdd.aspx.cs">
       <DependentUpon>ShippingAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -310,6 +319,20 @@
     </Compile>
     <Compile Include="HeaderFooter.Master.designer.cs">
       <DependentUpon>HeaderFooter.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ToReceive.aspx.cs">
+      <DependentUpon>ToReceive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ToReceive.aspx.designer.cs">
+      <DependentUpon>ToReceive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ToReview.aspx.cs">
+      <DependentUpon>ToReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ToReview.aspx.designer.cs">
+      <DependentUpon>ToReview.aspx</DependentUpon>
     </Compile>
     <Compile Include="ToShip.aspx.cs">
       <DependentUpon>ToShip.aspx</DependentUpon>

@@ -14,7 +14,6 @@
 
     <div class="sign-body">
         <div class="container-sign" id="containerSign">
-            <%--Sign In Container--%>
 	        <div class="form-container sign-in-container">
 		       <div class="form">
 			        <h1>Sign in</h1>
@@ -41,4 +40,5 @@
 	        </div>
         </div>
     </div>   
+
 </asp:Content>

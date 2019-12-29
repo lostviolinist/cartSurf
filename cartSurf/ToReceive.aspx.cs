@@ -7,8 +7,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace cartSurf
-{    
-    public partial class ToShip : System.Web.UI.Page
+{
+    public partial class ToReceive : System.Web.UI.Page
     {
         Database db = new Database();
 
@@ -18,19 +18,19 @@ namespace cartSurf
             gotItem.Visible = false;
             empty.Visible = true;
 
-            if (db.gotToShip(Convert.ToInt32(Session["uid"])))
+            if (db.gotToReceive(Convert.ToInt32(Session["uid"])))
             {
                 gotItem.Visible = true;
                 empty.Visible = false;
             }
 
-            displayToShipItem(uid);
+            displayToReceiveItem(uid);
         }
 
-        protected void displayToShipItem(int uid)
+        protected void displayToReceiveItem(int uid)
         {
-            ToShipData.DataSource = db.GetToShip(uid);
-            ToShipData.DataBind();
+            ToReceiveData.DataSource = db.GetToReceive(uid);
+            ToReceiveData.DataBind();
         }
 
         protected void Unnamed1_Click(object sender, EventArgs e)

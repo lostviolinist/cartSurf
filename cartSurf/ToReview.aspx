@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HeaderFooter.Master" AutoEventWireup="true" CodeBehind="ToShip.aspx.cs" Inherits="cartSurf.ToShip" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HeaderFooter.Master" AutoEventWireup="true" CodeBehind="ToReview.aspx.cs" enableEventValidation="false"  Inherits="cartSurf.ToReview" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="ToShip.css" rel="stylesheet" type="text/css" />
 
@@ -33,7 +34,7 @@
                                 <h4>Seller</h4>
                             </td>
                             <td style="width:20%">
-                                <h4 style="font: #FE3939;">Picture</h4>      
+                                <h4 style="font: #FFFFFF;">Picture</h4>      
                             </td>
                             <td style="width:20%">
                                 <h4>Product</h4>
@@ -45,7 +46,7 @@
                                 <h4>Quantity</h4>
                             </td>
                             <td style="width:20%">
-                                <h4>Total</h4>
+                                <h4 style="color: #FE3939">Review</h4>
                             </td>
 
                         </tr>
@@ -53,7 +54,7 @@
                 </div>
 
 
-                <asp:DataList ID="ToShipData" runat="server" BackColor="White" BorderColor="Black" BorderWidth="1px" CellPadding="10" CellSpacing="20" Font-Bold="False" Font-Italic="False" Font-Names="Trebuchet MS" Font-Overline="False" Font-Size="Larger" Font-Strikeout="False" Font-Underline="False" ForeColor="Black" GridLines="Both" Height="71px" Width="1006px" HorizontalAlign="Center">
+                <asp:DataList ID="ToReviewData" runat="server" BackColor="White" BorderColor="Black" BorderWidth="1px" CellPadding="10" CellSpacing="20" Font-Bold="False" Font-Italic="False" Font-Names="Trebuchet MS" Font-Overline="False" Font-Size="Larger" Font-Strikeout="False" Font-Underline="False" ForeColor="Black" GridLines="Both" Height="71px" Width="1006px" HorizontalAlign="Center">
                     <HeaderStyle Font-Bold="True" Font-Italic="False" Font-Names="Trebuchet MS" Font-Overline="False" Font-Size="Larger" Font-Strikeout="False" Font-Underline="False" ForeColor="Black" HorizontalAlign="Center" VerticalAlign="Top" />
                     <ItemStyle Font-Bold="False" Font-Italic="False" Font-Names="Trebuchet MS" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" />
                     <ItemTemplate>
@@ -75,10 +76,10 @@
                                     <%#Eval("Quantity") %>
                                 </td>
                                 <td style="width:20%">
-                                    <%#Eval("Total") %>
+                                    <asp:Button ID="BtnReview" runat="server" Text="Review" OnClick="reviewItem" CommandArgument= <%#Eval("ID") %>/>
                                 </td>
-
                             </tr>
+
                         </table>
 
                     </ItemTemplate>

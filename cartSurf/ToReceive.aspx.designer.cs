@@ -11,52 +11,34 @@ namespace cartSurf
 {
 
 
-    public partial class Profile
+    public partial class ToReceive
     {
 
         /// <summary>
-        /// Image control.
+        /// empty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl empty;
 
         /// <summary>
-        /// FileUploadControl control.
+        /// gotItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUploadControl;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gotItem;
 
         /// <summary>
-        /// BtnChgPic control.
+        /// ToReceiveData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnChgPic;
-
-        /// <summary>
-        /// StatusLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label StatusLabel;
-
-        /// <summary>
-        /// ProfileContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ProfileContent;
+        protected global::System.Web.UI.WebControls.DataList ToReceiveData;
     }
 }

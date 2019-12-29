@@ -33,13 +33,22 @@ namespace cartSurf
         protected global::System.Web.UI.WebControls.Button BtnGoShopping;
 
         /// <summary>
-        /// cart_dataGridView control.
+        /// gotItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView cart_dataGridView;
+        protected global::System.Web.UI.HtmlControls.HtmlTable gotItem;
+
+        /// <summary>
+        /// DataListCart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList DataListCart;
 
         /// <summary>
         /// LbProduct control.

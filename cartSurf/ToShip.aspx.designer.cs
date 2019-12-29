@@ -15,6 +15,24 @@ namespace cartSurf
     {
 
         /// <summary>
+        /// empty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl empty;
+
+        /// <summary>
+        /// gotItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gotItem;
+
+        /// <summary>
         /// ToShipData control.
         /// </summary>
         /// <remarks>

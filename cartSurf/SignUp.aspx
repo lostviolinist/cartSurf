@@ -28,7 +28,6 @@
                         
 	        <div class="overlay-container">
 		        <div class="overlay">
-                    <%--Active when Sign Up Container is inactive--%>
 			        <div class="overlay-panel overlay-right">
 				        <h1>Welcome Back!</h1>
 				        <p>To keep connected with us please login with your personal info</p>

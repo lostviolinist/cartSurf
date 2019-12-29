@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -218,6 +219,60 @@ namespace cartSurf.Credentials
                 String error = e.Message;
             }
         }
+
+        //Get User's Profile Pic from database
+        public String getImage(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                 "SELECT UserProfilePic from Users WHERE UserID = @UID AND UserProfilePic IS NOT NULL", Conn);
+
+            Conn.Open();
+            cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            String image= "profile_icon.png";
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                //byte[] bytes = (byte[])ds.Tables[0].Rows[0][0];
+                //String strBase64 = Convert.ToBase64String(bytes);
+                //image = "data:Image;base64," + strBase64;
+                image = (String)ds.Tables[0].Rows[0][0];
+            }
+            
+            return image;
+        }
+
+        //UpdateImage
+        public void updateImage(int uid, String filename)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                    "update Users set UserProfilePic = @PP where UserID = @UID", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@PP", SqlDbType.VarChar, 100).Value = filename;
+                cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+                
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                String error = e.Message;
+            }
+        }
+
         public String GetProductName(int pid)
         {
             SqlCommand cmd = new SqlCommand(
@@ -490,7 +545,8 @@ namespace cartSurf.Credentials
         public DataSet CartInventory(int UID)
         {
             SqlCommand cmd = new SqlCommand(
-                "SELECT CartItems.CartItemID AS ID, Products.ProductName AS Product, Products.Variations AS Variations, Products.ProductUnitPrice AS UnitPrice, CartItems.Quantity AS Quantity " +
+                "SELECT CartItems.CartItemID AS ID, Products.ProductPic AS Picture, Products.ImageUrl AS ImageURL, Products.ProductName AS Product, " +
+                "Products.Variations AS Variations, Products.ProductUnitPrice AS UnitPrice, CartItems.Quantity AS Quantity " +
                 "FROM CartItems INNER JOIN Products ON CartItems.ProductID = Products.ProductID " +
                 "INNER JOIN ShoppingCarts ON CartItems.CartID = ShoppingCarts.CartID WHERE ShoppingCarts.UserID = @UID", Conn);
 
@@ -503,6 +559,36 @@ namespace cartSurf.Credentials
             ada.Fill(data);
 
             Conn.Close();
+
+            int height = 75;
+            int width = 75;
+
+
+            for (int i = 0; i < data.Tables[0].Rows.Count; ++i)
+            {
+
+                System.Drawing.Image OriginalImage;
+                MemoryStream ms = new MemoryStream();
+
+                // Stream / Write Image to Memory Stream from the Byte Array.
+                byte[] byteArray = (byte[])data.Tables[0].Rows[i][1];
+                System.Drawing.Image imThumbnailImage;
+                ms.Write(byteArray, 0, byteArray.Length);
+
+                OriginalImage = System.Drawing.Image.FromStream(ms);
+
+                // Shrink the Original Image to a thumbnail size.
+                imThumbnailImage = OriginalImage.GetThumbnailImage(width, height, null, IntPtr.Zero);
+
+                // Save Thumbnail to Memory Stream for Conversion to Byte Array.
+                MemoryStream myMS = new MemoryStream();
+                imThumbnailImage.Save(myMS, System.Drawing.Imaging.ImageFormat.Jpeg);
+                data.Tables[0].Rows[i][1] = myMS.ToArray();
+
+                byte[] bytes = (byte[])data.Tables[0].Rows[i][1];
+                String strBase64 = Convert.ToBase64String(bytes);
+                data.Tables[0].Rows[i][2] = "data:Image;base64," + strBase64;
+            }
 
             return data;
         }
@@ -707,7 +793,7 @@ namespace cartSurf.Credentials
             return productQuantity;
         }
 
-        public void removeFromCart(int uid)
+        public void removeAllFromCart(int uid)
         {
 
             int cid = getCartID(uid);
@@ -730,6 +816,32 @@ namespace cartSurf.Credentials
             {
                 String error = e.Message;
             }
+        }
+
+        public void DeleteItem(int uid, int pid)
+        {
+            int cid = getCartID(uid);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                    "DELETE FROM CartItems WHERE ProductID = @PID AND CartID = @CID", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+                cmd.Parameters.Add("@PID", SqlDbType.Int).Value = pid;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+            }
+            catch (Exception e)
+            {
+                String error = e.Message;
+            }
+
         }
 
         /*******************************Order Table**************************************/
@@ -768,7 +880,7 @@ namespace cartSurf.Credentials
             
             insertIntoOrderDetails(uid);
 
-            removeFromCart(uid);
+            removeAllFromCart(uid);
         }
 
         public void insertIntoOrder(int uid)
@@ -839,10 +951,43 @@ namespace cartSurf.Credentials
             }
         }
 
+        
+
+        /*******************************To Ship Status**************************************/
+        public Boolean gotToShip(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT OrderDetails.ProductID FROM OrderDetails INNER JOIN Orders ON Orders.OrderID = OrderDetails.OrderID " +
+                "WHERE OrderDetails.ItemStatus = @IS AND Orders.CustID = @UID", Conn);
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+            cmd.Parameters.Add("@IS", SqlDbType.VarChar, 100).Value = "ToShip";
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public DataSet GetToShip(int uid)
         {
             SqlCommand cmd = new SqlCommand(
-                "SELECT Users.Username AS Seller, Products.ProductName AS ProductName, Products.ProductUnitPrice AS UnitPrice, " +
+                "SELECT Users.Username AS Seller, Products.ProductName AS ProductName, Products.ProductPic as ProductPic, " +
+                "Products.ImageUrl as ImageUrl, Products.ProductUnitPrice AS UnitPrice, " +
                 "OrderDetails.Quantity AS Quantity, OrderDetails.ProductTotal AS Total " +
                 "FROM OrderDetails JOIN Orders ON Orders.OrderID = OrderDetails.OrderID " +
                 "JOIN Products ON Products.ProductID = OrderDetails.ProductID " +
@@ -860,11 +1005,350 @@ namespace cartSurf.Credentials
 
             Conn.Close();
 
+            int height = 75;
+            int width = 75;
+
+
+            for (int i = 0; i < data.Tables[0].Rows.Count; ++i)
+            {
+
+                System.Drawing.Image OriginalImage;
+                MemoryStream ms = new MemoryStream();
+
+                // Stream / Write Image to Memory Stream from the Byte Array.
+                byte[] byteArray = (byte[])data.Tables[0].Rows[i][2];
+                System.Drawing.Image imThumbnailImage;
+                ms.Write(byteArray, 0, byteArray.Length);
+
+                OriginalImage = System.Drawing.Image.FromStream(ms);
+
+                // Shrink the Original Image to a thumbnail size.
+                imThumbnailImage = OriginalImage.GetThumbnailImage(width, height, null, IntPtr.Zero);
+
+                // Save Thumbnail to Memory Stream for Conversion to Byte Array.
+                MemoryStream myMS = new MemoryStream();
+                imThumbnailImage.Save(myMS, System.Drawing.Imaging.ImageFormat.Jpeg);
+                data.Tables[0].Rows[i][2] = myMS.ToArray();
+
+                byte[] bytes = (byte[])data.Tables[0].Rows[i][2];
+                String strBase64 = Convert.ToBase64String(bytes);
+                data.Tables[0].Rows[i][3] = "data:Image;base64," + strBase64;
+            }
+
             return data;
         }
 
+        /*******************************To Receive Status**************************************/
+        public Boolean gotToReceive(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT OrderDetails.ProductID FROM OrderDetails INNER JOIN Orders ON Orders.OrderID = OrderDetails.OrderID " +
+                "WHERE OrderDetails.ItemStatus = @IS AND Orders.CustID = @UID", Conn);
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+            cmd.Parameters.Add("@IS", SqlDbType.VarChar, 100).Value = "ToReceive";
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public DataSet GetToReceive(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT Users.Username AS Seller, Products.ProductName AS ProductName, Products.ProductPic as ProductPic, " +
+                "Products.ImageUrl as ImageUrl, Products.ProductUnitPrice AS UnitPrice, " +
+                "OrderDetails.Quantity AS Quantity, OrderDetails.ProductTotal AS Total " +
+                "FROM OrderDetails JOIN Orders ON Orders.OrderID = OrderDetails.OrderID " +
+                "JOIN Products ON Products.ProductID = OrderDetails.ProductID " +
+                "JOIN Users ON Users.UserID = Products.SellerID " +
+                "WHERE CustID = @UID AND OrderDetails.ItemStatus = @IS", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = uid;
+            cmd.Parameters.Add("@IS", SqlDbType.VarChar).Value = "ToReceive";
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet data = new DataSet();
+            ada.Fill(data);
+
+            Conn.Close();
+
+            int height = 75;
+            int width = 75;
+
+
+            for (int i = 0; i < data.Tables[0].Rows.Count; ++i)
+            {
+
+                System.Drawing.Image OriginalImage;
+                MemoryStream ms = new MemoryStream();
+
+                // Stream / Write Image to Memory Stream from the Byte Array.
+                byte[] byteArray = (byte[])data.Tables[0].Rows[i][2];
+                System.Drawing.Image imThumbnailImage;
+                ms.Write(byteArray, 0, byteArray.Length);
+
+                OriginalImage = System.Drawing.Image.FromStream(ms);
+
+                // Shrink the Original Image to a thumbnail size.
+                imThumbnailImage = OriginalImage.GetThumbnailImage(width, height, null, IntPtr.Zero);
+
+                // Save Thumbnail to Memory Stream for Conversion to Byte Array.
+                MemoryStream myMS = new MemoryStream();
+                imThumbnailImage.Save(myMS, System.Drawing.Imaging.ImageFormat.Jpeg);
+                data.Tables[0].Rows[i][2] = myMS.ToArray();
+
+                byte[] bytes = (byte[])data.Tables[0].Rows[i][2];
+                String strBase64 = Convert.ToBase64String(bytes);
+                data.Tables[0].Rows[i][3] = "data:Image;base64," + strBase64;
+            }
+
+            return data;
+        }
+
+        /*******************************To Review Status**************************************/
+        public Boolean gotToReview(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT OrderDetails.ProductID FROM OrderDetails INNER JOIN Orders ON Orders.OrderID = OrderDetails.OrderID " +
+                "WHERE OrderDetails.ItemStatus = @IS AND Orders.CustID = @UID", Conn);
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+            cmd.Parameters.Add("@IS", SqlDbType.VarChar, 100).Value = "ToReview";
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public DataSet GetToReview(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT OrderDetails.OrderDetailID AS ID, Users.Username AS Seller, Products.ProductName AS ProductName, Products.ProductPic as ProductPic, " +
+                "Products.ImageUrl as ImageUrl, Products.ProductUnitPrice AS UnitPrice, " +
+                "OrderDetails.Quantity AS Quantity, OrderDetails.ProductTotal AS Total " +
+                "FROM OrderDetails JOIN Orders ON Orders.OrderID = OrderDetails.OrderID " +
+                "JOIN Products ON Products.ProductID = OrderDetails.ProductID " +
+                "JOIN Users ON Users.UserID = Products.SellerID " +
+                "WHERE CustID = @UID AND OrderDetails.ItemStatus = @IS", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = uid;
+            cmd.Parameters.Add("@IS", SqlDbType.VarChar).Value = "ToReview";
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet data = new DataSet();
+            ada.Fill(data);
+
+            Conn.Close();
+
+            int height = 75;
+            int width = 75;
+
+
+            for (int i = 0; i < data.Tables[0].Rows.Count; ++i)
+            {
+
+                System.Drawing.Image OriginalImage;
+                MemoryStream ms = new MemoryStream();
+
+                // Stream / Write Image to Memory Stream from the Byte Array.
+                byte[] byteArray = (byte[])data.Tables[0].Rows[i][3];
+                System.Drawing.Image imThumbnailImage;
+                ms.Write(byteArray, 0, byteArray.Length);
+
+                OriginalImage = System.Drawing.Image.FromStream(ms);
+
+                // Shrink the Original Image to a thumbnail size.
+                imThumbnailImage = OriginalImage.GetThumbnailImage(width, height, null, IntPtr.Zero);
+
+                // Save Thumbnail to Memory Stream for Conversion to Byte Array.
+                MemoryStream myMS = new MemoryStream();
+                imThumbnailImage.Save(myMS, System.Drawing.Imaging.ImageFormat.Jpeg);
+                data.Tables[0].Rows[i][3] = myMS.ToArray();
+
+                byte[] bytes = (byte[])data.Tables[0].Rows[i][3];
+                String strBase64 = Convert.ToBase64String(bytes);
+                data.Tables[0].Rows[i][4] = "data:Image;base64," + strBase64;
+            }
+
+            return data;
+        }
+
+        //get Review Item
+        public DataSet reviewItem(int odid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT Users.Username AS Seller, Products.ProductPic AS Picture, Products.ImageUrl AS ImageURL, Products.ProductName AS Product, " +
+                "Products.Variations AS Variations, Products.ProductUnitPrice AS UnitPrice, OrderDetails.Quantity AS Quantity " +
+                "FROM OrderDetails INNER JOIN Products ON Products.ProductID = OrderDetails.ProductID " +
+                "INNER JOIN Users ON Users.UserID = Products.SellerID WHERE OrderDetailID = @ODID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@ODID", SqlDbType.Int).Value = odid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet data = new DataSet();
+            ada.Fill(data);
+
+            Conn.Close();
+
+            int height = 75;
+            int width = 75;
+
+
+            for (int i = 0; i < data.Tables[0].Rows.Count; ++i)
+            {
+
+                System.Drawing.Image OriginalImage;
+                MemoryStream ms = new MemoryStream();
+
+                // Stream / Write Image to Memory Stream from the Byte Array.
+                byte[] byteArray = (byte[])data.Tables[0].Rows[i][1];
+                System.Drawing.Image imThumbnailImage;
+                ms.Write(byteArray, 0, byteArray.Length);
+
+                OriginalImage = System.Drawing.Image.FromStream(ms);
+
+                // Shrink the Original Image to a thumbnail size.
+                imThumbnailImage = OriginalImage.GetThumbnailImage(width, height, null, IntPtr.Zero);
+
+                // Save Thumbnail to Memory Stream for Conversion to Byte Array.
+                MemoryStream myMS = new MemoryStream();
+                imThumbnailImage.Save(myMS, System.Drawing.Imaging.ImageFormat.Jpeg);
+                data.Tables[0].Rows[i][1] = myMS.ToArray();
+
+                byte[] bytes = (byte[])data.Tables[0].Rows[i][1];
+                String strBase64 = Convert.ToBase64String(bytes);
+                data.Tables[0].Rows[i][2] = "data:Image;base64," + strBase64;
+            }
+
+            return data;
+        }
+
+        //Write Review
+        public void WriteReview(int productID, int orderDetailID, String comment, int rating)
+        {
+
+            SqlCommand cmd = new SqlCommand(
+                           "Insert into Reviews (ProductID, OrderDetailID, Comment, Rating)" +
+                           " Values (@productID, @orderDetailID, @comment, @rating); ", Conn);
+
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+
+            cmd.Parameters.Add("@productID", SqlDbType.Int).Value = productID;
+            cmd.Parameters.Add("@orderDetailID", SqlDbType.Int).Value = orderDetailID;
+            cmd.Parameters.Add("@comment", SqlDbType.VarChar, 500).Value = comment;
+            cmd.Parameters.Add("@rating", SqlDbType.Int).Value = rating;
+
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+            }
+            catch (Exception e)
+            {
+                String error = e.Message;
+
+            }
+
+            UpdateStatus(orderDetailID);
+        }
+
+        public void UpdateStatus(int odid)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                "Update OrderDetails SET ItemStatus = @IS WHERE OrderDetailID = @ODID", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@ODID", SqlDbType.Int, 100).Value = odid;
+                cmd.Parameters.Add("@IS", SqlDbType.VarChar, 100).Value = "Completed";
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+            }
+            catch (Exception e)
+            {
+                String error = e.Message;
+            }        
+        }
+
+        public int getProductID(int odid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT ProductID FROM OrderDetails WHERE OrderDetailID = @ODID", Conn);
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@ODID", SqlDbType.Int, 100).Value = odid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            int pid = -1;
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                pid = (int)ds.Tables[0].Rows[0][0];
+            }
+
+            return pid;
+        }
     }
-
-
 
 }

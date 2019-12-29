@@ -20,12 +20,8 @@ namespace cartSurf
             //    Response.Redirect("SignUp.aspx?postbackURL=ShoppingCart");
             //}
             int UID = Convert.ToInt32(Session["uid"]);
-
-            if (!IsPostBack)
-            {
-                Load_Cart_Details(UID);
-            }
-
+            gotItem.Visible = false;
+            
             //Load the shopping cart table
             GridView_Data_Bind();
 
@@ -34,23 +30,16 @@ namespace cartSurf
             
         }
 
-        protected void Load_Cart_Details(int uid)
-        {
-
-        }
-
         //Shopping Cart Table
         protected void GridView_Data_Bind()
         {
             //Clear tables before inserting
-            cart_dataGridView.DataSource = null;
+            DataListCart.DataSource = null;
 
             int uid = Convert.ToInt32(Session["uid"]);
 
-            cart_dataGridView.AutoGenerateColumns =  true;
-            cart_dataGridView.DataSource = db.CartInventory(uid).Tables[0].DefaultView;
-                       
-            cart_dataGridView.DataBind();
+            DataListCart.DataSource = db.CartInventory(uid).Tables[0].DefaultView;            
+            DataListCart.DataBind();
 
             //cart_dataGridView.HeaderRow.Cells[0].Attributes["Width"] = "100px";
 
@@ -63,15 +52,15 @@ namespace cartSurf
         }
 
         //Deleting item from cart
-        protected void cart_dataGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            int cid = Convert.ToInt32(cart_dataGridView.DataKeys[e.RowIndex].Value);
+        //protected void cart_dataGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        //{
+        //    int cid = Convert.ToInt32(cart_dataGridView.DataKeys[e.RowIndex].Value);
 
-            db.DeleteItems(cid);
+        //    db.DeleteItems(cid);
 
-            //Refresh after updating            
-            GridView_Data_Bind();
-        }
+        //    //Refresh after updating            
+        //    GridView_Data_Bind();
+        //}
         
         protected void showSubtotal(int uid)
         {
@@ -80,8 +69,9 @@ namespace cartSurf
             {
                 //Get CartID using UID
                 int cartID = db.getCartID(uid);
+                gotItem.Visible = true;
 
-               List<List<int>> productQuantity = db.getCartItemDetails(cartID);
+                List<List<int>> productQuantity = db.getCartItemDetails(cartID);
 
                 int noOfItem = db.getRowNum(cartID);
 
@@ -116,6 +106,7 @@ namespace cartSurf
                 LbShipping.Text = "0.00";
                 LbNoItem.Visible = true;
                 BtnGoShopping.Visible = true;
+                gotItem.Visible = false;
             }
         }
 
@@ -131,6 +122,19 @@ namespace cartSurf
             
         }
 
+        protected void deleteItem(object sender, EventArgs e)
+        {
+            int uid = Convert.ToInt32(Session["uid"]);
+
+            Button btnDelete = sender as Button;
+
+            int pid = Convert.ToInt32(btnDelete.CommandArgument);
+
+            db.DeleteItem(uid, pid);
+
+            GridView_Data_Bind();
+        }
+
         //Continue Shopping button
         protected void BtnShopping_Click(object sender, EventArgs e)
         {
@@ -141,5 +145,12 @@ namespace cartSurf
         {
             Response.Redirect("MainPage.aspx");
         }
+
+        protected void DataListCart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

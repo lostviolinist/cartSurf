@@ -45,19 +45,6 @@
     margin-right: 0;
 }
 
-/*********************Shopping Cart*********************/
-.padding-class
-{
-    width:100%; 
-    padding-bottom: 10px;
-    
-}
-
-.h4 {
-    font-weight: 800;
-}
-
-
 /*********************Order Summary*********************/
 #order-summary {
     background-color: #FFFFFF;
@@ -80,6 +67,3 @@
 #total {
     font-weight: bold;
 }
-
-
-
