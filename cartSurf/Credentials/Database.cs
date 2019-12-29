@@ -314,51 +314,7 @@ namespace cartSurf.Credentials
             return UnitPrice;
         }
 
-        public String GetProductName(int pid)
-        {
-            SqlCommand cmd = new SqlCommand(
-                "SELECT ProductName from Products WHERE ProductID = @PID", Conn);
-
-            Conn.Open();
-            cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            ada.Fill(ds);
-
-            Conn.Close();
-
-
-            String productName = "";
-
-            if (ds.Tables[0].Rows.Count != 0)
-            {
-                productName = (String)ds.Tables[0].Rows[0][0];
-            }
-
-            return productName;
-        }
-
-        public DataSet GetProducts()
-        {
-            SqlCommand cmd = new SqlCommand(
-               "SELECT * from Products", Conn);
-
-            Conn.Open();
-
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            ada.Fill(ds);
-
-            Conn.Close();
-
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                byte[] bytes = (byte[])ds.Tables[0].Rows[i][6];
-                string strBase64 = Convert.ToBase64String(bytes);
-                ds.Tables[0].Rows[i][10] = "data:Image;base64," + strBase64;
-            }
-            return ds;
-        }
+        
 
         /*******************************Address Table**************************************/
 

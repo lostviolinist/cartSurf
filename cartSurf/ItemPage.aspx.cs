@@ -37,6 +37,24 @@ namespace cartSurf
         {
             Image2.ImageUrl= db.GetItem(Int32.Parse(Request.QueryString["param"])).Tables[0].Rows[0][10].ToString();
         }
+        public void BuyButton_Click(object sender, EventArgs e)
+        {
+            int uid = Convert.ToInt32(Session["uid"]);
+            int pid = Int32.Parse(Request.QueryString["param"]);
+            int quantity = Int32.Parse(Quantity.Text); 
+            db.InsertItem(uid,  pid,  quantity);
+            Response.Redirect("ShoppingCart.aspx");
 
+        }
+
+        public void CartButton_Click(object sender, EventArgs e)
+        {
+            int uid = Convert.ToInt32(Session["uid"]);
+            int pid = Int32.Parse(Request.QueryString["param"]);
+            int quantity = Int32.Parse(Quantity.Text);
+            db.InsertItem(uid, pid, quantity);
+            
+
+        }
     }
 }

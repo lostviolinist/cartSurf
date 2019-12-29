@@ -105,10 +105,13 @@
                     <div class="row">
                         <div class="flex-container">
                             <div>
-                               <button class="w3-button w3-white w3-border">Add to Cart</button>
+                                <asp:Button ID="CartButton" runat="server" Text="Add to Cart"  OnClick="CartButton_Click"/>
+
+                               <%--<button class="w3-button w3-white w3-border">Add to Cart</button>--%>
                             </div>
                             <div>
-                                <button class="w3-button w3-border" style="background-color:#FE3939">Buy Now</button>
+                                <asp:Button ID="BuyButton" runat="server" Text="Buy Now"  OnClick="BuyButton_Click"/>
+                                <%--<button class="w3-button w3-border" style="background-color:#FE3939">Buy Now</button>--%>
                             </div>
                         </div>
                     </div>
@@ -116,7 +119,7 @@
             </div>
         </div>
     </div>
-         </asp:DataList>
+        <%--</asp:DataList>--%>
     <div class="container shop-details">
         <div class="row">
             <div class="flex-container">
