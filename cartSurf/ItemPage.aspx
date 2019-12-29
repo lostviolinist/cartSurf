@@ -7,16 +7,18 @@
     <link href="ItemPage.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-     <asp:DataList ID="DataList1" RepeatDirection="Horizontal" runat="server">
+     <%--<asp:DataList ID="DataList1" RepeatDirection="Horizontal" runat="server">--%>
     <div class="container item-details">
         <div class="row">
             <div class="col-md-5">
                 <div class="row">
                     <div style="margin-top: 5px;">
-                        <img src="Images/Image%202.png" style="width:400px; height:400px;">
+                        <asp:Image ID="Image2"  runat="server" Width="300px" Height="300px" />
+
+                        
                     </div>
                 </div>
-                <div class="col-md-5" style="padding-left: 0px; margin-top: 2px;">
+                <%--<div class="col-md-5" style="padding-left: 0px; margin-top: 2px;">
                     <div class="flex-container">
                         <div>
                             <img src="Images/sheep.png" />
@@ -39,21 +41,21 @@
 
                         </div>
                     </div>
-                </div>
+                </div>--%>
 
             </div>
             <div class="col-md-7">
                 <div>
-                    <h4>floral korean women ladies chiffon long sleeve summer maxi dress ready stock new</h4>
+                    <h4><asp:Label ID ="ProductName" Text="" runat="server" ForeColor="Black"></asp:Label> </h4>
                 </div>
                 
                 <div>
                 </div>
                 <div>
-                    RM29.00 
+                   RM <asp:Label ID ="ProductPrice" Text="" runat="server" ForeColor="Black"></asp:Label> 
                 </div>
                 <br>
-                <div class="row">
+                <%--<div class="row">
                     <div class="col-md-4">
                         Variation
                     </div>
@@ -78,14 +80,15 @@
                         
                     </div>
                     </div>
-                </div>
+                </div>--%>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Quantity
                     </div>
                     <div class="col-md-8">
-                        <input type="number" name="quantity" value="1">
+                        <asp:TextBox ID="Quantity" TextMode="Number" runat="server" Text="1"></asp:TextBox>
+                        
                     </div>
                 </div>
                 <div class="row">
@@ -93,7 +96,7 @@
                         Stock:
                     </div>
                     <div class="col-md-8">
-                        30
+                        <asp:Label ID ="StockNumber" Text="" runat="server" ForeColor="Black"></asp:Label>
                     </div>
                 </div>
                
@@ -102,10 +105,13 @@
                     <div class="row">
                         <div class="flex-container">
                             <div>
-                               <button class="w3-button w3-white w3-border">Add to Cart</button>
+                                <asp:Button ID="CartButton" runat="server" Text="Add to Cart"  OnClick="CartButton_Click"/>
+
+                               <%--<button class="w3-button w3-white w3-border">Add to Cart</button>--%>
                             </div>
                             <div>
-                                <button class="w3-button w3-border" style="background-color:#FE3939">Buy Now</button>
+                                <asp:Button ID="BuyButton" runat="server" Text="Buy Now"  OnClick="BuyButton_Click"/>
+                                <%--<button class="w3-button w3-border" style="background-color:#FE3939">Buy Now</button>--%>
                             </div>
                         </div>
                     </div>
@@ -113,7 +119,7 @@
             </div>
         </div>
     </div>
-         </asp:DataList>
+        <%--</asp:DataList>--%>
     <div class="container shop-details">
         <div class="row">
             <div class="flex-container">

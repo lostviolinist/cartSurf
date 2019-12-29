@@ -13,16 +13,26 @@ namespace cartSurf
         Database db = new Database();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            DataList1.DataSource = db.GetProducts();
-            DataList1.DataBind();
+            if (!IsPostBack)
+            {
+                DataList1.DataSource = db.GetProducts();
+                DataList1.DataBind();
+                DataList2.DataBind();
+            }
+           
 
         }
 
         public void Image1_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("ItemPage.aspx?param=ProductID");
+            ImageButton ib = sender as ImageButton;
+            Response.Redirect("ItemPage.aspx?param="+ib.CommandArgument);
 
+        }
+
+        public void imagebutton(String productID)
+        {
+            Response.Redirect("ItemPage.aspx?param=" + productID);
         }
     }
 }

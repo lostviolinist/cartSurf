@@ -218,6 +218,75 @@ namespace cartSurf.Credentials
                 String error = e.Message;
             }
         }
+        public String GetProductName(int pid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT ProductName from Products WHERE ProductID = @PID", Conn);
+
+            Conn.Open();
+            cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+
+            String productName = "";
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                productName = (String)ds.Tables[0].Rows[0][0];
+            }
+
+            return productName;
+        }
+        public DataSet GetProducts()
+        {
+            SqlCommand cmd = new SqlCommand(
+               "SELECT * from Products", Conn);
+
+            Conn.Open();
+
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                byte[] bytes = (byte[])ds.Tables[0].Rows[i][6];
+                string strBase64 = Convert.ToBase64String(bytes);
+                ds.Tables[0].Rows[i][10] = "data:ProductPic;base64," + strBase64;
+
+            }
+            return ds;
+        }
+        /*******************************Item Page**************************************/
+        public DataSet GetItem(int param)
+        {
+            SqlCommand cmd = new SqlCommand(
+               "SELECT * from Products WHERE ProductID = @param", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@param", SqlDbType.Int).Value = param;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet db = new DataSet();
+            ada.Fill(db);
+
+            Conn.Close();
+
+            for (int i = 0; i < db.Tables[0].Rows.Count; i++)
+            {
+                byte[] bytes = (byte[])db.Tables[0].Rows[i][6];
+                string strBase64 = Convert.ToBase64String(bytes);
+                db.Tables[0].Rows[i][10] = "data:ProductPic;base64," + strBase64;
+
+            }
+            return db;
+        }
 
         /*******************************Product Table**************************************/
         public Decimal getProductPrice(int pid)
@@ -245,51 +314,7 @@ namespace cartSurf.Credentials
             return UnitPrice;
         }
 
-        public String GetProductName(int pid)
-        {
-            SqlCommand cmd = new SqlCommand(
-                "SELECT ProductName from Products WHERE ProductID = @PID", Conn);
-
-            Conn.Open();
-            cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            ada.Fill(ds);
-
-            Conn.Close();
-
-
-            String productName = "";
-
-            if (ds.Tables[0].Rows.Count != 0)
-            {
-                productName = (String)ds.Tables[0].Rows[0][0];
-            }
-
-            return productName;
-        }
-
-        public DataSet GetProducts()
-        {
-            SqlCommand cmd = new SqlCommand(
-               "SELECT * from Products", Conn);
-
-            Conn.Open();
-
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            ada.Fill(ds);
-
-            Conn.Close();
-
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                byte[] bytes = (byte[])ds.Tables[0].Rows[i][6];
-                string strBase64 = Convert.ToBase64String(bytes);
-                ds.Tables[0].Rows[i][10] = "data:Image;base64," + strBase64;
-            }
-            return ds;
-        }
+        
 
         /*******************************Address Table**************************************/
 

@@ -1,6 +1,7 @@
-﻿<%@ Page Title="Main Page" Language="C#" MasterPageFile="~/HeaderFooter.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="cartSurf.MainPage" %>
+﻿<%@ Page Title="Main Page" Language="C#" MasterPageFile="~/HeaderFooter.Master" AutoEventWireup="true" CodeBehind="MainPage.aspx.cs" Inherits="cartSurf.MainPage"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -59,7 +60,9 @@
         <h3>New picks</h3>
     </div>
 
-    <div class=" flex-container">
+    
+       
+
        
         <div class=" flex-container" style="overflow-x:scroll; width:inherit">
        
@@ -69,7 +72,42 @@
                 <table>
                     <tr>
                         <td>
-                           <asp:ImageButton ID="Image1" ImageUrl=<%#Eval("ImageUrl")%>  runat="server" />
+                           <asp:ImageButton ID="Image1" ImageUrl=<%#Eval("ImageUrl")%>  CommandArgument=<%#Eval("ProductID")%> runat="server" OnClick="Image1_Click" Width="120px"  Height="120px"/>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%#Eval("ProductName") %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%#Eval("ProductUnitPrice") %>
+                        </td>
+                    </tr>
+
+                </table>
+
+
+            </ItemTemplate>
+
+        </asp:DataList>
+      </div>
+    
+    <div style="margin-left:25px;color:#FE3939">
+        <h3>Recently viewed</h3>
+    </div>
+
+    <div class=" flex-container" style="overflow-x:scroll; width:inherit">
+       
+
+        <asp:DataList ID="DataList2" RepeatDirection="Horizontal" runat="server">
+            <ItemTemplate>
+                <table style="margin:40px; " >
+                    <tr>
+                        <td>
+                           <asp:ImageButton ID="Image1" ImageUrl=<%#Eval("ImageUrl")%>  CommandArgument=<%#Eval("ProductID")%> runat="server" OnClick="Image1_Click" Width="120px"  Height="120px" />
 
                         </td>
                     </tr>
@@ -85,127 +123,7 @@
             </ItemTemplate>
 
         </asp:DataList>
-      <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName2" Text="" runat="server" ForeColor="Black"></asp:Label> 
-          
-          
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName3" Text="" runat="server" ForeColor="Black"></asp:Label>
-          
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName4" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName5" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName6" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName7" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName8" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName9" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-
-         
-
-        
-    </div>
-
-    <div style="margin-left:25px;color:#FE3939">
-        <h3>Recently viewed</h3>
-    </div>
-
-    <div class=" flex-container">
-       
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName10" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-      <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName11" Text="" runat="server" ForeColor="Black"></asp:Label> 
-          
-          
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName12" Text="" runat="server" ForeColor="Black"></asp:Label>
-          
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName13" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName14" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName15" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName16" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName17" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-        <div>
-            <a href="ItemPage.aspx"><img src=""/></a>
-            <br>
-            <asp:Label ID="LbProductName18" Text="" runat="server" ForeColor="Black"></asp:Label>
-           
-        </div>
-
-         
-
-        
-    </div>
+      </div>
 
 
         
