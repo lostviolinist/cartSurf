@@ -7,59 +7,48 @@
 
     <link href="MainPage.css" rel="stylesheet" type="text/css" />
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 menu">
-                <div class="row menu">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Fashion</p></a>
-                    </div>
-                </div>
+    <div class="container" style="margin-left:250px;">
+         
+        
 
-                <div class="row">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Electronic</p></a>
-                    </div>
-                </div>
+        <table>
+            <tr>
+            <td>
+           
+            <asp:DataList ID="DataList6" RepeatDirection="Vertical" runat="server">
+            <ItemTemplate>
+                <table>
+                    <tr>
+                        <td style="border:1px solid #000000; padding:17px; margin:35px; width: 150px;">
+                         <asp:LinkButton ID="CategoryName" Text='<%#Eval("CategoryName") %>' CommandArgument=<%#Eval("CategoryID")%> OnClick="Category_Click" runat="server"/>
 
-                <div class="row">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Furniture</p></a>
-                    </div>
-                </div>
+                        </td>
+                    </tr>
+                    </table>
+                </ItemTemplate>
+                </asp:DataList>
+                </td>
+                
 
-                <div class="row">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Baby</p></a>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Car Appliances</p></a>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 menu_items">
-                        <a href="CategoryPage.aspx"><p>Health and Beauty</p></a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-9">
+           <td>
                 <img src="Images/animations-e-commerce.png" id="banner" />
-            </div>
-
-        </div>
-
-
+            </td>
+                </tr>
+            </table>
     </div>
-    <div style="margin-left:25px; color:#FE3939">
+
+            
+
+        
+                   
+
+
+    
+    <div style="margin-left:35px; color:#FE3939">
         <h3>New picks</h3>
     </div>
-
+           
     
        
 
@@ -69,21 +58,21 @@
 
         <asp:DataList ID="DataList1" RepeatDirection="Horizontal" runat="server">
             <ItemTemplate>
-                <table>
+                <table style="margin:50px;  border:1px solid #FE3939; background-color:white;">
                     <tr>
-                        <td>
+                        <td style="padding:20px;">
                            <asp:ImageButton ID="Image1" ImageUrl=<%#Eval("ImageUrl")%>  CommandArgument=<%#Eval("ProductID")%> runat="server" OnClick="Image1_Click" Width="120px"  Height="120px"/>
 
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="padding:10px;">
                             <%#Eval("ProductName") %>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <%#Eval("ProductUnitPrice") %>
+                        <td style="padding:10px;">
+                            RM <%#Eval("ProductUnitPrice") %>
                         </td>
                     </tr>
 
@@ -95,35 +84,7 @@
         </asp:DataList>
       </div>
     
-    <div style="margin-left:25px;color:#FE3939">
-        <h3>Recently viewed</h3>
-    </div>
-
-    <div class=" flex-container" style="overflow-x:scroll; width:inherit">
-       
-
-        <asp:DataList ID="DataList2" RepeatDirection="Horizontal" runat="server">
-            <ItemTemplate>
-                <table style="margin:40px; " >
-                    <tr>
-                        <td>
-                           <asp:ImageButton ID="Image1" ImageUrl=<%#Eval("ImageUrl")%>  CommandArgument=<%#Eval("ProductID")%> runat="server" OnClick="Image1_Click" Width="120px"  Height="120px" />
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <%#Eval("ProductName") %>
-                        </td>
-                    </tr>
-
-                </table>
-
-
-            </ItemTemplate>
-
-        </asp:DataList>
-      </div>
+    
 
 
         

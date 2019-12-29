@@ -263,6 +263,66 @@ namespace cartSurf.Credentials
             }
             return ds;
         }
+
+        public DataSet GetCategory(int param)
+        {
+            SqlCommand cmd = new SqlCommand(
+               "SELECT * from Categories WHERE CategoryID = @param", Conn);
+
+            Conn.Open();
+            cmd.Parameters.Add("@param", SqlDbType.Int).Value = param;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            
+            return ds;
+        }
+        public DataSet GetAllCategory()
+        {
+            SqlCommand cmd = new SqlCommand(
+               "SELECT * from Categories", Conn);
+
+            Conn.Open();
+
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+
+            return ds;
+        }
+
+        /*******************************CategoryPage**************************************/
+        public DataSet GetCategoryItem(int param)
+        {
+            SqlCommand cmd = new SqlCommand(
+               "SELECT * from Products WHERE CategoryID = @param", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@param", SqlDbType.Int).Value = param;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet db = new DataSet();
+            ada.Fill(db);
+
+            Conn.Close();
+
+            for (int i = 0; i < db.Tables[0].Rows.Count; i++)
+            {
+                byte[] bytes = (byte[])db.Tables[0].Rows[i][6];
+                string strBase64 = Convert.ToBase64String(bytes);
+                db.Tables[0].Rows[i][10] = "data:ProductPic;base64," + strBase64;
+
+            }
+            return db;
+        }
+
+
         /*******************************Item Page**************************************/
         public DataSet GetItem(int param)
         {
@@ -285,6 +345,52 @@ namespace cartSurf.Credentials
                 db.Tables[0].Rows[i][10] = "data:ProductPic;base64," + strBase64;
 
             }
+            return db;
+        }
+
+        public String GetSellerName(int sid)
+        {
+            SqlCommand cmd = new SqlCommand(
+               "SELECT Username from Users where UserID = @sellerID", Conn);
+
+            Conn.Open();
+            cmd.Parameters.Add("@SellerID", SqlDbType.Int, 100).Value = sid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+            String SellerName = "";
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                SellerName = (String)ds.Tables[0].Rows[0][0];
+            }
+
+            return SellerName;
+        }
+
+        public DataSet GetSeller(int sid)
+        {
+            SqlCommand cmd = new SqlCommand(
+               "SELECT * from Seller WHERE SellerID = @sellerID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@sellerID", SqlDbType.Int).Value = sid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet db = new DataSet();
+            ada.Fill(db);
+
+            Conn.Close();
+
+            //for (int i = 0; i < db.Tables[0].Rows.Count; i++)
+            //{
+            //    byte[] bytes = (byte[])db.Tables[0].Rows[i][6];
+            //    string strBase64 = Convert.ToBase64String(bytes);
+            //    db.Tables[0].Rows[i][10] = "data:ProductPic;base64," + strBase64;
+
+            //}
             return db;
         }
 
@@ -314,7 +420,7 @@ namespace cartSurf.Credentials
             return UnitPrice;
         }
 
-        
+
 
         /*******************************Address Table**************************************/
 
@@ -362,7 +468,7 @@ namespace cartSurf.Credentials
 
             if (ds.Tables[0].Rows.Count != 0)
             {
-                for(int i = 0; i < 9; i++)
+                for (int i = 0; i < 9; i++)
                 {
                     if (i != 5)
                     {
@@ -376,7 +482,7 @@ namespace cartSurf.Credentials
             return addDetails;
         }
 
-        public Boolean insertAdd(String name, String add1, String add2, String add3, String city, int code, string state, 
+        public Boolean insertAdd(String name, String add1, String add2, String add3, String city, int code, string state,
             String country, string phone, int uid)
         {
             try
@@ -484,7 +590,7 @@ namespace cartSurf.Credentials
                 return true;
             }
             else return false;
-            
+
         }
 
         public DataSet CartInventory(int UID)
@@ -534,9 +640,9 @@ namespace cartSurf.Credentials
         public void InsertItem(int uid, int pid, int quantity)
         {
 
-            if(!gotCart(uid))
+            if (!gotCart(uid))
             {
-                addShoppingCart(uid);                
+                addShoppingCart(uid);
             }
 
             int cid = getCartID(uid);
@@ -570,7 +676,7 @@ namespace cartSurf.Credentials
         {
             SqlCommand cmd = new SqlCommand(
                 "SELECT CartID FROM ShoppingCarts WHERE UserID = @UID", Conn);
-            
+
             Conn.Open();
 
             cmd.Parameters.Add("@UID", SqlDbType.Int).Value = uid;
@@ -643,7 +749,7 @@ namespace cartSurf.Credentials
                 string error = e.Message;
             }
         }
-        
+
         //Get num of items in the cart
         public int getRowNum(int CID)
         {
@@ -763,9 +869,9 @@ namespace cartSurf.Credentials
 
         }
         public void checkOut(int uid)
-        {            
+        {
             insertIntoOrder(uid);
-            
+
             insertIntoOrderDetails(uid);
 
             removeFromCart(uid);
@@ -785,7 +891,7 @@ namespace cartSurf.Credentials
 
                 cmd.Parameters.Add("@UID", SqlDbType.VarChar, 100).Value = uid;
                 cmd.Parameters.Add("@Date", SqlDbType.DateTime, 100).Value = DateTime.Now;
-                
+
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
 
@@ -825,7 +931,7 @@ namespace cartSurf.Credentials
                     cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
                     cmd.Parameters.Add("@Quantity", SqlDbType.Int, 100).Value = Quantity;
                     cmd.Parameters.Add("@Total", SqlDbType.Decimal, 100).Value = total;
-                    cmd.Parameters.Add("@Status", SqlDbType.VarChar, 100).Value = "ToShip";                    
+                    cmd.Parameters.Add("@Status", SqlDbType.VarChar, 100).Value = "ToShip";
 
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
@@ -863,10 +969,233 @@ namespace cartSurf.Credentials
             return data;
         }
 
+        public List<List<String>> GetMessageBuyerName(int sellerID)
+        {
+            SqlCommand cmd = new SqlCommand(
+               "select * from Message where ReceiverID = @sellerID or SenderID = @sellerID", Conn);
+
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@sellerID", SqlDbType.VarChar, 100).Value = sellerID;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+            Console.WriteLine("ds table count" + ds.Tables[0].Rows.Count);
+            List<List<String>> result = new List<List<string>>();
+            List<String> added = new List<String>();
+
+
+
+            if (ds != null)
+            {
+                for (int i = ds.Tables[0].Rows.Count - 1; i >= 0; i--)
+                {
+                    Console.WriteLine("for loop tsting" + i);
+                    if ((int)ds.Tables[0].Rows[i][1] == sellerID)
+                    {
+                        if (!added.Contains(GetUsername((int)ds.Tables[0].Rows[i][2])))
+                        {
+                            List<String> temp = new List<string>();
+                            temp.Add(GetUsername((int)ds.Tables[0].Rows[i][2]));
+                            added.Add(GetUsername((int)ds.Tables[0].Rows[i][2]));
+                            temp.Add((String)ds.Tables[0].Rows[i][3]);
+                            temp.Add(ds.Tables[0].Rows[i][4].ToString());
+                            result.Add(temp);
+                        }
+                    }
+                    else
+                    {
+                        if (!added.Contains(GetUsername((int)ds.Tables[0].Rows[i][1])))
+                        {
+                            List<String> temp = new List<string>();
+                            temp.Add(GetUsername((int)ds.Tables[0].Rows[i][1]));
+                            added.Add(GetUsername((int)ds.Tables[0].Rows[i][1]));
+                            temp.Add((String)ds.Tables[0].Rows[i][3]);
+                            temp.Add(((DateTime)ds.Tables[0].Rows[i][4]).ToString());
+                            result.Add(temp);
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("result count" + result.Count);
+            return result;
+        }
+
+        public List<List<String>> GetMessages(int sender, int receiver)
+        {
+            List<List<String>> result = new List<List<String>>();
+
+            SqlCommand cmd = new SqlCommand(
+               "select * from Message where (ReceiverID = @receiver AND SenderID = @sender) or (ReceiverID = @sender AND SenderID = @receiver);", Conn);
+
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@receiver", SqlDbType.VarChar, 100).Value = receiver;
+            cmd.Parameters.Add("@sender", SqlDbType.VarChar, 100).Value = sender;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            if (ds != null)
+            {
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    List<String> temp = new List<string>();
+                    if (ds.Tables[0].Rows[i][1].ToString().Equals(receiver.ToString()))
+                    {
+                        temp.Add("0");
+                        temp.Add(ds.Tables[0].Rows[i][3].ToString());
+                    }
+                    else
+                    {
+                        temp.Add("1");
+                        temp.Add(ds.Tables[0].Rows[i][3].ToString());
+                    }
+                    result.Add(temp);
+                }
+            }
+            return result;
+        }
+
+        public String GetUsername(int UserID)
+        {
+            SqlCommand cmd = new SqlCommand(
+               "select Username from Users where UserID = @UserID", Conn);
+
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UserID", SqlDbType.VarChar, 100).Value = UserID;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            String result = "";
+
+            if (ds != null)
+            {
+                result = (String)ds.Tables[0].Rows[0][0];
+            }
+
+            return result;
+        }
+
+        public void sendMessage(int sender, int receiver, String message)
+        {
+            SqlCommand cmd = new SqlCommand(
+               "Insert into Message (SenderID, ReceiverID, Message, SendDateTime)" +
+               " Values (@senderID, @receiverID, @message, @sendDateTime); ", Conn);
+
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+
+            cmd.Parameters.Add("@senderID", SqlDbType.Int).Value = sender;
+            cmd.Parameters.Add("@receiverID", SqlDbType.Int).Value = receiver;
+            cmd.Parameters.Add("@message", SqlDbType.VarChar, 500).Value = message;
+            cmd.Parameters.Add("@sendDateTime", SqlDbType.DateTime, 100).Value = DateTime.Now;
+
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+
+            }
+        }
+
+        public DataSet GetReviewsFromProductID(int ProductID)
+        {
+
+            SqlCommand cmd = new SqlCommand(
+                           "select Comment, Rating from Reviews where ProductID = @productID", Conn);
+
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@productID", SqlDbType.VarChar, 100).Value = ProductID;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+           
+            
+
+            return ds;
+        }
+
+        public void WriteReview(int productID, int orderDetailID, String comment, int rating)
+        {
+
+            SqlCommand cmd = new SqlCommand(
+                           "Insert into Reviews (ProductID, OrderDetailID, Comment, Rating)" +
+                           " Values (@productID, @orderDetailID, @comment, @rating); ", Conn);
+
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+
+            cmd.Parameters.Add("@productID", SqlDbType.Int).Value = productID;
+            cmd.Parameters.Add("@orderDetailID", SqlDbType.Int).Value = orderDetailID;
+            cmd.Parameters.Add("@comment", SqlDbType.VarChar, 500).Value = comment;
+            cmd.Parameters.Add("@rating", SqlDbType.Int).Value = rating;
+
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+
+            }
+        }
+
     }
-    
+
 
 
 
 }
+
 

@@ -17,7 +17,10 @@ namespace cartSurf
             {
                 DataList1.DataSource = db.GetProducts();
                 DataList1.DataBind();
-                DataList2.DataBind();
+                
+
+                DataList6.DataSource = db.GetAllCategory();
+                DataList6.DataBind();
             }
            
 
@@ -33,6 +36,12 @@ namespace cartSurf
         public void imagebutton(String productID)
         {
             Response.Redirect("ItemPage.aspx?param=" + productID);
+        }
+
+        public void Category_Click(object sender, EventArgs e)
+        {
+            LinkButton lb = sender as LinkButton;
+            Response.Redirect("CategoryPage.aspx?param=" + lb.CommandArgument);
         }
     }
 }
