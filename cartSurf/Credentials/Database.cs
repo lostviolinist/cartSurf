@@ -545,12 +545,12 @@ namespace cartSurf.Credentials
             try
             {
                 SqlCommand cmd = new SqlCommand(
-                   "insert into CartItems(ProductID, CartID, Quantity)" +
+                   "insert into CartItems(ProductID, CartID, Quantity) " +
                    "Values(@PID,  @CID, @Quantity); ", Conn);
 
                 Conn.Open();
 
-                cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = pid;
+                cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
                 cmd.Parameters.Add("@CID", SqlDbType.Int, 100).Value = cid;
                 cmd.Parameters.Add("@Quantity", SqlDbType.Int, 100).Value = quantity;
 

@@ -105,7 +105,7 @@
                     <div class="row">
                         <div class="flex-container">
                             <div>
-                                <asp:Button ID="CartButton" runat="server" Text="Add to Cart"  OnClick="CartButton_Click"/>
+                                <asp:Button ID="CartButton" runat="server" Text="Add to Cart" OnClick="CartButton_Click"/>
 
                                <%--<button class="w3-button w3-white w3-border">Add to Cart</button>--%>
                             </div>
