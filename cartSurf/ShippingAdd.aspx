@@ -203,6 +203,7 @@
                         </div>
                     </div>
 
+                    <%--Payment Button--%> 
                     <div class="row" style="margin-top: 20px">
                         <div class="col-md-12 text-center">
                             <asp:Button ID="BtnPayment" class="waves-effect waves-dark next-step" runat="server" Text="SECURE CHECKOUT" BackColor="#FE3939" ForeColor="White" Height="40px" Width="20%" OnClick="BtnPayment_Click" />

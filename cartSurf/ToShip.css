@@ -1,0 +1,14 @@
+﻿body {
+}
+
+#status=body {
+
+    table {
+        width: 100%;
+    }
+}
+
+.padding-class {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

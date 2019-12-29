@@ -98,6 +98,7 @@ namespace cartSurf
                     ProductPrice.Add(price * (Convert.ToDecimal(Quantity)));
                 }                          
 
+                //Calculate Total
                 Decimal subtotal = ProductPrice.Sum();
                 Decimal shippingFee = 10.00m;
 
