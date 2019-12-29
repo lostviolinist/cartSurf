@@ -28,7 +28,7 @@
                     <tr>
                         
                         <td style="width:50%">
-                           <p style="color:#000000; font-size:20px;"><asp:Label ID="left" Text=<%#Eval("left") %> runat="server" /></p>
+                           <p style="color:#000000; font-size:20px; margin-left:20px;"><asp:Label ID="left" Text=<%#Eval("left") %> runat="server" /></p>
 
                         </td>
                         <td style="width:50%">

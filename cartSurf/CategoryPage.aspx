@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Category" Language="C#" AutoEventWireup="true" MasterPageFile="~/HeaderFooter.Master" CodeBehind="CategoryPage.aspx.cs" Inherits="cartSurf.CategoryPage" %>
+﻿<%@ Page EnableEventValidation="false" Title="Category" Language="C#" AutoEventWireup="true" MasterPageFile="~/HeaderFooter.Master" CodeBehind="CategoryPage.aspx.cs" Inherits="cartSurf.CategoryPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
