@@ -125,12 +125,15 @@
             <div class="flex-container">
                 <div>
                     <img src="Images/profile%20icon.png">
-                    January.myo0o <br><br>
-                    <button class="w3-button w3-white w3-border">Chat Now</button>
+                    
+                <asp:Label ID="SellerName" runat="server" Text=""></asp:Label> <br><br>
+                    <%--<button class="w3-button w3-white w3-border">Chat Now</button>--%>
+                    <asp:Button ID="ChatButton" runat="server" Text="Chat Now" OnClick="ChatButton_Click"/>
                 </div>
                 <div style="margin-left:800px; margin-top:20px;">
-                    Rating: 4.5 <br>
-                    Items sold: 1000
+                    Rating: 
+                <asp:Label ID="Rating" runat="server" Text=""></asp:Label> <br>
+                    Items sold:  <asp:Label ID="Items" runat="server" Text=""></asp:Label>
                 </div>
             </div>
         </div>
@@ -138,14 +141,37 @@
     <div class="container product">
         <h4>Product Details</h4>
         <div>
-            <p>Product details:</p>
-            <p>Brand: </p>
-            <p><img src=""></p>
+            <p>Product details:<asp:Label ID="ProductDetails" runat="server" Text=""></asp:Label></p>
+            
+            <p>Brand: <asp:Label ID="ProductBrand" runat="server" Text=""></asp:Label></p>
+            
         </div>
     </div>
     <div class="container comment-box">
         <h4>Comments</h4>
-        <div class="container comments">
+        <asp:DataList ID="DataList1" RepeatDirection="Horizontal" runat="server">
+            <ItemTemplate>
+                <table style="margin:50px;  border:1px solid #FE3939; background-color:white; width:1000px;">
+                    <tr>
+                        <td style="padding:20px;">
+                           <%#Eval("Comment") %>
+
+                        </td>
+                        </tr>
+                    <tr>
+                        <td style="padding:20px;">
+                             Rating: <%#Eval("Rating") %>
+                        </td>
+                    </tr>
+                    
+
+                </table>
+
+
+            </ItemTemplate>
+
+        </asp:DataList>
+        <%--<div class="container comments">
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
         <div class="container comments">
@@ -168,18 +194,7 @@
         </div>
         <div class="container comments">
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        </div>
-        <div class="container comments">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        </div>
-        <div class="container comments">
-            <div>
-                <textarea rows="4" cols="120" placeholder="Write a comment.."></textarea>
-            </div>
-            <div>
-                <button class="w3-button w3-border" style="background-color:#FE3939; float:right; margin-top:10px;">Comment</button>
-            </div>
-            
-        </div>
+        </div>--%>
+        
     </div>
 </asp:Content>

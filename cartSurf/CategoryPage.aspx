@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Category" Language="C#" AutoEventWireup="true" MasterPageFile="~/HeaderFooter.Master" CodeBehind="CategoryPage.aspx.cs" Inherits="cartSurf.CategoryPage" %>
+﻿<%@ Page EnableEventValidation="false" Title="Category" Language="C#" AutoEventWireup="true" MasterPageFile="~/HeaderFooter.Master" CodeBehind="CategoryPage.aspx.cs" Inherits="cartSurf.CategoryPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -7,12 +7,13 @@
     <link href="CategoryPage.css" rel="stylesheet" type="text/css">
 
     <div style="margin-left:40px; margin-top:10px; color:#000000">
-        <h2>Fashion</h2>
+        <h2><asp:Label ID="Category" runat="server" Text=""></asp:Label></h2>
+        
     </div>
 
     <div class="container">
         
-            <img src="Images/animations-e-commerce.png" id="banner" />
+            <img src="Images/08-.jpg" id="banner" />
         
 
     </div>
@@ -20,129 +21,38 @@
         <h3>Check these out</h3>
     </div>
 
-    <div class=" flex-container">
+    <div class=" flex-container" style="overflow-x:scroll; width:inherit">
+       
 
-        <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
+        <asp:DataList ID="DataList7" RepeatDirection="Horizontal" runat="server">
+            <ItemTemplate>
+                <table style="margin:50px;  border:1px solid #FE3939; background-color:white;">
+                    <tr>
+                        <td style="padding:20px;">
+                           <asp:ImageButton ID="Image1" ImageUrl=<%#Eval("ImageUrl")%>  CommandArgument=<%#Eval("ProductID")%> runat="server" OnClick="Image1_Click" Width="120px"  Height="120px"/>
 
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">
+                            <%#Eval("ProductName") %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;">
+                            RM <%#Eval("ProductUnitPrice") %>
+                        </td>
+                    </tr>
 
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
+                </table>
 
 
-        
-    </div>
+            </ItemTemplate>
 
-    <div style="margin-left:25px; color:#FE3939">
-        <h3>You may like these</h3>
-    </div>
+        </asp:DataList>
+      </div>
 
-    <div class=" flex-container">
-
-        <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-         <div>
-            <img src="Images/sheep.png" />
-            <br>
-            RM 26.00
-        </div>
-
-
-        
-    </div>
+    
 
 
 </asp:Content>
