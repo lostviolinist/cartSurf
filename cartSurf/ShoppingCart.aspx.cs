@@ -75,8 +75,8 @@ namespace cartSurf
         
         protected void showSubtotal(int uid)
         {
-            //If there is a cart
-            if(db.getCartID(uid) > 0)
+            //If there is item in the cart
+            if(db.gotCartItem(uid))
             {
                 //Get CartID using UID
                 int cartID = db.getCartID(uid);
@@ -113,17 +113,31 @@ namespace cartSurf
             else
             {
                 LbProduct.Text = "0.00";
+                LbShipping.Text = "0.00";
+                LbNoItem.Visible = true;
+                BtnGoShopping.Visible = true;
             }
         }
 
         //Check Out button
         protected void BtnCheckOut_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ShippingAdd.aspx");
+            int uid = Convert.ToInt32(Session["uid"]);
+
+            if(db.gotCartItem(uid))
+            {
+                Response.Redirect("ShippingAdd.aspx");
+            }
+            
         }
 
         //Continue Shopping button
         protected void BtnShopping_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MainPage.aspx");
+        }
+
+        protected void BtnGoShopping_Click(object sender, EventArgs e)
         {
             Response.Redirect("MainPage.aspx");
         }

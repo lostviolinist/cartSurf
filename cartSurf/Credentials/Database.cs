@@ -428,6 +428,40 @@ namespace cartSurf.Credentials
 
         /*******************************Shopping Cart Table**************************************/
         //Show Shopping Cart of the User
+        public Boolean gotCartItem(int uid)
+        {
+            int cid;
+
+            if (gotCart(uid))
+            {
+                cid = getCartID(uid);
+            }
+            else
+            {
+                return false;
+            }
+
+            SqlCommand cmd = new SqlCommand(
+            "SELECT ProductID FROM CartItems WHERE CartID = @CID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                return true;
+            }
+            else return false;
+            
+        }
+
         public DataSet CartInventory(int UID)
         {
             SqlCommand cmd = new SqlCommand(

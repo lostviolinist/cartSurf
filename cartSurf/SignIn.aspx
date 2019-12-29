@@ -18,12 +18,7 @@
 	        <div class="form-container sign-in-container">
 		       <div class="form">
 			        <h1>Sign in</h1>
-			        <div class="social-container">
-				        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			        </div>
-			        <span>or use your account</span>
+			        <span>Use your account to sign in</span>
 			        <asp:TextBox ID="TbUsername" class="input" runat="server" autocomplete="off" placeholder="Username" />
                     <asp:Label ID="nameSigninValidator" runat="server" Text="" ForeColor="Red"></asp:Label>
 			        <asp:TextBox ID="TbPassword2" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
@@ -37,11 +32,10 @@
                         
 	        <div class="overlay-container">
 		        <div class="overlay">
-                    <%--Active when Sign Up Container is inactive--%>
 			        <div class="overlay-panel overlay-right">
 				        <h1>Hello, Friend!</h1>
 				        <p>Enter your personal details and start journey with us</p>
-                        <asp:Button ID="signUp" class="ghost button" runat="server" Text="Sign Up" />
+                        <asp:Button ID="signUp" class="ghost button" runat="server" Text="Sign Up" OnClick="signUp_Click" />
 			        </div>
 		        </div>
 	        </div>

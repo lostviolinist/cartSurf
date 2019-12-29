@@ -40,5 +40,10 @@ namespace cartSurf
             }
 
         }
+
+        protected void btnSignUp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SignUp.aspx");
+        }
     }
 }

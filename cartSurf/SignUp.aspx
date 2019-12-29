@@ -12,12 +12,15 @@
 	        <div class="form-container sign-in-container">
 		        <div class="form">
 			        <h1>Create Account</h1>
-					<p>Use your email for registration</p>
+					<span>Use your email for registration</span>
 			        <asp:TextBox ID="TbEmail"  class="input" runat="server" autocomplete="off" placeholder="Email" TextMode="Email" />
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="LbEmail" runat="server" Text="Please fill in your email." Visible="false" ForeColor="Red"></asp:Label>
 			        <asp:TextBox ID="TbUsername" class="input" runat="server" autocomplete="off" placeholder="Username" />
+					<asp:Label ID="LbUsername" runat="server" Text="Please fill in your username." Visible="false" ForeColor="Red"></asp:Label>
 			        <asp:TextBox ID="TbPassword" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
+					<asp:Label ID="LbPassword" runat="server" Text="Please create your password." Visible="false" ForeColor="Red"></asp:Label>
 			        <asp:TextBox ID="ConfirmPassword" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
+					<asp:Label ID="LbconfirmPassword" runat="server" Text="Please confirm your password." Visible="false" ForeColor="Red"></asp:Label>
 			        <asp:Button ID="BtnSignUp" class="button" runat="server" Text="Sign Up" OnClick="BtnSignUp_Click" />
 					<asp:Label ID="LbSignUp" runat="server" Text="" Visible="false" ForeColor="Red"></asp:Label>
 		        </div>
