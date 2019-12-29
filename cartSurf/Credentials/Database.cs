@@ -288,139 +288,6 @@ namespace cartSurf.Credentials
             return db;
         }
 
-        /*******************************Shopping Cart Table**************************************/
-        //Show Shopping Cart of the User
-        public DataSet CartInventory(int UID)
-        {
-            SqlCommand cmd = new SqlCommand(
-                "SELECT CartItems.CartItemID AS ID, Products.ProductName AS Product, Products.Variations AS Variations, Products.ProductUnitPrice AS UnitPrice, CartItems.Quantity AS Quantity " +
-                "FROM CartItems INNER JOIN Products ON CartItems.ProductID = Products.ProductID " +
-                "INNER JOIN ShoppingCarts ON CartItems.CartID = ShoppingCarts.CartID WHERE ShoppingCarts.UserID = @UID", Conn);
-
-            Conn.Open();
-
-            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = UID;
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-
-            DataSet data = new DataSet();
-            ada.Fill(data);
-
-            Conn.Close();
-
-            return data;
-        }
-
-        //Delete items from shopping cart
-        public void DeleteItems(int cid)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand(
-                    "DELETE FROM CartItems WHERE CartItemID = @CID", Conn);
-
-                Conn.Open();
-
-                cmd.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
-
-                cmd.ExecuteNonQuery();
-                cmd.Dispose();
-
-                Conn.Close();
-            }
-            catch (Exception e)
-            {
-                String error = e.Message;
-            }
-        }
-
-        //getCartID of a user
-        public int getCartID(int uid)
-        {
-            SqlCommand cmd = new SqlCommand(
-                "SELECT CartID FROM ShoppingCarts WHERE UserID = @UID", Conn);
-
-            Conn.Open();
-
-            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = uid;
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-
-            DataSet ds = new DataSet();
-            ada.Fill(ds);
-
-            Conn.Close();
-
-            int cid = -1;
-
-            if (ds.Tables[0].Rows.Count != 0)
-            {
-                cid = (int)ds.Tables[0].Rows[0][0];
-            }
-            return cid;
-        }
-
-        //Get num of items in the cart
-        public int getRowNum(int CID)
-        {
-            SqlCommand cmd = new SqlCommand(
-                "SELECT Count(*) FROM CartItems " +
-                "where CartID = @CID", Conn);
-
-            Conn.Open();
-
-            cmd.Parameters.Add("@CID", SqlDbType.Int, 100).Value = CID;
-
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            ada.Fill(ds);
-
-            Conn.Close();
-
-            int count = 0;
-
-            if (ds.Tables[0].Rows.Count != 0)
-            {
-                count = (int)ds.Tables[0].Rows[0][0];
-            }
-
-            return count;
-        }
-
-        //getCartItemDetails (ProductID && Quantity)
-        public List<List<int>> getCartItemDetails(int cid)
-        {
-            int noOfItem = getRowNum(cid);
-
-            SqlCommand cmd = new SqlCommand(
-                "SELECT ProductID, Quantity FROM CartItems " +
-                "WHERE CartID = @CID", Conn);
-
-            Conn.Open();
-
-            cmd.Parameters.Add("@CID", SqlDbType.Int, 100).Value = cid;
-            SqlDataAdapter ada = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            ada.Fill(ds);
-
-            Conn.Close();
-
-            List<List<int>> productQuantity = new List<List<int>>();
-            List<int> row = new List<int>();
-
-            if (ds.Tables[0].Rows.Count != 0)
-            {
-                for (int i = 0; i < noOfItem; i++)
-                {
-                    row = new List<int>();
-                    row.Add((int)ds.Tables[0].Rows[i][0]);
-                    row.Add((int)ds.Tables[0].Rows[i][1]);
-                    productQuantity.Add(row);
-                }
-
-            }           
-
-            return productQuantity;
-        }
-
         /*******************************Product Table**************************************/
         public Decimal getProductPrice(int pid)
         {
@@ -445,6 +312,52 @@ namespace cartSurf.Credentials
             }
 
             return UnitPrice;
+        }
+
+        public String GetProductName(int pid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT ProductName from Products WHERE ProductID = @PID", Conn);
+
+            Conn.Open();
+            cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+
+            String productName = "";
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                productName = (String)ds.Tables[0].Rows[0][0];
+            }
+
+            return productName;
+        }
+
+        public DataSet GetProducts()
+        {
+            SqlCommand cmd = new SqlCommand(
+               "SELECT * from Products", Conn);
+
+            Conn.Open();
+
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                byte[] bytes = (byte[])ds.Tables[0].Rows[i][6];
+                string strBase64 = Convert.ToBase64String(bytes);
+                ds.Tables[0].Rows[i][10] = "data:Image;base64," + strBase64;
+            }
+            return ds;
         }
 
         /*******************************Address Table**************************************/
@@ -581,6 +494,387 @@ namespace cartSurf.Credentials
             return false;
 
         }
+
+        /*******************************Shopping Cart Table**************************************/
+        //Show Shopping Cart of the User
+        public DataSet CartInventory(int UID)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT CartItems.CartItemID AS ID, Products.ProductName AS Product, Products.Variations AS Variations, Products.ProductUnitPrice AS UnitPrice, CartItems.Quantity AS Quantity " +
+                "FROM CartItems INNER JOIN Products ON CartItems.ProductID = Products.ProductID " +
+                "INNER JOIN ShoppingCarts ON CartItems.CartID = ShoppingCarts.CartID WHERE ShoppingCarts.UserID = @UID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = UID;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet data = new DataSet();
+            ada.Fill(data);
+
+            Conn.Close();
+
+            return data;
+        }
+
+        //Delete items from shopping cart
+        public void DeleteItems(int cid)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                    "DELETE FROM CartItems WHERE CartItemID = @CID", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+            }
+            catch (Exception e)
+            {
+                String error = e.Message;
+            }
+        }
+
+        //Insert Items into Shopping Cart
+        public void InsertItem(int uid, int pid, int quantity)
+        {
+
+            if(!gotCart(uid))
+            {
+                addShoppingCart(uid);                
+            }
+
+            int cid = getCartID(uid);
+
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                   "insert into CartItems(ProductID, CartID, Quantity)" +
+                   "Values(@PID,  @CID, @Quantity); ", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = pid;
+                cmd.Parameters.Add("@CID", SqlDbType.Int, 100).Value = cid;
+                cmd.Parameters.Add("@Quantity", SqlDbType.Int, 100).Value = quantity;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+            }
+        }
+
+        public Boolean gotCart(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT CartID FROM ShoppingCarts WHERE UserID = @UID", Conn);
+            
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = uid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                return true;
+            }
+            return false;
+
+        }
+
+        //getCartID of a user
+        public int getCartID(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT CartID FROM ShoppingCarts WHERE UserID = @UID", Conn);
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = uid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            int cid = -1;
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                cid = (int)ds.Tables[0].Rows[0][0];
+            }
+            return cid;
+        }
+
+        //Add user's shoppingcart
+        public void addShoppingCart(int uid)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                   "insert into ShoppingCarts(UserID)" +
+                   "Values(@UID);", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+            }
+        }
+        
+        //Get num of items in the cart
+        public int getRowNum(int CID)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT Count(*) FROM CartItems " +
+                "where CartID = @CID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@CID", SqlDbType.Int, 100).Value = CID;
+
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            int count = 0;
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                count = (int)ds.Tables[0].Rows[0][0];
+            }
+
+            return count;
+        }
+
+        //getCartItemDetails (ProductID && Quantity)
+        public List<List<int>> getCartItemDetails(int cid)
+        {
+            int noOfItem = getRowNum(cid);
+
+            SqlCommand cmd = new SqlCommand(
+                "SELECT ProductID, Quantity FROM CartItems " +
+                "WHERE CartID = @CID", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@CID", SqlDbType.Int, 100).Value = cid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            List<List<int>> productQuantity = new List<List<int>>();
+            List<int> row = new List<int>();
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                for (int i = 0; i < noOfItem; i++)
+                {
+                    row = new List<int>();
+                    row.Add((int)ds.Tables[0].Rows[i][0]);
+                    row.Add((int)ds.Tables[0].Rows[i][1]);
+                    productQuantity.Add(row);
+                }
+
+            }
+
+            return productQuantity;
+        }
+
+        public void removeFromCart(int uid)
+        {
+
+            int cid = getCartID(uid);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                    "DELETE FROM CartItems WHERE CartID = @CID", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+            }
+            catch (Exception e)
+            {
+                String error = e.Message;
+            }
+        }
+
+        /*******************************Order Table**************************************/
+        public int getOrderID(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT MAX(OrderID) FROM Orders WHERE CustID = @UID", Conn);
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            int oid = -1;
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                oid = (int)ds.Tables[0].Rows[0][0];
+            }
+
+            return oid;
+
+        }
+        public void checkOut(int uid)
+        {            
+            insertIntoOrder(uid);
+            
+            insertIntoOrderDetails(uid);
+
+            removeFromCart(uid);
+        }
+
+        public void insertIntoOrder(int uid)
+        {
+            int cid = getCartID(uid);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                   "insert into Orders(CustID, OrderDate)" +
+                   "Values(@UID, @Date); ", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@UID", SqlDbType.VarChar, 100).Value = uid;
+                cmd.Parameters.Add("@Date", SqlDbType.DateTime, 100).Value = DateTime.Now;
+                
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+            }
+        }
+
+        public void insertIntoOrderDetails(int uid)
+        {
+            int cid = getCartID(uid);
+            List<List<int>> productQuantity = getCartItemDetails(cid);
+            int noOfItem = getRowNum(cid);
+            int oid = getOrderID(uid);
+
+            try
+            {
+                //Insert into orderdetails (Based on number of items in the cart)
+                for (int i = 0; i < noOfItem; i++)
+                {
+                    int pid = productQuantity[i][0];
+                    int Quantity = productQuantity[i][1];
+                    Decimal price = getProductPrice(pid);
+                    Decimal total = price * (Convert.ToDecimal(Quantity));
+
+                    SqlCommand cmd = new SqlCommand(
+                       "insert into OrderDetails(OrderID, ProductID, Quantity, ProductTotal, ItemStatus)" +
+                       "Values(@OID, @PID, @Quantity, @Total, @Status); ", Conn);
+
+                    Conn.Open();
+
+                    cmd.Parameters.Add("@OID", SqlDbType.Int, 100).Value = oid;
+                    cmd.Parameters.Add("@PID", SqlDbType.Int, 100).Value = pid;
+                    cmd.Parameters.Add("@Quantity", SqlDbType.Int, 100).Value = Quantity;
+                    cmd.Parameters.Add("@Total", SqlDbType.Decimal, 100).Value = total;
+                    cmd.Parameters.Add("@Status", SqlDbType.VarChar, 100).Value = "ToShip";                    
+
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+
+                    Conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+            }
+        }
+
+        public DataSet GetToShip(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT Users.Username AS Seller, Products.ProductName AS ProductName, Products.ProductUnitPrice AS UnitPrice, " +
+                "OrderDetails.Quantity AS Quantity, OrderDetails.ProductTotal AS Total " +
+                "FROM OrderDetails JOIN Orders ON Orders.OrderID = OrderDetails.OrderID " +
+                "JOIN Products ON Products.ProductID = OrderDetails.ProductID " +
+                "JOIN Users ON Users.UserID = Products.SellerID " +
+                "WHERE CustID = @UID AND OrderDetails.ItemStatus = @IS", Conn);
+
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = uid;
+            cmd.Parameters.Add("@IS", SqlDbType.VarChar).Value = "ToShip";
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet data = new DataSet();
+            ada.Fill(data);
+
+            Conn.Close();
+
+            return data;
+        }
+
     }
+
+
 
 }

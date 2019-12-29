@@ -1,63 +1,40 @@
 ﻿<%@ Page Title="CartSurf - Online Shopping Platform" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SignUp.aspx.cs" Inherits="cartSurf.SignUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="SignUp.css" rel="stylesheet" type="text/css" />
+    <link href="SignIn.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
 </asp:Content>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="login-signup-wrap" style="margin-left: 90px;">
-            
-            <div class="login-container">
-                <div class ="login-element" style="font-size:1.6em;font-weight:bold;">
-                    WELCOME BACK!
-                </div>
-
-                <div class = "login-element">
-                    Sign in to continue to your account
-                </div>
-
-                <div class ="login-element" style="color:#000000;">
-                    <asp:Button ID="btnSubmit" Text="SIGN IN" runat="server" OnClick="Our_BtnSubmit_Click" BorderColor="#fe3936" Height="30px" Width="90px" BackColor="#F2F2F2" />
-                </div>            
-            </div>
-
-            <div class="sign-up-container">
-                
-                <div class ="sign-up-element" style="color: #FE3939; font-size: 1.6em; font-weight: bold;">
-                    Create Account
-                </div>
-
-                <div class ="sign-up-element">
-                    <i class="fab fa-facebook-square fa-3x"></i>
-                    <i class="fab fa-google-plus-square fa-3x"></i>
-                    <i class="fab fa-linkedin fa-3x"></i>
-                </div>
-
-                <div class ="sign-up-element" style="color: #808080">
-                    or use your email for registration
-                </div>
-
-                <div class="sign-up-element">
-                    <i class="far fa-envelope fa-2x"></i> 
-                    <asp:TextBox ID="tbMail" autocomplete= "off" runat="server" Width="311px" Height="30px" ForeColor="DarkGray" Placeholder="Email"></asp:TextBox>
-                </div>
-
-                <div class="sign-up-element">
-                    <i class="fas fa-lock fa-2x"></i>
-                    <asp:TextBox ID="TextBox1" autocomplete= "off" runat="server" Width="311px" Height="30px" ForeColor="DarkGray" Placeholder="Password"></asp:TextBox>
-                </div>
-
-                <div class="sign-up-element">
-                    <i class="fas fa-lock fa-2x"></i> 
-                    <asp:TextBox ID="TextBox2" autocomplete= "off" runat="server" Width="311px" Height="30px" ForeColor="DarkGray" Placeholder="Confirm Password"></asp:TextBox>
-                </div>
-                <div class ="sign-up-element">
-                    <asp:Button ID="BtnSignUpEmail" runat="server" Text="Button" OnClick="BtnSignUpEmail_Click" />
-                </div>
-                
-            </div>
-
-       </div>
+    <div class="sign-body">
+        <div class="container-sign" id="containerSign">
+            <%--Sign In Container--%>
+	        <div class="form-container sign-in-container">
+		        <div class="form">
+			        <h1>Create Account</h1>
+					<p>Use your email for registration</p>
+			        <asp:TextBox ID="TbEmail"  class="input" runat="server" autocomplete="off" placeholder="Email" TextMode="Email" />
+                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+			        <asp:TextBox ID="TbUsername" class="input" runat="server" autocomplete="off" placeholder="Username" />
+			        <asp:TextBox ID="TbPassword" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
+			        <asp:TextBox ID="ConfirmPassword" class="input" runat="server" autocomplete="off" placeholder="Password" TextMode="Password" />
+			        <asp:Button ID="BtnSignUp" class="button" runat="server" Text="Sign Up" OnClick="BtnSignUp_Click" />
+					<asp:Label ID="LbSignUp" runat="server" Text="" Visible="false" ForeColor="Red"></asp:Label>
+		        </div>
+	        </div>
+                        
+	        <div class="overlay-container">
+		        <div class="overlay">
+                    <%--Active when Sign Up Container is inactive--%>
+			        <div class="overlay-panel overlay-right">
+				        <h1>Welcome Back!</h1>
+				        <p>To keep connected with us please login with your personal info</p>
+                        <asp:Button class="ghost button" ID="BtnSignIn" runat="server" Text="Sign In" OnClick="BtnSignIn_Click" />						
+			        </div>
+		        </div>
+	        </div>
+        </div>
+    </div>   
+    
 </asp:Content>
 

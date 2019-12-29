@@ -13,20 +13,20 @@
 
     <div id="status" class="row">
         <div class="col-md-3 mx-auto">
-            <a href="#"><i class="fas fa-shipping-fast fa-5x"></i></a>
-            <p>To Ship</p>
+            <a href="ToShip.aspx"><i class="fas fa-shipping-fast fa-5x"></i>
+            <p>To Ship</p></a>
         </div>
         <div class="col-md-3 mx-auto">
-            <a href="#"><i class="fas fa-people-carry fa-5x"></i></a>
-            <p>To Receive</p>
+            <a href="#"><i class="fas fa-people-carry fa-5x"></i>
+            <p>To Receive</p></a>
         </div>
         <div class="col-md-3 mx-auto">
-            <a href="#"><i class="far fa-comment-dots fa-5x"></i></a>
-            <p>To Review</p>
+            <a href="#"><i class="far fa-comment-dots fa-5x"></i>
+            <p>To Review</p></a>
         </div>
         <div class="col-md-3 mx-auto">
-            <a href="#"><i class="fas fa-times fa-5x"></i></a>
-            <p>To Cancel</p>
+            <a href="#"><i class="fas fa-times fa-5x"></i>
+            <p>To Cancel</p></a>
         </div>
     </div>
 

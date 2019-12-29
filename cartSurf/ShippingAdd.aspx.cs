@@ -145,12 +145,15 @@ namespace cartSurf
 
         protected void BtnPayment_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Order.aspx");
-        }
+            int uid = Convert.ToInt32(Session["uid"]);
 
-        protected void BtnCheckOut_Click(object sender, EventArgs e)
-        {
+            db.checkOut(uid);
+
+            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert" +
+            //    "('Payment Successful. You will be redirected to view your order.')", true);
+            //Response.AddHeader("REFRESH", "10;URL=Order.aspx");
             Response.Redirect("Order.aspx");
+
         }
     }
 }

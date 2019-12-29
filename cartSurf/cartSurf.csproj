@@ -197,6 +197,8 @@
     <Content Include="SiteMaster.css" />
     <Content Include="Stepper.min.js" />
     <Content Include="MainPage.css" />
+    <Content Include="ToShip.aspx" />
+    <Content Include="ToShip.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -308,6 +310,13 @@
     </Compile>
     <Compile Include="HeaderFooter.Master.designer.cs">
       <DependentUpon>HeaderFooter.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ToShip.aspx.cs">
+      <DependentUpon>ToShip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ToShip.aspx.designer.cs">
+      <DependentUpon>ToShip.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
