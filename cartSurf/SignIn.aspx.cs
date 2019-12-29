@@ -39,25 +39,5 @@ namespace cartSurf
             }
         }
         
-        //ugly Sign Up Button
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            String email = TextBox2.Text;
-            String username = TextBox1.Text;
-            String password = TextBox3.Text;
-
-            if ((email.Length == 0) || (username.Length == 0) || (password.Length == 0))
-            {
-                if (email.Length == 0) Label2.Visible = true;
-                if (username.Length == 0) Label1.Visible = true;
-                if (password.Length == 0) Label3.Visible = true;
-            }
-            else
-            {
-                ds.SignUp(email, username, password);
-                Response.Redirect("SignUpSuccessful.aspx");
-            }
-
-        }
     }
 }

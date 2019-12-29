@@ -14,25 +14,46 @@ namespace cartSurf
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-        protected void Our_BtnSubmit_Click(object sender, EventArgs e)
+        protected Boolean validatePassword(String pw, String confirm_pw)
         {
-            Response.Redirect("Login.aspx");
-
+            if (pw == confirm_pw) return true;
+            else return false;
         }
 
-        protected void BtnSignUpEmail_Click(object sender, EventArgs e)
+        protected void BtnSignUp_Click(object sender, EventArgs e)
         {
-            String username = tbMail.Text;
-            String password = TextBox1.Text;
+            String email = TbEmail.Text;
+            String username = TbUsername.Text;
+            String password = TbPassword.Text;
+            String confirm_password = ConfirmPassword.Text;
 
-            if (ds.SignIn(username, password))
+
+            Page.Validate();
+
+            if ((Page.IsValid == true) && (validatePassword(password, confirm_password) == true))
             {
-                Response.Redirect("ShippingAdd.aspx");
+                ds.SignUp(email, username, password);
+                Response.Redirect("SignUpSuccessful.aspx");
             }
-            else Response.Redirect("Order.aspx");
+            else if (validatePassword(password, confirm_password) == false)
+            {
+                LbSignUp.Visible = true;
+                LbSignUp.Text = "The password does not match.";
+            }
+            else
+            {
+                LbSignUp.Visible = true;
+                LbSignUp.Text = "Input Error";
+
+            }
+        }
+
+        protected void BtnSignIn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SignIn.aspx");
         }
     }
 }

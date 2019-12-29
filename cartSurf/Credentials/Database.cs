@@ -471,6 +471,65 @@ namespace cartSurf.Credentials
             }
         }
 
+        //Insert Items into Shopping Cart
+        public void InsertItem(int uid, int pid, int quantity)
+        {
+
+            if(!gotCart(uid))
+            {
+                addShoppingCart(uid);                
+            }
+
+            int cid = getCartID(uid);
+
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                   "insert into CartItems(ProductID, CartID, Quantity)" +
+                   "Values(@PID,  @CID, @Quantity); ", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = pid;
+                cmd.Parameters.Add("@CID", SqlDbType.Int, 100).Value = cid;
+                cmd.Parameters.Add("@Quantity", SqlDbType.Int, 100).Value = quantity;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+            }
+        }
+
+        public Boolean gotCart(int uid)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT CartID FROM ShoppingCarts WHERE UserID = @UID", Conn);
+            
+            Conn.Open();
+
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = uid;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+
+            Conn.Close();
+
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                return true;
+            }
+            return false;
+
+        }
+
         //getCartID of a user
         public int getCartID(int uid)
         {
@@ -501,6 +560,31 @@ namespace cartSurf.Credentials
             return cid;
         }
 
+        //Add user's shoppingcart
+        public void addShoppingCart(int uid)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                   "insert into ShoppingCarts(UserID)" +
+                   "Values(@UID);", Conn);
+
+                Conn.Open();
+
+                cmd.Parameters.Add("@UID", SqlDbType.Int, 100).Value = uid;
+
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                Conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+            }
+        }
+        
         //Get num of items in the cart
         public int getRowNum(int CID)
         {
