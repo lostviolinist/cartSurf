@@ -145,8 +145,8 @@
                         <div id="courier" class ="col-md-12">
                             <asp:RadioButtonList ID="courierService" runat="server" CellSpacing="0" CellPadding="0" AppendDataBoundItems="true"
                             RepeatDirection="Horizontal">
-                            <asp:ListItem  runat="server"  Text="<img src='Image/gdex.png' alt='GDEX' title='GDEX'>"  Value="GDEX" />
-                            <asp:ListItem runat="server"  Text="<img src='Image/poslaju.png' alt='PosLaju' title='PosLaju'>"  Value="PosLaju" />
+                            <asp:ListItem  runat="server"  Text="<img src='Images/gdex.png' alt='GDEX' title='GDEX'>"  Value="GDEX" />
+                            <asp:ListItem runat="server"  Text="<img src='Images/poslaju.png' alt='PosLaju' title='PosLaju'>"  Value="PosLaju" />
                             </asp:RadioButtonList>                            
                         </div>
                     </div>

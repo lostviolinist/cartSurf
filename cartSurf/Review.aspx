@@ -5,9 +5,9 @@
     <div class="container">
         <div class="row" style="background-color: #FFFFFF">
             <div class="col-md-12">
-                <asp:DataList ID="DataReview" runat="server">
+                <asp:DataList ID="DataReview" runat="server" Width="1582px">
                     <ItemTemplate>
-                        <table class="text-center">
+                        <table class="text-center" style="width:100%;">
 
                             <tr class="padding-class">
                                 <td style="width:20%">

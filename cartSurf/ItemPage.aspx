@@ -149,7 +149,7 @@
     </div>
     <div class="container comment-box">
         <h4>Comments</h4>
-        <asp:DataList ID="DataList1" RepeatDirection="Horizontal" runat="server">
+        <asp:DataList ID="DataList1" RepeatDirection="Vertical" runat="server">
             <ItemTemplate>
                 <table style="margin:50px;  border:1px solid #FE3939; background-color:white; width:1000px;">
                     <tr>

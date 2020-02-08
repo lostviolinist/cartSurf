@@ -163,6 +163,9 @@
     <Content Include="libman.json" />
     <Content Include="MainPage.aspx" />
     <Content Include="ItemPage.aspx" />
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
